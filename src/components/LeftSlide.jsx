@@ -1,7 +1,8 @@
-import { easeInOut, easeOut, useAnimation, useInView } from "motion/react";
+import {
+  easeOut,
+} from "motion/react";
 import Marquee from "react-fast-marquee";
 import * as motion from "motion/react-client";
-import { SiGnuicecat } from "react-icons/si";
 import Container from "./container";
 
 const LeftSlide = () => {
@@ -19,7 +20,9 @@ const LeftSlide = () => {
   ];
 
   return (
-    <Container className=" px-60 mt-20  ">
+    <Container
+      className=" px-60 mt-20 h-20 "
+    >
       <motion.div
         id="fade-sides"
         initial={{ opacity: 0, y: 50 }}

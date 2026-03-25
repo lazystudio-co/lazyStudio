@@ -39,6 +39,7 @@ const services = [
       "Backend Development",
       "Custom Web Solutions",
       "Web App",
+      "Database Design",
     ],
   },
   {
@@ -49,10 +50,8 @@ const services = [
       "Brand Identity",
       "Brand Strategy",
       "Brandbook & Style",
-      "Investor Pitch Deck",
       "Product & Packeging Design ",
       "Social Media Assets",
-      "Market Research & Positioning",
     ],
   },
 
@@ -67,6 +66,8 @@ const services = [
       "Promotional Video Editing",
       "Product Video Editing",
       "Color Grading",
+      "VFX",
+      "3D Animation",
     ],
   },
 ];

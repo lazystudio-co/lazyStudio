@@ -15,14 +15,14 @@ export default function Hero() {
       <Container className=" grid grid-cols-2 gap-4 ">
         <div>
           <h1
-            className={` font-excon text-[60px] text-black mt-40 leading-snug`}
+            className={` font-excon text-[60px] text-black mt-40 leading-snug select-none `}
           >
-            <span className=" text-[120px] image-text ">We craft</span>
+            <span className=" text-[120px] image-text select-none " >We craft</span>
             <br /> websites, brands & digital products
           </h1>
         </div>
         <div>
-          <p className=" font-satoshiRegular text-[22px] text-black w-120 mt-60 ml-auto ">
+          <p className=" font-satoshiRegular text-[22px] text-black w-120 mt-60 ml-auto select-none ">
             <b>Lazy Studio</b> is a global digital agency specializing in
             websites, e-commerce and brand experiences. We help startups and
             growing businesses build powerful digital products.
