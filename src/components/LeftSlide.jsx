@@ -21,7 +21,7 @@ const LeftSlide = () => {
 
   return (
     <Container
-      className=" px-60 mt-20 h-20 "
+      className=" px-50 mt-20 h-20 "
     >
       <motion.div
         id="fade-sides"

@@ -210,52 +210,75 @@ export default function Home() {
               </section>
 
               <section className="p-6">
-                <form className="space-y-4 grid grid-cols-2 gap-2 ">
+                <form className="space-y-4 grid grid-cols-2 gap-2 gap-x-8 ">
                   <label className="block">
-                    <span className="mb-2 block text-[14px] font-semibold">
-                      Your name *
-                    </span>
+                    <p className="mb-2 block text-[14px] font-semibold">
+                      Your name <span className=" text-red-700 ">*</span>
+                    </p>
                     <input
+                      placeholder="Your Name"
                       className="h-11 w-full rounded-xl border border-white/20 bg-[#121416] px-3 text-[15px] outline-none ring-0 placeholder:text-white/35 focus:border-white/45"
                       type="text"
                     />
                   </label>
 
                   <label className="block">
-                    <span className="mb-2 block text-[14px] font-semibold">
-                      Email address *
-                    </span>
+                    <p className="mb-2 block text-[14px] font-semibold">
+                      Email address <span className=" text-red-700 ">*</span>
+                    </p>
                     <input
+                      placeholder="Your Email"
                       className="h-11 w-full rounded-xl border border-white/20 bg-[#121416] px-3 text-[15px] outline-none ring-0 placeholder:text-white/35 focus:border-white/45"
                       type="email"
                     />
                   </label>
 
+                  <label className="block">
+                    <p className="mb-2 block text-[14px] font-semibold">
+                      Project Budget <span className=" text-red-700 ">*</span>
+                    </p>
+                    <input
+                      placeholder="Your Project Budget"
+                      className="h-11 w-full rounded-xl border border-white/20 bg-[#121416] px-3 text-[15px] outline-none ring-0 placeholder:text-white/35 focus:border-white/45"
+                      type="email"
+                    />
+                  </label>
+                  <label className="block">
+                    <p className="mb-2 block text-[14px] font-semibold">
+                      WhatsApp Number - optional
+                    </p>
+                    <input
+                      placeholder="Your Email"
+                      className="h-11 w-full rounded-xl border border-white/20 bg-[#121416] px-3 text-[15px] outline-none ring-0 placeholder:text-white/35 focus:border-white/45"
+                      type="email"
+                    />
+                  </label>
                   <label className="block col-span-2 ">
-                    <span className="mb-2 block text-[14px] font-semibold">
-                      Additional notes
-                    </span>
+                    <p className="mb-2 block text-[14px] font-semibold">
+                      Project Brief <span className=" text-red-700 ">*</span>
+                    </p>
                     <textarea
                       rows={3}
                       className="w-full rounded-xl border border-white/20 bg-[#121416] px-3 py-3 text-[15px] outline-none ring-0 placeholder:text-white/45 focus:border-white/45"
                       placeholder="Please share anything that will help prepare for our meeting."
                     />
                   </label>
+                </form>
+                <div className=" flex flex-col justify-center items-center ">
+                  <div className=" flex justify-center items-center gap-2 mt-4 ">
+                    <input
+                      type="checkbox"
+                      className=" select-none cursor-pointer accent-sec "
+                    />
+                    <p className="pt-1 text-[14px] leading-6 text-white/70 text-center  ">
+                      I have read and agree to lazystudi.co’s
+                      <span className="text-white"> Terms of Service</span> and
+                      <span className="text-white"> Privacy Policy</span>.
+                    </p>
+                  </div>
 
-                  <button
-                    type="button"
-                    className="text-left text-[15px] text-white/80 hover:text-white"
-                  >
-                    + Add guests
-                  </button>
-
-                  <p className="pt-1 text-[14px] leading-6 text-white/70">
-                    By proceeding, you agree to Cal.com&apos;s{" "}
-                    <span className="text-white">Terms</span> and{" "}
-                    <span className="text-white">Privacy Policy</span>.
-                  </p>
-
-                  <div className="flex items-center justify-end gap-6 pt-2">
+                  <br />
+                  <div className="flex items-center justify-end gap-6">
                     <button
                       type="button"
                       onClick={() => setSelectedTime(null)}
@@ -270,7 +293,7 @@ export default function Home() {
                       Confirm
                     </button>
                   </div>
-                </form>
+                </div>
               </section>
             </div>
           )}

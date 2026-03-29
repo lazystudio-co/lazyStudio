@@ -15,10 +15,9 @@ export default function Landing() {
 
   return (
     <>
-      <Hero />
-      <LeftSlide />
-      <ProjectsContent />
-      <InfoSlide />
+      <Hero /><LeftSlide /><ProjectsContent />
+      <InfoSlide /> 
+      
     </>
   );
 }

@@ -66,7 +66,7 @@ export default function ProjectsContent() {
   };
 
   return (
-    <section className="py-28">
+    <section className="py-30">
       <div className="flex justify-between items-center mb-10 mx-12 ">
         <h2 className="uppercase tracking-widest text-[18px] font-satoshiBold select-none ">
           <span className=" w-2 h-3 bg-black ">|</span> Featured Projects
@@ -75,7 +75,7 @@ export default function ProjectsContent() {
         <div className="flex gap-4 ">
           <button
             onClick={() => sliderRef.current?.slickPrev()}
-            className="w-12 h-12 flex items-center justify-center rounded-full bg-sec text-white text-3xl hover:scale-105 transition cursor-pointer "
+            className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-pointer "
           >
             <IoIosArrowRoundBack />
           </button>
@@ -93,7 +93,7 @@ export default function ProjectsContent() {
         {projects.map((p, i) => (
           <div
             key={i}
-            className=" w-fit mx-auto ml-22 cursor-pointer  relative"
+            className=" w-fit mx-auto ml-22 cursor-pointer relative"
           >
             <div className={` pb-8  ${p.bg} text-white overflow-hidden`}>
               <img src={p.image} className=" w-100 rounded-3xl " />
