@@ -163,10 +163,13 @@ export default function InfoSlide() {
         <Slider ref={sliderRef} {...settings}>
           {/* Slide 1 */}
           {cardInfo.map((items, index) => (
-            <Link href={items.link} className={items.wrapperClass}>
+            <Link
+              href={items.link}
+              className={`${items.wrapperClass} cursor-none `}
+            >
               <div
                 ref={(el) => (cardRefs.current[index] = el)}
-                className="w-fit cursor-pointer relative"
+                className="w-fit cursor-none relative"
               >
                 <div className="relative">
                   <img src={items.image} className={items.imageClass} />

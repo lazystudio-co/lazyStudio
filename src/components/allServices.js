@@ -86,12 +86,15 @@ export default function AllServices() {
           </p>
         </div>
 
-        <div className=" flex flex-col gap-30  ">
+        <div className=" flex flex-col gap-30 cursor-none ">
           {services.map((service, index) => {
             const Icon = service.icon;
 
             return (
-              <div key={index} className=" relative flex flex-row items-start">
+              <div
+                key={index}
+                className=" relative flex flex-row items-start cursor-none"
+              >
                 {/* Icon */}
                 <div className="mb-6 relative z-50 ">
                   <Icon

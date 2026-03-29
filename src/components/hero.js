@@ -17,7 +17,9 @@ export default function Hero() {
           <h1
             className={` font-excon text-[60px] text-black mt-40 leading-snug select-none `}
           >
-            <span className=" text-[120px] image-text select-none " >We craft</span>
+            <span className=" text-[120px] image-text select-none ">
+              We craft
+            </span>
             <br /> websites, brands & digital products
           </h1>
         </div>

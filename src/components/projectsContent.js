@@ -75,26 +75,23 @@ export default function ProjectsContent() {
         <div className="flex gap-4 ">
           <button
             onClick={() => sliderRef.current?.slickPrev()}
-            className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-pointer "
+            className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-none "
           >
             <IoIosArrowRoundBack />
           </button>
 
           <button
             onClick={() => sliderRef.current?.slickNext()}
-            className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-pointer "
+            className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-none "
           >
             <IoIosArrowRoundForward />
           </button>
         </div>
       </div>
 
-      <Slider ref={sliderRef} {...settings}>
+      <Slider ref={sliderRef} {...settings} className=" cursor-none " >
         {projects.map((p, i) => (
-          <div
-            key={i}
-            className=" w-fit mx-auto ml-22 cursor-pointer relative"
-          >
+          <button key={i} className=" w-fit mx-auto ml-22 cursor-none relative">
             <div className={` pb-8  ${p.bg} text-white overflow-hidden`}>
               <img src={p.image} className=" w-100 rounded-3xl " />
               <h3 className="text-[36px] font-semibold px-2 absolute left-4 top-4 z-50 ">
@@ -105,7 +102,7 @@ export default function ProjectsContent() {
                 {p.desc}
               </p>
             </div>
-          </div>
+          </button>
         ))}
       </Slider>
     </section>

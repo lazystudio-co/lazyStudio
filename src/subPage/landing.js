@@ -1,4 +1,5 @@
 "use client";
+import BannerContents from "@/components/bannerContents";
 import Hero from "@/components/hero";
 import InfoSlide from "@/components/infoSlide";
 import LeftSlide from "@/components/LeftSlide";
@@ -15,9 +16,11 @@ export default function Landing() {
 
   return (
     <>
-      <Hero /><LeftSlide /><ProjectsContent />
-      <InfoSlide /> 
-      
+      <Hero />
+      <BannerContents />
+      <LeftSlide />
+      <ProjectsContent />
+      <InfoSlide />
     </>
   );
 }

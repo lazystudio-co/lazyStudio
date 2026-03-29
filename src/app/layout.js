@@ -1,5 +1,6 @@
 import NavBar from "@/components/navBar";
 import "./globals.css";
+import CustomCursor from "@/components/customCursor";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,6 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className=" selection:bg-black selection:text-white ">
+        <CustomCursor />
         <NavBar />
         {children}
       </body>
