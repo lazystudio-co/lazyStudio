@@ -14,7 +14,7 @@ export default function LeftSlide() {
     "/images/l6.png",
     "/images/l7.png",
     "/images/l8.png",
-    "/images/l9.PNG",
+    "/images/l9.png",
     "/images/l10.png",
   ];
 
@@ -29,7 +29,7 @@ export default function LeftSlide() {
           className="select-none"
         >
           {imgPath.map((path, index) => (
-            <div key={index} className="mx-2">
+            <button key={index} className="mx-2 cursor-none">
               <Image
                 src={path}
                 width={200}
@@ -37,7 +37,7 @@ export default function LeftSlide() {
                 alt={`slide-${index}`}
                 className="rounded-2xl duration-300 ease-out grayscale hover:grayscale-0"
               />
-            </div>
+            </button>
           ))}
         </Marquee>
       </div>
