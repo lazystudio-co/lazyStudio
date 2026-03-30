@@ -27,7 +27,7 @@ export default function InfoSlide() {
       link: "/uiuxdesign",
     },
     {
-      image: "/images/customweb.png",
+      image: "/images/customweb2.png",
       imageClass: "w-108 rounded-3xl",
       title: "Custom Website Development",
       titleClass:

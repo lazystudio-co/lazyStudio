@@ -14,42 +14,42 @@ export default function ProjectsContent() {
     {
       title: "TELUS",
       desc: "UX for futuristic skyscrapers.",
-      image: "images/productimg.jpg",
+      image: "images/customweb2.png",
     },
     {
       title: "Boston Dynamics",
       desc: "Bold redesign for robotics ",
-      image: "images/productimg.jpg",
+      image: "images/customweb2.png",
     },
     {
       title: "+100 Projects",
       desc: "View more of our work",
-      image: "images/productimg.jpg",
+      image: "images/customweb2.png",
     },
     {
       title: "Vivodyne",
       desc: "UI/UX for biotech company",
-      image: "images/productimg.jpg",
+      image: "images/customweb2.png",
     },
     {
       title: "Vivodyne",
       desc: "UI/UX for biotech company",
-      image: "images/productimg.jpg",
+      image: "images/customweb2.png",
     },
     {
       title: "Vivodyne",
       desc: "UI/UX for biotech company",
-      image: "images/productimg.jpg",
+      image: "images/customweb2.png",
     },
     {
       title: "Vivodyne",
       desc: "UI/UX for biotech company",
-      image: "images/productimg.jpg",
+      image: "images/customweb2.png",
     },
     {
       title: "Vivodyne",
       desc: "UI/UX for biotech company",
-      image: "images/productimg.jpg",
+      image: "images/customweb2.png",
     },
   ];
   const sliderRef = useRef(null);
