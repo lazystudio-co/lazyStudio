@@ -27,7 +27,7 @@ export default function InfoSlide() {
       link: "/uiuxdesign",
     },
     {
-      image: "/images/customWeb.png",
+      image: "/images/customweb.png",
       imageClass: "w-108 rounded-3xl",
       title: "Custom Website Development",
       titleClass:
@@ -39,7 +39,7 @@ export default function InfoSlide() {
       link: "/customwebsitedevelopment",
     },
     {
-      image: "/images/landingPage.jpg",
+      image: "/images/landingpage.jpg",
       imageClass: "w-108 rounded-3xl",
       title: "Landing Page Design",
       titleClass:
@@ -51,7 +51,7 @@ export default function InfoSlide() {
       link: "/landingpagedesign",
     },
     {
-      image: "/images/productDesign.jpg",
+      image: "/images/productdesign.jpg",
       imageClass: "w-108 rounded-3xl",
       title: "Branding & Visual Identity",
       titleClass:
@@ -164,6 +164,7 @@ export default function InfoSlide() {
           {/* Slide 1 */}
           {cardInfo.map((items, index) => (
             <Link
+              key={items.link}
               href={items.link}
               className={`${items.wrapperClass} cursor-none `}
             >
