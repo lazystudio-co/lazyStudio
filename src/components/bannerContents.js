@@ -3,12 +3,13 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 const BANNER_IMAGES = [
-  "images/banner.jpg",
-  "images/banner1.jpg",
-  "images/banner2.jpg",
-  "images/banner3.jpg",
+  "images/banner1.png",
+  "images/banner2.png",
+  "images/banner3.png",
+  "images/banner4.png",
 ];
 
 /** Fully hidden: clipped from the top so nothing shows (reveal grows from bottom edge upward). */
@@ -39,7 +40,7 @@ export default function BannerContents() {
           end: `+=${transitionCount * 100}%`,
           pin: true,
           scrub: true,
-          anticipatePin: 0,
+          anticipatePin: 1,
           invalidateOnRefresh: true,
         },
       });
@@ -67,18 +68,26 @@ export default function BannerContents() {
   return (
     <div ref={sectionRef} className="my-25 w-full">
       <div className="banner-stage relative min-h-svh w-full">
-        {BANNER_IMAGES.map((src, i) => (
-          <div
-            key={i}
-            className="pointer-events-none absolute inset-0 m-auto h-fit w-350 overflow-hidden rounded-3xl"
-          >
-            <img
-              src={src}
-              alt="banner"
-              className="banner-image block w-full rounded-3xl"
-            />
-          </div>
-        ))}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="absolute inset-0 h-full w-full"
+        >
+          {BANNER_IMAGES.map((src, i) => (
+            <div
+              key={i}
+              className="pointer-events-none absolute inset-0 m-auto h-fit w-350 overflow-hidden rounded-3xl"
+            >
+              <img
+                src={src}
+                alt="banner"
+                className="banner-image block w-full rounded-3xl"
+              />
+            </div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

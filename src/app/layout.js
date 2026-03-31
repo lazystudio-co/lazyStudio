@@ -1,6 +1,7 @@
 import NavBar from "@/components/navBar";
 import "./globals.css";
 import CustomCursor from "@/components/customCursor";
+import Footer from "@/components/footer";
 
 export const metadata = {
   title: "Create Next App",
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
         <CustomCursor />
         <NavBar />
         {children}
+        <Footer/>
       </body>
     </html>
   );

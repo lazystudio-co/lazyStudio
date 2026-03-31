@@ -244,20 +244,15 @@ input[type="number"] {
   appearance: textfield !important;
 }
 
-/* custom cursor css */
-/* Add this to your globals.css file!
-  Make sure you define --accent, or replace it with your specific hex code (e.g., #c9a96e)
-*/
+/* body {
 
-body {
-  /* Hide the default cursor for non-touch devices */
   cursor: none;
 }
 
 a,
 button,
 .hover-target {
-  cursor: none; /* Let the custom cursor handle hover state */
+  cursor: none; 
 }
 
 .cursor-dot {
@@ -266,7 +261,7 @@ button,
   left: 0;
   width: 12px;
   height: 12px;
-  background-color: var(--accent, #585858);
+  background-color: var(--accent, #2b2b2b);
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
@@ -280,17 +275,17 @@ button,
 .cursor-dot.hovering {
   width: 40px;
   height: 40px;
-  background-color: transparent;
+  background-color: #2b2b2b;
   border: 1px solid var(--accent, #585858);
   mix-blend-mode: difference;
 }
 
 @media (max-width: 768px) {
-  /* Hide custom cursor completely on mobile/touch devices */
+
   .cursor-dot {
     display: none;
   }
-  /* Restore normal pointer events for touch */
+
   body,
   a,
   button,
@@ -298,4 +293,48 @@ button,
     cursor: auto;
   }
 }
-/* custom cursor css */
+
+#bannerShadow{
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.20);
+} */
+
+body {
+  cursor: none;
+  color: #000000;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background: #000000;
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+
+  transition:
+    width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.4s ease,
+    box-shadow 0.4s ease,
+    backdrop-filter 0.4s ease,
+    border 0.4s ease;
+}
+
+.cursor-dot.hover-active {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: grayscale(100%) blur(5px);
+  -webkit-backdrop-filter: grayscale(120%) blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    inset 0 6px 15px rgba(255, 255, 255, 0.8),
+    inset 0 -4px 10px rgba(255, 255, 255, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+}
