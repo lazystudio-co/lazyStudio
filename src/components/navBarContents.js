@@ -11,6 +11,7 @@ export default function NavBarContents() {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Why Us", href: "/whyUs" },
+    { name: "About Us", href: "/aboutUs" },
     // { name: "Blog", href: "/blog" },
   ];
 
@@ -18,17 +19,16 @@ export default function NavBarContents() {
 
   return (
     <Container className=" flex justify-between items-center py-4 relative ">
-      <Link href="/">
+      <Link href="/" className=" cursor-none inline-block " >
         <img src="images/logosec.png" className=" w-55 " />
       </Link>
       <List>
         {navLinks.map((link) => (
           <Link
-            className={` border-b-4  ${
-              patchname === link.href
-                ? " border-sec hover:border-transparent duration-300 ease-out "
+            className={` border-b-4 cursor-none ${patchname === link.href
+                ? " border-sec hover:border-transparent duration-300 ease-out cursor-none "
                 : " border-transparent "
-            } `}
+              } `}
             key={link.href}
             href={link.href}
           >
@@ -39,17 +39,17 @@ export default function NavBarContents() {
       <Link
         href="/contact"
         id="navBarButton"
-        className=" px-18 py-7 bg-sec rounded-full text-black overflow-hidden cursor-none z-10 drop-shadow-none group relative "
+        className=" inline-block px-18 py-7 bg-sec rounded-full text-black overflow-hidden cursor-none z-10 drop-shadow-none group relative "
       >
         <span
           className=" font-satoshiBold text-[20px] font-semibold text-white z-50 cursor-none absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]
-        group-hover:top-100 duration-300 ease-in-out pointer-events-none "
+        group-hover:top-100 duration-300 ease-in-out "
         >
           Contact
         </span>
         <span
           className=" font-satoshiBold text-[20px] font-semibold text-white z-50 cursor-none absolute -top-100 left-[50%] translate-x-[-50%] 
-        group-hover:top-[50%] group-hover:translate-y-[-50%] duration-300 ease-in-out pointer-events-none "
+        group-hover:top-[50%] group-hover:translate-y-[-50%] duration-300 ease-in-out "
         >
           Hi
         </span>

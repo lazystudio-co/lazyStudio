@@ -89,16 +89,18 @@ export default function ProjectsContent() {
         </div>
       </div>
 
-      <Slider ref={sliderRef} {...settings} className=" cursor-none " >
+      <Slider ref={sliderRef} {...settings} className=" cursor-none ">
         {projects.map((p, i) => (
           <button key={i} className=" w-fit mx-auto ml-22 cursor-none relative">
-            <div className={` pb-8  ${p.bg} text-white overflow-hidden`}>
-              <img src={p.image} className=" w-100 rounded-3xl " />
-              <h3 className="text-[36px] font-semibold px-2 absolute left-4 top-4 z-50 ">
+            <div
+              className={` pb-8  ${p.bg} text-white overflow-hidden cursor-none`}
+            >
+              <img src={p.image} className=" w-100 rounded-3xl cursor-none " />
+              <h3 className="text-[36px] font-semibold px-2 absolute left-4 top-4 z-50 cursor-none ">
                 {p.title}
               </h3>
 
-              <p className="text-sm opacity-80 mb-10 max-w-55 px-2 absolute left-4 top-18 z-50 ">
+              <p className="text-sm opacity-80 mb-10 max-w-55 px-2 absolute left-4 top-18 z-50 cursor-none ">
                 {p.desc}
               </p>
             </div>

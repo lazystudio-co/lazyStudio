@@ -6,9 +6,10 @@
   --font-excon: "Excon", sans-serif;
   --font-exconLight: "Excon", sans-serif;
   --font-exconReg: "Excon", sans-serif;
-
   --color-sec: #585858;
 }
+
+
 
 @font-face {
   font-family: SatoshiBold;
@@ -54,13 +55,13 @@ body {
 }
 
 #navBarButton {
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
   scale: 1;
   transition: 300ms ease-out;
 }
 
 #navBarButton:hover {
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.726);
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.726);
   scale: 1.05;
   transition: 300ms ease-out;
 }
@@ -95,7 +96,7 @@ body {
 }
 
 #clipSec {
-  background-image: url(../../public/images/cliptext2.jpg);
+  background-image: url(../../public/images/cliptext.jpg);
   background-size: cover;
   background-position: center;
   -webkit-background-clip: text;
@@ -112,6 +113,30 @@ body {
 }
 
 #letsTalkBtn:hover {
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.726);
+  scale: 1.01;
+  transition: 300ms ease-out;
+}
+
+#ctaTalk {
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
+  scale: 1;
+  transition: 300ms ease-out;
+}
+
+#ctaTalk:hover {
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.726);
+  scale: 1.01;
+  transition: 300ms ease-out;
+}
+
+#aboutCTA {
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
+  scale: 1;
+  transition: 300ms ease-out;
+}
+
+#aboutCTA:hover {
   box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.726);
   scale: 1.01;
   transition: 300ms ease-out;
@@ -244,60 +269,6 @@ input[type="number"] {
   appearance: textfield !important;
 }
 
-/* body {
-
-  cursor: none;
-}
-
-a,
-button,
-.hover-target {
-  cursor: none; 
-}
-
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 12px;
-  height: 12px;
-  background-color: var(--accent, #2b2b2b);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate(-50%, -50%);
-  transition:
-    width 0.3s cubic-bezier(0.19, 1, 0.22, 1),
-    height 0.3s cubic-bezier(0.19, 1, 0.22, 1),
-    background-color 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.cursor-dot.hovering {
-  width: 40px;
-  height: 40px;
-  background-color: #2b2b2b;
-  border: 1px solid var(--accent, #585858);
-  mix-blend-mode: difference;
-}
-
-@media (max-width: 768px) {
-
-  .cursor-dot {
-    display: none;
-  }
-
-  body,
-  a,
-  button,
-  .hover-target {
-    cursor: auto;
-  }
-}
-
-#bannerShadow{
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.20);
-} */
-
 body {
   cursor: none;
   color: #000000;
@@ -325,16 +296,84 @@ body {
 }
 
 .cursor-dot.hover-active {
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.05);
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.05);
   backdrop-filter: grayscale(100%) blur(5px);
   -webkit-backdrop-filter: grayscale(120%) blur(5px);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  
+  border: 2px solid rgba(2, 2, 2, 0.5);
+
   box-shadow:
     0 25px 50px rgba(0, 0, 0, 0.5),
     inset 0 6px 15px rgba(255, 255, 255, 0.8),
     inset 0 -4px 10px rgba(255, 255, 255, 0.3),
     inset 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+#footerButton {
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+  scale: 1;
+  transition: 300ms ease-out;
+}
+
+#footerButton:hover {
+  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.726);
+  scale: 1.01;
+  transition: 300ms ease-out;
+}
+
+@layer base {
+  @media (pointer: fine) {
+    * {
+      cursor: none;
+    }
+  }
+
+  ::selection {
+    @apply bg-black text-white dark:bg-white dark:text-black;
+  }
+}
+
+/* Lenis Smooth Scrolling */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+#WhyUsTItle {
+  background-image: url(../../public/images/cliptext.jpg);
+  background-size: cover;
+  background-position: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  background-clip: text;
+  color: transparent;
+}
+
+#servicesTitle {
+  background-image: url(../../public/images/cliptext.jpg);
+  background-size: cover;
+  background-position: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  background-clip: text;
+  color: transparent;
 }

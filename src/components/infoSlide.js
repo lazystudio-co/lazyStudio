@@ -113,17 +113,17 @@ export default function InfoSlide() {
   return (
     <section className="my-20">
       <Container>
-        <div className="px-50 flex items-center justify-between">
-          <h1
+        <div className="px-25 flex items-center justify-between">
+          <a
             id="infoServiceTitle"
             className="font-exconReg text-[64px] leading-18 select-none "
           >
             <span>What</span> <br /> We Excel at
-          </h1>
-          <div className=" flex flex-row justify-center items-center gap-10 pt-7 ">
+          </a>
+          <div className=" flex flex-row justify-center items-center gap-10 pt-7 cursor-none ">
             <Link
               href="/services"
-              className=" bg-transparent border-2 border-sec rounded-full px-3 py-3 pr-15 flex flex-row justify-between items-center gap-4 group relative"
+              className=" bg-transparent border-2 border-sec rounded-full px-3 py-3 pr-15 flex flex-row justify-between items-center gap-4 cursor-none group relative"
             >
               <p
                 className=" uppercase font-satoshiBold font-bold text-[16px] pl-5 scale-y-100 
@@ -143,14 +143,14 @@ export default function InfoSlide() {
             <div className="flex gap-4  ">
               <button
                 onClick={() => sliderRef.current?.slickPrev()}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-sec text-white text-3xl hover:scale-105 transition cursor-pointer "
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-sec text-white text-3xl hover:scale-105 transition cursor-none "
               >
                 <IoIosArrowRoundBack />
               </button>
 
               <button
                 onClick={() => sliderRef.current?.slickNext()}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-pointer "
+                className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-none "
               >
                 <IoIosArrowRoundForward />
               </button>
@@ -159,7 +159,7 @@ export default function InfoSlide() {
         </div>
       </Container>
 
-      <div className="w-full select-none">
+      <div className="w-full select-none -ml-16.5 ">
         <Slider ref={sliderRef} {...settings}>
           {/* Slide 1 */}
           {cardInfo.map((items, index) => (

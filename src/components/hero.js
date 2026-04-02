@@ -15,7 +15,7 @@ export default function Hero() {
       <Container className=" grid grid-cols-2 gap-4 ">
         <div>
           <h1
-            className={` font-excon text-[60px] text-black mt-40 leading-snug select-none `}
+            className={`inline-block font-excon text-[60px] text-black mt-40 leading-snug select-none `}
           >
             <span className=" text-[120px] image-text select-none ">
               We craft
@@ -35,7 +35,7 @@ export default function Hero() {
               id="letsTalkBtn"
               text="let's talk"
               textSec="Book NOw"
-              className=" ml-17 "
+              className=" ml-17 w-60! "
             />
             <div className=" pt-11 ml-auto flex justify-center items-center select-none relative">
               <img

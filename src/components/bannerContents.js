@@ -68,7 +68,7 @@ export default function BannerContents() {
   return (
     <div ref={sectionRef} className="my-25 w-full">
       <div className="banner-stage relative min-h-svh w-full">
-        <motion.div
+        <motion.a
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -78,7 +78,7 @@ export default function BannerContents() {
           {BANNER_IMAGES.map((src, i) => (
             <div
               key={i}
-              className="pointer-events-none absolute inset-0 m-auto h-fit w-350 overflow-hidden rounded-3xl"
+              className="cursor-none absolute inset-0 m-auto h-fit w-350 overflow-hidden rounded-3xl hoverable "
             >
               <img
                 src={src}
@@ -87,7 +87,7 @@ export default function BannerContents() {
               />
             </div>
           ))}
-        </motion.div>
+        </motion.a>
       </div>
     </div>
   );
