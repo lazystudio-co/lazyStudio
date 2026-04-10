@@ -1,13 +1,108 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useMemo, memo } from "react";
 import Container from "@/components/container";
 import LetsTalkButton from "@/components/letsTalkButton";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import LetsTalkSection from "@/components/letsTalkSection";
 
-export default function AboutUsContents() {
+function AboutUsContents() {
   const imageRef = useRef(null);
+  const reduceMotion = useReducedMotion();
+
+  const manifesto = useMemo(
+    () => [
+      {
+        title: "No Noise",
+        desc: "We focus on what actually moves the needle.",
+      },
+      {
+        title: "Peak Tech",
+        desc: "Next.js, React, and AI-driven workflows only.",
+      },
+      { title: "High Impact", desc: "Design that converts, code that scales." },
+    ],
+    [],
+  );
+
+  const pillars = useMemo(
+    () => [
+      {
+        title: "Precision Dev",
+        tag: "Performance",
+        desc: "High-speed, scalable applications built with Next.js and React core architectures.",
+      },
+      {
+        title: "Intuitive UI/UX",
+        tag: "Experience",
+        desc: "User journeys designed to remove friction and maximize conversion rates.",
+      },
+      {
+        title: "Cinematic Vision",
+        tag: "Branding",
+        desc: "Professional video editing and brand strategy that tells your story perfectly.",
+      },
+    ],
+    [],
+  );
+
+  const stats = useMemo(
+    () => [
+      { metric: "250+", label: "Projects Delivered" },
+      { metric: "98%", label: "Client Satisfaction" },
+      { metric: "50M+", label: "User Interactions" },
+      { metric: "7 Years", label: "Industry Excellence" },
+    ],
+    [],
+  );
+
+  const testimonials = useMemo(
+    () => [
+      {
+        name: "Sarah Mitchell",
+        role: "CEO, TechVenture Co.",
+        text: "Lazy Studio delivered our product in half the time we expected. The quality was exceptional, and they understood our vision perfectly.",
+      },
+      {
+        name: "James Rodriguez",
+        role: "Founder, E-Commerce Plus",
+        text: "Their approach to optimization increased our conversion rate by 35%. They don't just build—they engineer for results.",
+      },
+      {
+        name: "Emma Chen",
+        role: "Product Director, FinApp",
+        text: "Working with Lazy Studio felt like having a strategic partner, not just a vendor. Highly recommended for any serious project.",
+      },
+    ],
+    [],
+  );
+
+  const processSteps = useMemo(
+    () => [
+      {
+        step: "01",
+        title: "Discovery & Strategy",
+        desc: "We dive deep into your goals, market, and challenges to craft a winning strategy.",
+      },
+      {
+        step: "02",
+        title: "Planning & Design",
+        desc: "Detailed wireframes and designs that set the blueprint for excellence.",
+      },
+      {
+        step: "03",
+        title: "Build & Optimize",
+        desc: "Clean code, performance-first development with continuous optimization.",
+      },
+      {
+        step: "04",
+        title: "Launch & Support",
+        desc: "Seamless deployment and ongoing support to keep you running at peak performance.",
+      },
+    ],
+    [],
+  );
 
   return (
     <main className=" bg-white">
@@ -28,26 +123,39 @@ export default function AboutUsContents() {
             <div className="relative hidden lg:block cursor-none group">
               <motion.div
                 ref={imageRef}
-                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                initial={
+                  reduceMotion
+                    ? { opacity: 1, scale: 1, rotate: 0 }
+                    : { opacity: 0, scale: 0.8, rotate: -5 }
+                }
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
+                transition={
+                  reduceMotion ? {} : { duration: 1.2, ease: "easeOut" }
+                }
                 className="relative"
               >
-                <div className="absolute -inset-4 bg-sec/5 blur-3xl rounded-full"></div>
-                <motion.img
-                  animate={{
-                    y: [0, -20, 0],
-                    rotate: [0, 2, 0],
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  src="/images/about_hero.png"
-                  alt="LazyStudio Strategic Abstract"
-                  className="relative w-full h-auto rounded-[3rem] shadow-2xl z-10 pointer-events-none"
-                />
+                <div className="absolute -inset-3 bg-black/10 blur-xl rounded-full" />
+
+                <motion.div
+                  style={{ willChange: "transform" }}
+                  animate={
+                    reduceMotion ? {} : { y: [0, -20, 0], rotate: [0, 2, 0] }
+                  }
+                  transition={
+                    reduceMotion
+                      ? {}
+                      : { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                  }
+                >
+                  <Image
+                    src="/images/about_hero.png"
+                    alt="LazyStudio Strategic Abstract"
+                    width={1200}
+                    height={800}
+                    priority
+                    className="relative w-full h-auto rounded-[3rem] shadow-xl z-10 pointer-events-none"
+                  />
+                </motion.div>
               </motion.div>
             </div>
           </div>
@@ -85,6 +193,7 @@ export default function AboutUsContents() {
                   {
                     title: "No Noise",
                     desc: "We focus on what actually moves the needle.",
+                    Ncolor: "text-"
                   },
                   {
                     title: "Peak Tech",
@@ -172,10 +281,10 @@ export default function AboutUsContents() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { metric: "250+", label: "Projects Delivered" },
+              { metric: "100+", label: "Projects Delivered" },
               { metric: "98%", label: "Client Satisfaction" },
-              { metric: "50M+", label: "User Interactions" },
-              { metric: "7 Years", label: "Industry Excellence" },
+              { metric: "150k+", label: "User Interactions" },
+              { metric: "5 Years", label: "Industry Excellence" },
             ].map((stat, idx) => (
               <div
                 key={idx}
@@ -224,16 +333,16 @@ export default function AboutUsContents() {
             ].map((testimonial, idx) => (
               <div
                 key={idx}
-                className="border border-black/10 rounded-3xl p-10 hover:bg-black/5 transition-all duration-300"
+                className="border border-black/10 rounded-3xl p-10 hover:bg-sec duration-400 ease-in-out group"
               >
-                <p className="font-satoshiRegular text-lg text-black/70 mb-8 leading-relaxed">
+                <p className="font-satoshiRegular text-lg text-black/70 group-hover:text-white duration-300 ease-in-out mb-8 leading-relaxed">
                   "{testimonial.text}"
                 </p>
                 <div className="border-t border-black/10 pt-6">
-                  <h4 className="font-satoshiBold text-lg text-black/90">
+                  <h4 className="font-satoshiBold text-lg text-black/90 group-hover:text-white duration-300 ease-in-out">
                     {testimonial.name}
                   </h4>
-                  <p className="font-satoshiRegular text-sm text-sec">
+                  <p className="font-satoshiRegular text-sm text-sec group-hover:text-white/50 duration-300 ease-in-out">
                     {testimonial.role}
                   </p>
                 </div>
@@ -261,28 +370,34 @@ export default function AboutUsContents() {
                   step: "01",
                   title: "Discovery & Strategy",
                   desc: "We dive deep into your goals, market, and challenges to craft a winning strategy.",
+                  colorTxt: "text-red-700/40",
                 },
                 {
                   step: "02",
                   title: "Planning & Design",
                   desc: "Detailed wireframes and designs that set the blueprint for excellence.",
+                  colorTxt: "text-blue-700/40",
                 },
                 {
                   step: "03",
                   title: "Build & Optimize",
                   desc: "Clean code, performance-first development with continuous optimization.",
+                  colorTxt: "text-orange-700/40",
                 },
                 {
                   step: "04",
                   title: "Launch & Support",
                   desc: "Seamless deployment and ongoing support to keep you running at peak performance.",
+                  colorTxt: "text-yellow-700/40",
                 },
               ].map((process, idx) => (
                 <div
                   key={idx}
                   className="border border-white/10 rounded-3xl p-8 hover:bg-white/5 transition-all duration-300"
                 >
-                  <div className="text-sec font-excon text-5xl mb-6">
+                  <div
+                    className={`  font-excon text-5xl mb-6 ${process.colorTxt} `}
+                  >
                     {process.step}
                   </div>
                   <h3 className="font-satoshiBold text-xl mb-4">
@@ -360,3 +475,5 @@ export default function AboutUsContents() {
     </main>
   );
 }
+
+export default memo(AboutUsContents);

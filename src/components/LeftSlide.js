@@ -19,7 +19,7 @@ export default function LeftSlide() {
   ];
 
   return (
-    <Container className="px-6 h-24">
+    <Container >
       <div id="fade-sides" className="select-none">
         <Marquee
           gradient={false}
@@ -29,7 +29,7 @@ export default function LeftSlide() {
           className="select-none"
         >
           {imgPath.map((path, index) => (
-            <div key={index} className="mx-2 cursor-none">
+            <div key={index} className="mx-2 cursor-none ">
               <Image
                 src={path}
                 width={200}

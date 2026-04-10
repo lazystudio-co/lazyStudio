@@ -1,6 +1,7 @@
 "use client";
 import Container from "./container";
 import React from "react";
+import Image from "next/image";
 import List from "./list";
 import ListItems from "./listItems";
 import Link from "next/link";
@@ -11,7 +12,7 @@ export default function NavBarContents() {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Why Us", href: "/whyUs" },
-    { name: "About Us", href: "/aboutUs" },
+    { name: "About", href: "/aboutUs" },
     // { name: "Blog", href: "/blog" },
   ];
 
@@ -19,16 +20,23 @@ export default function NavBarContents() {
 
   return (
     <Container className=" flex justify-between items-center py-4 relative ">
-      <Link href="/" className=" cursor-none inline-block " >
-        <img src="images/logosec.png" className=" w-55 " />
+      <Link href="/" className=" cursor-none inline-block select-none ">
+        <Image
+          src="/images/logosec.png"
+          width={180}
+          height={48}
+          alt="LazyStudio"
+          className="w-55"
+        />
       </Link>
       <List>
         {navLinks.map((link) => (
           <Link
-            className={` border-b-4 cursor-none ${patchname === link.href
+            className={` border-b-4 cursor-none ${
+              patchname === link.href
                 ? " border-sec hover:border-transparent duration-300 ease-out cursor-none "
                 : " border-transparent "
-              } `}
+            } `}
             key={link.href}
             href={link.href}
           >

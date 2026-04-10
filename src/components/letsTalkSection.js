@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export default function LetsTalkSection({ title, hookline, classNameBTN }) {
   return (
-    <section className="pb-40">
-      <div className="bg-white border border-gray-100 shadow-2xl rounded-[40px] p-10 lg:p-16 flex flex-col lg:flex-row items-center gap-20 overflow-hidden">
+    <section className="pb-20">
+      <div className="bg-white border-2 border-sec/20 shadow-none shadow-black/30 rounded-[40px] p-16 flex flex-row items-center overflow-hidden">
         <div className="">
           <h2 className="font-excon text-7xl mb-8 leading-tighter select-none">
             {title}
@@ -14,12 +14,12 @@ export default function LetsTalkSection({ title, hookline, classNameBTN }) {
             {hookline}
           </p>
 
-          <div className="w-full max-w-sm">
+          <div className="w-full ">
             <LetsTalkButton
               id="ctaTalk"
               text="Contact us"
               textSec="We're ready"
-              className={classNameBTN}
+              className=" w-65! "
             />
           </div>
 
@@ -28,19 +28,16 @@ export default function LetsTalkSection({ title, hookline, classNameBTN }) {
           </p>
         </div>
 
-        <div className="lg:w-1/2 relative group">
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="relative z-10"
+        <div className=" ml-auto relative group">
+          <div
+            className="relative z-10 "
           >
             <img
-              src="/images/about_cta_monitor.png"
+              src="/images/letsTalkSecImg.jpg"
               alt="3D Monitor Mockup"
-              className="w-120 h-auto rounded-3xl shadow-lg border border-black/5 ml-auto "
+              className="w-180 h-auto rounded-3xl shadow-lg border border-black/5 ml-auto "
             />
-          </motion.div>
-          {/* Background Glow */}
+          </div>
           <div className="absolute -inset-10 bg-blue-100/50 blur-[100px] rounded-full -z-10 group-hover:bg-blue-200/50 transition-colors duration-500"></div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Container from "./container";
 import Link from "next/link";
 import { FaFacebookSquare, FaInstagram } from "react-icons/fa";
@@ -51,7 +52,13 @@ export default function Footer() {
     <footer className="border-t border-gray-300 pt-30 pb-10 ">
       <Container className=" grid grid-cols-4 gap-10">
         <div>
-          <img src="images/logo.png" className="w-60 -ml-8.5 select-none" />
+          <Image
+            src="/images/logo.png"
+            width={240}
+            height={60}
+            alt="LazyStudio"
+            className="-ml-8.5 select-none"
+          />
           <p className="w-70 mt-4 font-satoshiBold text-[16px] leading-[1.6]">
             We craft world-class digital products that help startups and Fortune
             500 companies not just succeed, but create meaningful, memorable
@@ -173,7 +180,7 @@ export default function Footer() {
             Terms
           </p>
         </div>
-        <div className=" flex flex-row justify-center items-center gap-14 " >
+        <div className=" flex flex-row justify-center items-center gap-14 ">
           <FaInstagram className=" text-[24px]  " />
           <FaSquareXTwitter className=" text-[24px]  " />
           <FaFacebookSquare className=" text-[24px]  " />

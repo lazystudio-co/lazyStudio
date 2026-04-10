@@ -66,7 +66,7 @@ export default function BannerContents() {
   }, []);
 
   return (
-    <div ref={sectionRef} className="my-25 w-full">
+    <div ref={sectionRef} className="mt-25 mb-10 w-full">
       <div className="banner-stage relative min-h-svh w-full">
         <motion.a
           initial={{ opacity: 0, y: 50 }}

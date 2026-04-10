@@ -1,16 +1,9 @@
 "use client";
 
-import {
-  Code,
-  LayoutDashboard,
-  Palette,
-  Video,
-  CheckCircle2,
-  Zap,
-  Smartphone,
-} from "lucide-react";
+import { Code, LayoutDashboard, Palette, Video } from "lucide-react";
 import Container from "./container";
 import LetsTalkButton from "./letsTalkButton";
+import LetsTalkSection from "./letsTalkSection";
 
 const services = [
   {
@@ -128,7 +121,7 @@ export default function AllServices() {
     <section className="bg-white">
       <Container className="py-20 ">
         {/* Heading */}
-        <div className="text-center ">
+        <div className="text-center mb-10 ">
           <h2
             id="clipSec"
             className="text-5xl lg:text-7xl font-excon font-bold mb-6"
@@ -142,14 +135,14 @@ export default function AllServices() {
         </div>
 
         {/* Services Grid */}
-        <div className="flex flex-col gap-12 lg:gap-16 mb-24 lg:mb-32">
+        <div className="flex flex-col mb-24 bg-black rounded-3xl ">
           {services.map((service, index) => {
             const Icon = service.icon;
 
             return (
               <div
                 key={index}
-                className="bg-black rounded-[40px] overflow-hidden group hover:shadow-xl transition-all duration-300"
+                className=" overflow-hidden group hover:shadow-xl transition-all duration-300"
               >
                 <div className="p-10 lg:p-16">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16">
@@ -259,7 +252,7 @@ export default function AllServices() {
           {/* Timeline Process */}
           <div className="relative">
             {/* Vertical line - visible on desktop */}
-            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-sec to-sec/20 transform -translate-x-1/2"></div>
+            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-linear-to-b from-black via-sec to-transparent transform -translate-x-1/2"></div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
               {/* Step 1 */}
@@ -417,12 +410,14 @@ export default function AllServices() {
         </section>
 
         {/* What to Expect Section */}
-        <section className="mb-24 lg:mb-32 bg-gradient-to-br from-black via-sec to-black rounded-[40px] p-12 lg:p-20 border border-sec/10">
+        <section className=" lg:mb-32 rounded-3xl mb-10 p-12 lg:p-20 border-2 border-sec/20 ">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div>
               <div className="text-4xl mb-4">📅</div>
-              <h3 className="text-2xl font-excon text-white mb-4">Realistic Timelines</h3>
-              <p className="text-white/70 font-satoshiRegular leading-relaxed">
+              <h3 className="text-2xl font-excon text-black mb-4">
+                Realistic Timelines
+              </h3>
+              <p className="text-black/70 font-satoshiRegular leading-relaxed">
                 We give you honest timelines based on scope and complexity. No
                 surprises, no delays. Most projects launch within 8-16 weeks
                 depending on requirements.
@@ -430,10 +425,10 @@ export default function AllServices() {
             </div>
             <div>
               <div className="text-4xl mb-4">💬</div>
-              <h3 className="text-2xl font-excon text-white mb-4">
+              <h3 className="text-2xl font-excon text-black mb-4">
                 Constant Communication
               </h3>
-              <p className="text-white/70 font-satoshiRegular leading-relaxed">
+              <p className="text-black/70 font-satoshiRegular leading-relaxed">
                 Weekly check-ins, bi-weekly demos, and complete transparency.
                 You'll always know where your project stands and have direct
                 access to our team.
@@ -441,10 +436,10 @@ export default function AllServices() {
             </div>
             <div>
               <div className="text-4xl mb-4">🎯</div>
-              <h3 className="text-2xl font-excon text-white mb-4">
+              <h3 className="text-2xl font-excon text-black mb-4">
                 Results-Driven Approach
               </h3>
-              <p className="text-white/70 font-satoshiRegular leading-relaxed">
+              <p className="text-black/70 font-satoshiRegular leading-relaxed">
                 We measure success by your KPIs, not just delivery. Our team is
                 invested in ensuring your project delivers measurable business
                 impact.
@@ -454,24 +449,13 @@ export default function AllServices() {
         </section>
 
         {/* Final CTA */}
-        <div className="text-center border border-black py-20 rounded-3xl bg-linear-to-tr from-black via-sec to-black ">
-          <h3 className="text-4xl lg:text-5xl font-excon text-white mb-6">
-            Ready to Transform Your <span className=" text-black ">Vision?</span>
-          </h3>
-          <p className="text-white/70 font-satoshiRegular text-lg max-w-2xl mx-auto mb-10">
-            Let's discuss your project, align on goals, and craft a strategy
-            that delivers real results. Our process has been perfected through
-            hundreds of successful projects.
-          </p>
-
-          <LetsTalkButton
-            id="letsTalkService"
-            text="Start Your Project"
-            textSec="Let's Build"
-            className="mx-auto w-85!"
-          />
-        </div>
+        <LetsTalkSection
+          title=" Let's Talk "
+          hookline=" Design done right and fast by people you can trust. "
+        />
       </Container>
     </section>
   );
 }
+
+export { services };

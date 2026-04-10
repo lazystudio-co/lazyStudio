@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LetsTalkButton({ text, className, textSec, id }) {
   return (
@@ -22,21 +23,27 @@ export default function LetsTalkButton({ text, className, textSec, id }) {
 
       <div className="flex items-center rounded-full w-fit ml-auto z-50 ">
         <div className="flex -space-x-3">
-          <img
-            className="w-8 h-8 rounded-full "
+          <Image
+            className="w-8 h-8 rounded-full"
             src="https://i.pravatar.cc/100?img=1"
+            width={32}
+            height={32}
             alt=""
           />
 
-          <img
-            className="w-8 h-8 rounded-full "
+          <Image
+            className="w-8 h-8 rounded-full"
             src="https://i.pravatar.cc/100?img=2"
+            width={32}
+            height={32}
             alt=""
           />
 
-          <img
-            className="w-8 h-8 rounded-full "
+          <Image
+            className="w-8 h-8 rounded-full"
             src="https://i.pravatar.cc/100?img=3"
+            width={32}
+            height={32}
             alt=""
           />
         </div>

@@ -2,6 +2,7 @@
 
 import Container from "@/components/container";
 import React, { useMemo } from "react";
+import LetsTalkSection from "./letsTalkSection";
 
 // Data constants - extracted for optimization
 const STATS_DATA = [
@@ -169,7 +170,7 @@ export default function WhyUsContents() {
   return (
     <div className="w-full bg-white text-black font-sans pb-24">
       {/* Container: 1600px centered */}
-      <Container >
+      <Container>
         {/* Hero Section */}
         <section className="pt-40 pb-32 flex flex-col items-center text-center">
           <h1
@@ -342,18 +343,12 @@ export default function WhyUsContents() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-gray-100 rounded-3xl p-24 text-center flex flex-col items-center">
-          <h2 className="text-7xl font-bold mb-8 px-2 leading-tight font-Excon">
-            Ready to accelerate digital transformation?
-          </h2>
-          <p className="text-2xl text-sec mb-12 max-w-2xl px-4 leading-relaxed font-SatoshiBoldRegular">
-            Let's explore how we can drive measurable growth for your
-            organization. Schedule a strategic consultation with our team.
-          </p>
-          <button className="bg-black text-white px-12 py-5 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors font-SatoshiBoldRegular">
-            Schedule Your Consultation
-          </button>
-        </section>
+        <LetsTalkSection
+          title=" Let's Talk "
+          hookline=" Design done right and fast by people you can trust.
+
+"
+        />
       </Container>
     </div>
   );

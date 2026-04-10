@@ -10,59 +10,8 @@ import Link from "next/link";
 import { MdArrowOutward } from "react-icons/md";
 
 export default function InfoSlide() {
-  const cardRefs = useRef([]);
+  const containerRef = useRef(null);
   const sliderRef = useRef(null);
-
-  const cardInfo = [
-    {
-      image: "/images/uxui3.jpg",
-      imageClass: "w-106 rounded-3xl",
-      title: "UI / UX Design",
-      titleClass:
-        "absolute top-8 left-8 font-satoshiBold text-[38px] text-white tracking-tighter",
-      desc: "Intuitive, user-centered digital experiences focused on usability, clear navigation, and engaging interface interactions.",
-      descClass:
-        "font-satoshiRegular text-[20px] text-white/70 absolute left-8 top-24 pr-4",
-      wrapperClass: "ml-80 py-10",
-      link: "/uiuxdesign",
-    },
-    {
-      image: "/images/customweb2.png",
-      imageClass: "w-108 rounded-3xl",
-      title: "Custom Website Development",
-      titleClass:
-        "absolute top-8 left-8 font-satoshiBold text-[38px] text-white tracking-tighter leading-tight",
-      desc: "Modern, high-performance websites built with technologies like Next.js, React, and Tailwind.",
-      descClass:
-        "font-satoshiRegular text-[20px] text-white/70 absolute left-8 top-36 pr-4",
-      wrapperClass: "ml-50",
-      link: "/customwebsitedevelopment",
-    },
-    {
-      image: "/images/landingpage.jpg",
-      imageClass: "w-108 rounded-3xl",
-      title: "Landing Page Design",
-      titleClass:
-        "absolute top-8 left-8 font-satoshiBold text-[38px] text-white tracking-tighter",
-      desc: "Conversion-focused landing pages designed to capture leads and drive measurable results.",
-      descClass:
-        "font-satoshiRegular text-[20px] text-white/70 absolute left-8 top-24 pr-4",
-      wrapperClass: "ml-20",
-      link: "/landingpagedesign",
-    },
-    {
-      image: "/images/productdesign.jpg",
-      imageClass: "w-108 rounded-3xl",
-      title: "Branding & Visual Identity",
-      titleClass:
-        "absolute top-8 left-8 font-satoshiBold text-[38px] text-white tracking-tighter leading-tight",
-      desc: "Strategic brand identities including logo systems, typography, color palettes, and visual frameworks.",
-      descClass:
-        "font-satoshiRegular text-[20px] text-white/70 absolute left-8 top-36 pr-4",
-      wrapperClass: "-ml-10",
-      link: "/brandingvisualidentity",
-    },
-  ];
 
   const settings = {
     dots: false,
@@ -75,51 +24,115 @@ export default function InfoSlide() {
   };
 
   useEffect(() => {
-    const motionMatchMedia = window.matchMedia("(prefers-reduced-motion)");
+    const motionMatchMedia = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    );
     const THRESHOLD = 8;
 
-    if (!motionMatchMedia.matches) {
-      cardRefs.current.forEach((card) => {
-        if (!card) return;
+    if (motionMatchMedia.matches) return; // user prefers reduced motion
 
-        card.style.transition = "transform 0.25s ease-out";
-        card.style.willChange = "transform";
+    const container = containerRef.current;
+    if (!container) return;
 
-        const handleHover = (e) => {
-          const { clientX, clientY, currentTarget } = e;
-          const rect = currentTarget.getBoundingClientRect();
+    const imgs = Array.from(container.querySelectorAll("img"));
 
-          const horizontal = (clientX - rect.left) / currentTarget.clientWidth;
-          const vertical = (clientY - rect.top) / currentTarget.clientHeight;
+    // initialize styles on all images
+    imgs.forEach((img) => {
+      img.style.transition = "transform 0.25s ease-out";
+      img.style.willChange = "transform";
+      img.style.transformOrigin = "center center";
+      img.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+    });
 
-          const rotateX = (horizontal * THRESHOLD - THRESHOLD / 2).toFixed(2);
-          const rotateY = (THRESHOLD / 2 - vertical * THRESHOLD).toFixed(2);
+    let activeImg = null;
+    let rafId = null;
 
-          card.style.transform = `perspective(${currentTarget.clientWidth}px) rotateX(${rotateY}deg) rotateY(${rotateX}deg)`;
-        };
+    const applyTransform = (img, clientX, clientY) => {
+      const rect = img.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const offsetX = (clientX - centerX) / (rect.width / 2);
+      const offsetY = (clientY - centerY) / (rect.height / 2);
+      const normX = Math.max(-1, Math.min(1, offsetX));
+      const normY = Math.max(-1, Math.min(1, offsetY));
 
-        const resetStyles = () => {
-          card.style.transform =
-            "perspective(1000px) rotateX(0deg) rotateY(0deg)";
-        };
-
-        card.addEventListener("mousemove", handleHover);
-        card.addEventListener("mouseleave", resetStyles);
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const intensity = THRESHOLD / 2;
+        const rotateY = normX * intensity;
+        const rotateX = -normY * intensity;
+        img.style.transform = `perspective(${Math.max(600, img.clientWidth)}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        rafId = null;
       });
-    }
-    s;
+    };
+
+    const resetImg = (img) => {
+      if (!img) return;
+      img.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+    };
+
+    const onPointerMove = (e) => {
+      if (e.pointerType === "touch") return;
+      const img = e.target?.closest ? e.target.closest("img") : null;
+
+      if (img && container.contains(img)) {
+        if (activeImg !== img) {
+          if (activeImg) resetImg(activeImg);
+          activeImg = img;
+        }
+        applyTransform(activeImg, e.clientX, e.clientY);
+      } else {
+        if (activeImg) {
+          resetImg(activeImg);
+          activeImg = null;
+        }
+      }
+    };
+
+    const onPointerLeave = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      if (activeImg) resetImg(activeImg);
+      activeImg = null;
+    };
+
+    container.addEventListener("pointermove", onPointerMove);
+    container.addEventListener("pointerleave", onPointerLeave);
+
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      container.removeEventListener("pointermove", onPointerMove);
+      container.removeEventListener("pointerleave", onPointerLeave);
+      imgs.forEach((img) => resetImg(img));
+    };
   }, []);
 
   return (
-    <section className="my-20">
+    <section className="my-20  ">
       <Container>
-        <div className="px-25 flex items-center justify-between">
-          <a
-            id="infoServiceTitle"
-            className="font-exconReg text-[64px] leading-18 select-none "
-          >
-            <span>What</span> <br /> We Excel at
-          </a>
+        <div className=" flex items-center justify-between">
+          <h2 className="font-exconReg text-[64px] leading-18 select-none ">
+            <span
+              style={{
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+              className=" bg-linear-to-r from-black via-black to-sec "
+            >
+              What
+            </span>
+            <br />
+            <span
+              style={{
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+              className=" bg-linear-to-r from-black via-sec to-sec/50 "
+            >
+              We Excel at
+            </span>
+          </h2>
           <div className=" flex flex-row justify-center items-center gap-10 pt-7 cursor-none ">
             <Link
               href="/services"
@@ -159,30 +172,94 @@ export default function InfoSlide() {
         </div>
       </Container>
 
-      <div className="w-full select-none -ml-16.5 ">
+      <div ref={containerRef} className="w-full select-none slick-no-pointer ">
+        <style>{`
+          .slick-no-pointer .slick-slide {
+            pointer-events: none;
+          }
+          .slick-no-pointer .slick-slide a {
+            pointer-events: auto;
+          }
+        `}</style>
         <Slider ref={sliderRef} {...settings}>
-          {/* Slide 1 */}
-          {cardInfo.map((items, index) => (
-            <Link
-              key={items.link}
-              href={items.link}
-              className={`${items.wrapperClass} cursor-none `}
-            >
-              <div
-                ref={(el) => (cardRefs.current[index] = el)}
-                className="w-fit cursor-none relative"
-              >
-                <div className="relative">
-                  <img src={items.image} className={items.imageClass} />
-                  <div className="absolute inset-0 bg-black/50 rounded-3xl"></div>
-                </div>
-
-                <h2 className={items.titleClass}>{items.title}</h2>
-
-                <p className={items.descClass}>{items.desc}</p>
-              </div>
+          {/* first */}
+          <div className="py-15 ml-63 ">
+            <Link href="/services/uiux-design">
+              <img src="/images/uiux.png" className=" rounded-3xl w-100" />
             </Link>
-          ))}
+          </div>
+          {/* first */}
+
+          {/* second & third */}
+          <div className=" ml-25 py-15 ">
+            <div>
+              <Link href="/services/branding-identity">
+                <img
+                  src="/images/brandingidentity.png"
+                  className=" rounded-3xl w-180 "
+                />
+              </Link>
+            </div>
+            <div>
+              <Link href="/services/system-&-ui-kit">
+                <img
+                  src="/images/systemui.png"
+                  className=" rounded-3xl w-180 mt-11 "
+                />
+              </Link>
+            </div>
+          </div>
+          {/* second & third */}
+
+          {/* fifth & sixth */}
+          <div className=" ml-35 py-15 ">
+            <div>
+              <Link href="/services/custom-portfolio">
+                <img
+                  src="/images/portfolio.png"
+                  className=" rounded-3xl w-150 "
+                />
+              </Link>
+            </div>
+            <div>
+              <Link href="/services/professional-video-editing">
+                <img
+                  src="/images/videoediting.gif"
+                  className=" rounded-3xl w-150 mt-11 "
+                />
+              </Link>
+            </div>
+          </div>
+          {/* fifth & sixth */}
+
+          {/* fourth */}
+          <div className=" ml-45 py-15 ">
+            <Link href="/services/landing-page-design">
+              <img
+                src="/images/landingpagesec.png"
+                className=" rounded-3xl w-100 "
+              />
+            </Link>
+          </div>
+          {/* fourth */}
+
+          {/* seventh */}
+          <div className=" -ml-45 py-15 relative">
+            <Link href="/services">
+              <img
+                src="/images/andmore.gif"
+                className=" rounded-3xl w-100 ml-50 "
+              />
+              <button
+                className=" absolute left-[78%] top-[50%] translate-x-[-78%] translate-y-[-50%] shadow-lg shadow-white
+            font-satoshiBold font-black text-black text-[18px] px-4 py-2 w-55 bg-white rounded-full text-center border-2 border-transparent 
+            hover:border-white hover:bg-transparent hover:text-white duration-300 ease-in-out delay-100 "
+              >
+                View All Services
+              </button>
+            </Link>
+          </div>
+          {/* seventh */}
         </Slider>
       </div>
     </section>

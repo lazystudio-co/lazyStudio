@@ -8,6 +8,7 @@ import {
   IoIosArrowRoundBack,
 } from "react-icons/io";
 import { useRef } from "react";
+import Container from "./container";
 
 export default function ProjectsContent() {
   const projects = [
@@ -67,27 +68,28 @@ export default function ProjectsContent() {
 
   return (
     <section className="py-30">
-      <div className="flex justify-between items-center mb-10 mx-12 ">
-        <h2 className="uppercase tracking-widest text-[18px] font-satoshiBold select-none ">
-          <span className=" w-2 h-3 bg-black ">|</span> Featured Projects
-        </h2>
+      <Container>
+        <div className="flex justify-between items-center mb-10 mx-12 ">
+          <h2 className="uppercase tracking-widest text-[18px] font-satoshiBold select-none ">
+            <span className=" w-2 h-3 bg-blue-700 ">|</span> Featured Projects
+          </h2>
+          <div className="flex gap-4 ">
+            <button
+              onClick={() => sliderRef.current?.slickPrev()}
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-none "
+            >
+              <IoIosArrowRoundBack />
+            </button>
 
-        <div className="flex gap-4 ">
-          <button
-            onClick={() => sliderRef.current?.slickPrev()}
-            className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-none "
-          >
-            <IoIosArrowRoundBack />
-          </button>
-
-          <button
-            onClick={() => sliderRef.current?.slickNext()}
-            className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-none "
-          >
-            <IoIosArrowRoundForward />
-          </button>
+            <button
+              onClick={() => sliderRef.current?.slickNext()}
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-black text-white text-3xl hover:scale-105 transition cursor-none "
+            >
+              <IoIosArrowRoundForward />
+            </button>
+          </div>
         </div>
-      </div>
+      </Container>
 
       <Slider ref={sliderRef} {...settings} className=" cursor-none ">
         {projects.map((p, i) => (

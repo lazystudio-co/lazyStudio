@@ -184,16 +184,6 @@ body {
   transition: 300ms ease-out;
 }
 
-#infoServiceTitle {
-  background-image: url(../../public/images/cliptext.jpg);
-  background-size: cover;
-  background-position: center;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  background-clip: text;
-  color: transparent;
-}
 
 .slick-list {
   margin: 0 !important;
