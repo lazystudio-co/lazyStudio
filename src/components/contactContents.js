@@ -25,7 +25,7 @@ function SoftInput(props) {
   return (
     <input
       {...props}
-      className="h-16 w-full rounded-full border border-[#ebeaf6] bg-white px-6 text-[15px] text-[#3f4373] outline-none focus:border-blue-800"
+      className="h-16 w-full rounded-full border-2 border-[#ebeaf6] bg-white px-6 text-[15px] text-[#3f4373] outline-none focus:border-blue-800/50"
     />
   );
 }
@@ -154,7 +154,7 @@ export default function ContactContents() {
               rows={5}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              className="w-full rounded-[28px] border border-black/10 px-6 py-5"
+              className="w-full rounded-[28px] border border-black/10 px-6 py-5 focus:outline-blue-800/50 "
               placeholder="Tell us about your project..."
             />
           </div>
