@@ -103,7 +103,7 @@ export default function Footer() {
                 Home
               </li>
             </Link>
-            <Link href="/aboutus" className=" cursor-none ">
+            <Link href="/aboutUs" className=" cursor-none ">
               <li className="font-satoshiBold text-[16px] w-fit cursor-none!">
                 About Us
               </li>
