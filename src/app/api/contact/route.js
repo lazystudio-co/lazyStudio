@@ -1,10 +1,14 @@
 import { db } from "@/lib/db";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
   try {
+    if (!process.env.RESEND_API_KEY) {
+      return new Response("Missing API key", { status: 500 });
+    }
+
+    const { Resend } = await import("resend");
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const { name, email, phone, message, budget } = await req.json();
 
     // Save to MySQL
@@ -30,6 +34,9 @@ export async function POST(req) {
     return Response.json({ success: true });
   } catch (error) {
     console.error(error);
-    return Response.json({ success: false, error: error.message });
+    return Response.json({
+      success: false,
+      error: error?.message || "Unexpected server error",
+    });
   }
 }

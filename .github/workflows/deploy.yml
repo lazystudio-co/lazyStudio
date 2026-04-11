@@ -7,6 +7,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
 
     steps:
       - name: 📥 Clone repo
@@ -18,10 +20,10 @@ jobs:
           node-version: 20
 
       - name: 📦 Install deps
-        run: npm install
+        run: npm ci
 
       - name: 🧪 Run tests (optional)
-        run: npm test || true
+        run: npm run test --if-present
 
       - name: 🏗️ Build
         run: npm run build
