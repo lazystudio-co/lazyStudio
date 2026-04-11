@@ -31,10 +31,12 @@ jobs:
       - name: 📦 Package release
         run: |
           tar \
+            --warning=no-file-changed \
             --exclude='.git' \
             --exclude='.github' \
             --exclude='node_modules' \
             --exclude='.next/cache' \
+            --exclude='release.tar.gz' \
             -czf release.tar.gz .
 
       - name: ⬆️ Upload release archive
