@@ -49,7 +49,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-red-300 pt-30 pb-10 ">
+    <footer className="border-t border-gray-300 pt-30 pb-10 ">
       <Container className=" grid grid-cols-4 gap-10">
         <div>
           <Image
@@ -60,9 +60,9 @@ export default function Footer() {
             className="-ml-8.5 select-none"
           />
           <p className="w-70 mt-4 font-satoshiBold text-[16px] leading-[1.6]">
-            We craft world-class digital products that help startups and Fortune
-            500 companies not just succeed, but create meaningful, memorable
-            experiences that people truly love and engage with.
+            We craft world-class digital products saikat that help startups and
+            Fortune 500 companies not just succeed, but create meaningful,
+            memorable experiences that people truly love and engage with.
           </p>
           <div className="mt-10 ">
             <Link
