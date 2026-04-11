@@ -52,6 +52,8 @@ jobs:
           script: |
             set -e
             APP_DIR="${{ secrets.SERVER_APP_DIR }}"
+            APP_PORT="${{ secrets.SERVER_APP_PORT }}"
+            APP_PORT="${APP_PORT:-3000}"
             mkdir -p "$APP_DIR"
             tar -xzf /tmp/release.tar.gz -C "$APP_DIR"
 
@@ -60,7 +62,23 @@ jobs:
             npm run build
 
             pm2 delete lazystudio >/dev/null 2>&1 || true
-            pm2 start npm --name "lazystudio" --cwd "$APP_DIR" -- start
+            NODE_ENV=production PORT="$APP_PORT" pm2 start npm --name "lazystudio" --cwd "$APP_DIR" --update-env -- start -- -p "$APP_PORT"
             pm2 save
+
+            # Quick runtime validation to catch 502 root causes during deploy.
+            pm2 status lazystudio
+            sleep 3
+
+            if ! pm2 describe lazystudio | grep -q "status.*online"; then
+              echo "PM2 process is not online. Recent logs:"
+              pm2 logs lazystudio --lines 100 --nostream || true
+              exit 1
+            fi
+
+            if ! curl -fsS "http://127.0.0.1:${APP_PORT}" >/dev/null; then
+              echo "App is not responding on port ${APP_PORT}. Recent logs:"
+              pm2 logs lazystudio --lines 100 --nostream || true
+              exit 1
+            fi
 
             rm -f /tmp/release.tar.gz
