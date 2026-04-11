@@ -47,8 +47,8 @@ jobs:
             cd "$APP_DIR"
 
             echo "Current server commit: $(git rev-parse --short HEAD)"
-            git fetch origin main
-            git reset --hard origin/main
+            git fetch https://x-access-token:${{ secrets.GH_DEPLOY_TOKEN }}@github.com/${{ github.repository }}.git main
+            git reset --hard FETCH_HEAD
             echo "Updated server commit: $(git rev-parse --short HEAD)"
 
             npm ci
