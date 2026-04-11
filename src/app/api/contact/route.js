@@ -1,5 +1,7 @@
 import { db } from "@/lib/db";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
   try {
@@ -11,29 +13,17 @@ export async function POST(req) {
       [name, email, phone, message, budget],
     );
 
-    // Email setup
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
-      subject: name,
-      text: `
-New Order Recieved:
-
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Budget: ${budget}
-
-Message:
-${message}
+    await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
+      to: process.env.CONTACT_TO_EMAIL || "your@email.com",
+      subject: `New Contact Message from ${name}`,
+      html: `
+        <h3>New Message</h3>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Phone:</b> ${phone || "N/A"}</p>
+        <p><b>Budget:</b> ${budget || "N/A"}</p>
+        <p><b>Message:</b> ${message}</p>
       `,
     });
 
