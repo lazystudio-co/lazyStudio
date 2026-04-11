@@ -49,7 +49,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-gray-300 pt-30 pb-10 ">
+    <footer className="border-t border-red-300 pt-30 pb-10 ">
       <Container className=" grid grid-cols-4 gap-10">
         <div>
           <Image
