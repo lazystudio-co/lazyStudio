@@ -28,33 +28,44 @@ jobs:
       - name: 🏗️ Build
         run: npm run build
 
-      # SSH setup
-      - name: 🔑 Setup SSH
-        uses: webfactory/ssh-agent@v0.8.0
+      - name: 📦 Package release
+        run: |
+          tar \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='.next/cache' \
+            -czf release.tar.gz .
+
+      - name: ⬆️ Upload release archive
+        uses: appleboy/scp-action@v0.1.7
         with:
-          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          source: "release.tar.gz"
+          target: "/tmp"
 
-      - name: 🧾 Trust server host key
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan -p ${{ secrets.SERVER_PORT }} -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
-
-      - name: 🚀 Deploy to Server
-        run: |
-          ssh -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
+      - name: 🚀 Deploy on server
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT }}
+          script: |
             set -e
             APP_DIR="${{ secrets.SERVER_APP_DIR }}"
+            mkdir -p "$APP_DIR"
+            tar -xzf /tmp/release.tar.gz -C "$APP_DIR"
+
             cd "$APP_DIR"
-
-            echo "Current server commit: $(git rev-parse --short HEAD)"
-            git fetch https://x-access-token:${{ secrets.GH_DEPLOY_TOKEN }}@github.com/${{ github.repository }}.git main
-            git reset --hard FETCH_HEAD
-            echo "Updated server commit: $(git rev-parse --short HEAD)"
-
             npm ci
             npm run build
 
             pm2 delete lazystudio >/dev/null 2>&1 || true
             pm2 start npm --name "lazystudio" --cwd "$APP_DIR" -- start
             pm2 save
-          EOF
+
+            rm -f /tmp/release.tar.gz
