@@ -30,14 +30,7 @@ jobs:
 
       - name: 📦 Package release
         run: |
-          tar \
-            --warning=no-file-changed \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='node_modules' \
-            --exclude='.next/cache' \
-            --exclude='release.tar.gz' \
-            -czf release.tar.gz .
+          git archive --format=tar.gz --output=release.tar.gz HEAD
 
       - name: ⬆️ Upload release archive
         uses: appleboy/scp-action@v0.1.7
