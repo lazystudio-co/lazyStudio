@@ -42,9 +42,19 @@ jobs:
       - name: 🚀 Deploy to Server
         run: |
           ssh -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << 'EOF'
-            cd ${{ secrets.SERVER_APP_DIR }}
-            git pull origin main
-            npm install
+            set -e
+            APP_DIR="${{ secrets.SERVER_APP_DIR }}"
+            cd "$APP_DIR"
+
+            echo "Current server commit: $(git rev-parse --short HEAD)"
+            git fetch origin main
+            git reset --hard origin/main
+            echo "Updated server commit: $(git rev-parse --short HEAD)"
+
+            npm ci
             npm run build
-            pm2 restart lazystudio || pm2 start npm --name "lazystudio" -- start
+
+            pm2 delete lazystudio >/dev/null 2>&1 || true
+            pm2 start npm --name "lazystudio" --cwd "$APP_DIR" -- start
+            pm2 save
           EOF
