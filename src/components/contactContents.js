@@ -1,9 +1,11 @@
 "use client";
-
 import Image from "next/image";
-import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import Container from "./container";
+import { useState } from "react";
+import { db } from "../../firebaseConfig";
+import { push, ref } from "firebase/database";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const budgetOptions = ["$50 - $100", "$100 - $500", "$500 - $1K", "$1K - $5K"];
 
@@ -31,37 +33,106 @@ function SoftInput(props) {
 }
 
 export default function ContactContents() {
-  const [form, setForm] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
     budget: budgetOptions[0],
   });
+  const [isSubmitting, setIsSubmitting] = useState("Submit");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((currentData) => ({ ...currentData, [name]: value }));
+  };
+
+  const handleBudgetSelect = (budget) => {
+    setFormData((currentData) => ({ ...currentData, budget }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+    const { name, email, phone, message, budget } = formData;
 
-    const data = await res.json();
+    if (!name || !email || !phone || !message || !budget) {
+      toast.error(" please fill all the fields", {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        style: {
+          backgroundColor: "white",
+          color: "red",
+        },
+      });
+      return;
+    }
+    if (!formData.email.includes("@") || !formData.email.endsWith(".com")) {
+      toast.error("please enter a valid email", {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        style: {
+          backgroundColor: "white",
+          color: "red",
+        },
+      });
+      return;
+    }
+    if (formData.email.toLowerCase() !== "test@example.com") {
+      toast.error(" email must be lowercase ", {
+        position: "bottom-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        style: {
+          backgroundColor: "white",
+          color: "red",
+        },
+      });
+      return;
+    }
 
-    if (data.success) {
-      alert("Message sent!");
+    setIsSubmitting("Submitting...");
 
-      setForm({
+    try {
+      await push(ref(db, "clients"), {
+        name,
+        email,
+        phone,
+        message,
+        budget,
+      });
+      setFormData({
         name: "",
         email: "",
         phone: "",
         message: "",
         budget: budgetOptions[0],
       });
-    } else {
+    } catch (error) {
+      console.error(error);
       alert("Failed to send message");
+    } finally {
+      setIsSubmitting("Submit");
     }
   };
 
@@ -119,8 +190,10 @@ export default function ContactContents() {
           {/* NAME */}
           <FieldLabel>Name & Company</FieldLabel>
           <SoftInput
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            name="name"
+            onChange={handleChange}
+            value={formData.name}
+            type="text"
             placeholder="Don from Earth, Inc."
           />
 
@@ -129,8 +202,9 @@ export default function ContactContents() {
             <div>
               <FieldLabel>Email</FieldLabel>
               <SoftInput
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 type="email"
                 placeholder="don@norman.me"
               />
@@ -139,8 +213,9 @@ export default function ContactContents() {
             <div>
               <FieldLabel>Phone</FieldLabel>
               <SoftInput
-                value={form.phone}
-                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                name="phone"
+                onChange={handleChange}
+                value={formData.phone}
                 type="tel"
                 placeholder="(555) 555-555"
               />
@@ -151,9 +226,10 @@ export default function ContactContents() {
           <div className="mt-7">
             <FieldLabel>Project Description</FieldLabel>
             <textarea
+              name="message"
               rows={5}
-              value={form.message}
-              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              onChange={handleChange}
+              value={formData.message}
               className="w-full rounded-[28px] border border-black/10 px-6 py-5 focus:outline-blue-800/50 "
               placeholder="Tell us about your project..."
             />
@@ -166,10 +242,10 @@ export default function ContactContents() {
               {budgetOptions.map((option) => (
                 <button
                   key={option}
+                  onClick={() => handleBudgetSelect(option)}
                   type="button"
-                  onClick={() => setForm({ ...form, budget: option })}
                   className={`py-5 text-sm ${
-                    form.budget === option
+                    formData.budget === option
                       ? "bg-linear-to-br from-blue-600 via-blue-700 to-blue-800 text-white"
                       : ""
                   }`}
@@ -184,13 +260,26 @@ export default function ContactContents() {
           <div className="mt-10">
             <button
               type="submit"
-              className="flex items-center gap-4 rounded-full bg-linear-to-br from-blue-600 via-blue-700 to-blue-800 px-8 py-4 text-white"
+              className="flex items-center gap-4 rounded-full bg-linear-to-br from-blue-600 via-blue-700 to-blue-800 px-8 py-4 text-white disabled:cursor-not-allowed disabled:opacity-70"
             >
-              CONTINUE <ArrowUpRight />
+              {isSubmitting} <ArrowUpRight />
             </button>
           </div>
         </form>
       </Container>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
     </section>
   );
 }

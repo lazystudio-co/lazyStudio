@@ -302,17 +302,17 @@ export default function WhyUsContents() {
         </section>
 
         {/* Why Numbers Matter (Additional Context) */}
-        <section className="bg-gray-50 rounded-3xl p-16 mb-32">
-          <h2 className="text-5xl font-bold mb-12 text-center font-Excon">
+        <section className="bg-black rounded-3xl p-16 mb-32">
+          <h2 className="text-5xl font-bold mb-12 text-center text-white font-Excon">
             Understanding Our Track Record
           </h2>
           <div className="grid grid-cols-3 gap-10">
             {memoizedTrackRecord.map((item) => (
               <div key={item.number}>
-                <h3 className="text-2xl font-bold mb-4 font-Excon">
+                <h3 className="text-2xl font-bold mb-4 text-white font-Excon">
                   {item.title}
                 </h3>
-                <p className="text-sec leading-relaxed font-SatoshiBoldRegular">
+                <p className="text-white/70 leading-relaxed font-SatoshiBoldRegular">
                   {item.description}
                 </p>
               </div>

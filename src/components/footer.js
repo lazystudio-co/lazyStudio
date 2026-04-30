@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Container from "./container";
 import Link from "next/link";
 import { FaFacebookSquare, FaInstagram } from "react-icons/fa";
@@ -52,7 +51,7 @@ export default function Footer() {
     <footer className="border-t border-gray-300 pt-30 pb-10 ">
       <Container className=" grid grid-cols-4 gap-10">
         <div>
-          <Image
+          <img
             src="/images/logo.png"
             width={240}
             height={60}

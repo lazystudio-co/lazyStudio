@@ -393,7 +393,7 @@ function AboutUsContents() {
               ].map((process, idx) => (
                 <div
                   key={idx}
-                  className="border border-white/10 rounded-3xl p-8 hover:bg-white/5 transition-all duration-300"
+                  className="border border-white/10 rounded-3xl p-8 hover:bg-white/5 duration-300 ease-in-out "
                 >
                   <div
                     className={`  font-excon text-5xl mb-6 ${process.colorTxt} `}
