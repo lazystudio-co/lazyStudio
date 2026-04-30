@@ -92,24 +92,6 @@ export default function ContactContents() {
       });
       return;
     }
-    if (formData.email.toLowerCase() !== "test@example.com") {
-      toast.error(" email must be lowercase ", {
-        position: "bottom-right",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        style: {
-          backgroundColor: "white",
-          color: "red",
-        },
-      });
-      return;
-    }
 
     setIsSubmitting("Submitting...");
 
