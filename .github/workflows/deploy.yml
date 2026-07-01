@@ -28,11 +28,16 @@ jobs:
       - name: 🏗️ Build
         run: npm run build
 
+      - name: 🧹 Prune dev dependencies
+        run: npm prune --omit=dev
+
       - name: 📦 Package release
         run: |
-          # Ship the build output produced above so the server never rebuilds.
+          # Ship the build output and production dependencies so the server never
+          # rebuilds or installs packages during deploy.
           tar -czf release.tar.gz \
             .next \
+            node_modules \
             public \
             package.json \
             package-lock.json \
@@ -61,12 +66,10 @@ jobs:
             APP_PORT="${{ secrets.SERVER_APP_PORT }}"
             APP_PORT="${APP_PORT:-3002}"
             mkdir -p "$APP_DIR"
+            rm -rf "$APP_DIR/.next" "$APP_DIR/node_modules"
             tar -xzf /tmp/release.tar.gz -C "$APP_DIR"
 
             cd "$APP_DIR"
-            # Build output is already shipped from CI — only install production
-            # deps here. Skipping dev deps + rebuild avoids the OOM (exit 137).
-            npm ci --omit=dev
 
             pm2 delete lazystudio >/dev/null 2>&1 || true
             NODE_ENV=production PORT="$APP_PORT" pm2 start npm --name "lazystudio" --cwd "$APP_DIR" --update-env -- start -- -p "$APP_PORT"
