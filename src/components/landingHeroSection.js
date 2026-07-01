@@ -244,7 +244,7 @@ export default function LandingHeroSection() {
       />
 
       <div
-        className="relative z-10 mx-auto  py-20 w-full"
+        className="relative z-10 mx-auto px-5 sm:px-8 lg:px-10 2xl:px-0 py-20 w-full"
         style={{ maxWidth: "1400px" }}
       >
         {/* Header Row */}
@@ -289,12 +289,11 @@ export default function LandingHeroSection() {
         </div>
 
         {/* Cards Row */}
-        <div className="flex gap-5 items-stretch">
+        <div className="flex flex-col lg:flex-row gap-5 items-stretch">
           {/* Left — Dark card with dashboard */}
           <div
-            className="relative rounded-3xl overflow-hidden bg-black "
+            className="relative rounded-3xl overflow-hidden bg-black w-full lg:flex-[0_0_65%]"
             style={{
-              flex: "0 0 65%",
               minHeight: 420,
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(32px)",
@@ -358,9 +357,8 @@ export default function LandingHeroSection() {
 
           {/* Right — Wireframe panel */}
           <div
-            className="relative rounded-3xl overflow-hidden bg-black "
+            className="relative rounded-3xl overflow-hidden bg-black w-full lg:flex-1"
             style={{
-              flex: "1 1 0%",
               minHeight: 420,
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(32px)",

@@ -21,6 +21,11 @@ export default function InfoSlide() {
     slidesToScroll: 2,
     arrows: false,
     draggable: false,
+    responsive: [
+      { breakpoint: 1280, settings: { slidesToShow: 2.2, slidesToScroll: 1 } },
+      { breakpoint: 1024, settings: { slidesToShow: 1.5, slidesToScroll: 1 } },
+      { breakpoint: 640, settings: { slidesToShow: 1.1, slidesToScroll: 1 } },
+    ],
   };
 
   useEffect(() => {
@@ -109,8 +114,8 @@ export default function InfoSlide() {
   return (
     <section className="my-20  ">
       <Container>
-        <div className=" flex items-center justify-between">
-          <h2 className="font-exconReg text-[64px] leading-18 select-none ">
+        <div className=" flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between px-4 lg:px-0">
+          <h2 className="font-exconReg text-[40px] sm:text-[52px] lg:text-[64px] leading-tight lg:leading-18 select-none ">
             <span
               style={{
                 WebkitBackgroundClip: "text",
@@ -133,7 +138,7 @@ export default function InfoSlide() {
               We Excel at
             </span>
           </h2>
-          <div className=" flex flex-row justify-center items-center gap-10 pt-7 cursor-none ">
+          <div className=" flex flex-row flex-wrap justify-start lg:justify-center items-center gap-6 lg:gap-10 pt-0 lg:pt-7 cursor-none ">
             <Link
               href="/services"
               className=" bg-transparent border-2 border-sec rounded-full px-3 py-3 pr-15 flex flex-row justify-between items-center gap-4 cursor-none group relative"
@@ -183,20 +188,20 @@ export default function InfoSlide() {
         `}</style>
         <Slider ref={sliderRef} {...settings}>
           {/* first */}
-          <div className="py-15 ml-63 ">
+          <div className="py-15 ml-4 lg:ml-63 ">
             <Link href="/services/uiux-design">
-              <img src="/images/uiux.png" className=" rounded-3xl w-100" />
+              <img src="/images/uiux.png" className=" rounded-3xl w-64 sm:w-80 lg:w-100" />
             </Link>
           </div>
           {/* first */}
 
           {/* second & third */}
-          <div className=" ml-25 py-15 ">
+          <div className=" ml-4 lg:ml-25 py-15 ">
             <div>
               <Link href="/services/branding-identity">
                 <img
                   src="/images/brandingidentity.png"
-                  className=" rounded-3xl w-180 "
+                  className=" rounded-3xl w-72 sm:w-96 lg:w-180 "
                 />
               </Link>
             </div>
@@ -204,7 +209,7 @@ export default function InfoSlide() {
               <Link href="/services/system-&-ui-kit">
                 <img
                   src="/images/systemui.png"
-                  className=" rounded-3xl w-180 mt-11 "
+                  className=" rounded-3xl w-72 sm:w-96 lg:w-180 mt-11 "
                 />
               </Link>
             </div>
@@ -212,12 +217,12 @@ export default function InfoSlide() {
           {/* second & third */}
 
           {/* fifth & sixth */}
-          <div className=" ml-35 py-15 ">
+          <div className=" ml-4 lg:ml-35 py-15 ">
             <div>
               <Link href="/services/custom-portfolio">
                 <img
                   src="/images/portfolio.png"
-                  className=" rounded-3xl w-150 "
+                  className=" rounded-3xl w-64 sm:w-80 lg:w-150 "
                 />
               </Link>
             </div>
@@ -225,7 +230,7 @@ export default function InfoSlide() {
               <Link href="/services/professional-video-editing">
                 <img
                   src="/images/videoediting.gif"
-                  className=" rounded-3xl w-150 mt-11 "
+                  className=" rounded-3xl w-64 sm:w-80 lg:w-150 mt-11 "
                 />
               </Link>
             </div>
@@ -233,22 +238,22 @@ export default function InfoSlide() {
           {/* fifth & sixth */}
 
           {/* fourth */}
-          <div className=" ml-45 py-15 ">
+          <div className=" ml-4 lg:ml-45 py-15 ">
             <Link href="/services/landing-page-design">
               <img
                 src="/images/landingpagesec.png"
-                className=" rounded-3xl w-100 "
+                className=" rounded-3xl w-64 sm:w-80 lg:w-100 "
               />
             </Link>
           </div>
           {/* fourth */}
 
           {/* seventh */}
-          <div className=" -ml-45 py-15 relative">
+          <div className=" ml-4 lg:-ml-45 py-15 relative">
             <Link href="/services">
               <img
                 src="/images/andmore.gif"
-                className=" rounded-3xl w-100 ml-50 "
+                className=" rounded-3xl w-64 sm:w-80 lg:w-100 ml-0 lg:ml-50 "
               />
               <button
                 className=" absolute left-[78%] top-[50%] translate-x-[-78%] translate-y-[-50%] shadow-lg shadow-white
