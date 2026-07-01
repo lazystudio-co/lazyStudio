@@ -24,9 +24,9 @@ export default function Landing() {
       {/* <BannerContents /> */}
       <LeftSlide />
       <ProjectsContent />
+      <InfoSlide />
       <LandingHeroSection />
       <ServiceDetails />
-      <InfoSlide />
 
       <Container>
         <LetsTalkSection
