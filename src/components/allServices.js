@@ -1,6 +1,23 @@
 "use client";
 
-import { Code, LayoutDashboard, Palette, Video } from "lucide-react";
+import {
+  Code,
+  LayoutDashboard,
+  Palette,
+  Video,
+  Smartphone,
+  Search,
+  TrendingUp,
+  Zap,
+  Code2,
+  BarChart3,
+  ShieldCheck,
+  Bot,
+  Sparkles,
+  Lightbulb,
+  Target,
+  Clapperboard,
+} from "lucide-react";
 import Container from "./container";
 import LetsTalkButton from "./letsTalkButton";
 import LetsTalkSection from "./letsTalkSection";
@@ -26,10 +43,10 @@ const services = [
       "API Integrations",
     ],
     benefits: [
-      { icon: "⚡", text: "Mobile-first, fully responsive" },
-      { icon: "🔍", text: "SEO optimized from day one" },
-      { icon: "💰", text: "Conversion-focused architecture" },
-      { icon: "🚀", text: "Blazing fast load times under 2s" },
+      { icon: Smartphone, text: "Mobile-first, fully responsive" },
+      { icon: Search, text: "SEO optimized from day one" },
+      { icon: TrendingUp, text: "Conversion-focused architecture" },
+      { icon: Zap, text: "Blazing fast load times under 2s" },
     ],
   },
   {
@@ -54,10 +71,10 @@ const services = [
       "Database Design & Optimization",
     ],
     benefits: [
-      { icon: "🏗️", text: "Clean, maintainable code" },
-      { icon: "📈", text: "Scales to millions of requests" },
-      { icon: "🔐", text: "Security-first architecture" },
-      { icon: "🤖", text: "AI & automation ready" },
+      { icon: Code2, text: "Clean, maintainable code" },
+      { icon: BarChart3, text: "Scales to millions of requests" },
+      { icon: ShieldCheck, text: "Security-first architecture" },
+      { icon: Bot, text: "AI & automation ready" },
     ],
   },
   {
@@ -80,10 +97,10 @@ const services = [
       "Icon Systems",
     ],
     benefits: [
-      { icon: "✨", text: "Cohesive visual language" },
-      { icon: "💡", text: "Strategic positioning" },
-      { icon: "🎯", text: "Customer-focused approach" },
-      { icon: "📱", text: "Multi-platform consistency" },
+      { icon: Sparkles, text: "Cohesive visual language" },
+      { icon: Lightbulb, text: "Strategic positioning" },
+      { icon: Target, text: "Customer-focused approach" },
+      { icon: Smartphone, text: "Multi-platform consistency" },
     ],
   },
 
@@ -108,10 +125,10 @@ const services = [
       "Video Strategy & Story Development",
     ],
     benefits: [
-      { icon: "🎬", text: "Hollywood-quality editing" },
-      { icon: "📊", text: "Optimized for each platform" },
-      { icon: "🎨", text: "Cinematic color grading" },
-      { icon: "📈", text: "Engagement-focused storytelling" },
+      { icon: Clapperboard, text: "Hollywood-quality editing" },
+      { icon: BarChart3, text: "Optimized for each platform" },
+      { icon: Palette, text: "Cinematic color grading" },
+      { icon: TrendingUp, text: "Engagement-focused storytelling" },
     ],
   },
 ];
@@ -135,17 +152,17 @@ export default function AllServices() {
         </div>
 
         {/* Services Grid */}
-        <div className="flex flex-col mb-24 bg-black rounded-3xl ">
+        <div className="flex flex-col mb-24 bg-black rounded-3xl">
           {services.map((service, index) => {
             const Icon = service.icon;
 
             return (
               <div
                 key={index}
-                className=" overflow-hidden group hover:shadow-xl transition-all duration-300"
+                className=" overflow-hidden group hover:shadow-xl transition-all duration-300 "
               >
-                <div className="p-10 lg:p-16">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16">
+                <div className="p-10 lg:p-8 ">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 pb-12 border-b border-white/30">
                     {/* Left - Title & Description */}
                     <div className="lg:col-span-1">
                       <div className="flex items-center gap-4 mb-8">
@@ -190,16 +207,20 @@ export default function AllServices() {
                           Key Benefits
                         </p>
                         <div className="space-y-4">
-                          {service.benefits.map((benefit, idx) => (
-                            <div key={idx} className="flex gap-3">
-                              <span className="text-xl flex-shrink-0">
-                                {benefit.icon}
-                              </span>
-                              <p className="font-satoshiRegular text-white/70 text-sm">
-                                {benefit.text}
-                              </p>
-                            </div>
-                          ))}
+                          {service.benefits.map((benefit, idx) => {
+                            const BenefitIcon = benefit.icon;
+                            return (
+                              <div key={idx} className="flex gap-3 items-center">
+                                <BenefitIcon
+                                  className="text-sec flex-shrink-0"
+                                  size={20}
+                                />
+                                <p className="font-satoshiRegular text-white/70 text-sm">
+                                  {benefit.text}
+                                </p>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -410,10 +431,12 @@ export default function AllServices() {
         </section>
 
         {/* What to Expect Section */}
-        <section className=" lg:mb-32 rounded-3xl mb-10 p-12 lg:p-20 border-2 border-sec/20 ">
+        <section className=" lg:mb-32 rounded-3xl mb-10 p-12 lg:p-20 border-2 border-sec/20 hover:border-black duration-300 ease-in ">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div>
-              <div className="text-4xl mb-4">📅</div>
+              <div className="text-4xl mb-4">
+                <img src="/icons/quick.png" className="w-16 h-16" />
+              </div>
               <h3 className="text-2xl font-excon text-black mb-4">
                 Realistic Timelines
               </h3>
@@ -424,7 +447,9 @@ export default function AllServices() {
               </p>
             </div>
             <div>
-              <div className="text-4xl mb-4">💬</div>
+              <div className="text-4xl mb-4">
+                <img src="/icons/interaction.png" className="w-16 h-16" />
+              </div>
               <h3 className="text-2xl font-excon text-black mb-4">
                 Constant Communication
               </h3>
@@ -435,7 +460,9 @@ export default function AllServices() {
               </p>
             </div>
             <div>
-              <div className="text-4xl mb-4">🎯</div>
+              <div className="text-4xl mb-4">
+                <img src="/icons/result.png" className="w-16 h-16" />
+              </div>
               <h3 className="text-2xl font-excon text-black mb-4">
                 Results-Driven Approach
               </h3>

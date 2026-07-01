@@ -1,47 +1,27 @@
 "use client";
 
+import { useRef, useMemo, memo } from "react";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import Container from "@/components/container";
-import React, { useMemo } from "react";
-import LetsTalkSection from "./letsTalkSection";
+import LetsTalkSection from "@/components/letsTalkSection";
 
-// Data constants - extracted for optimization
+// ---- Data ------------------------------------------------------------------
+
 const STATS_DATA = [
-  {
-    number: "150+",
-    label: "Projects Delivered",
-    sublabel: "Across all industries",
-  },
-  {
-    number: "80+",
-    label: "Enterprise Clients",
-    sublabel: "Trusted partnerships",
-  },
-  {
-    number: "5+",
-    label: "Years of Excellence",
-    sublabel: "Consistent delivery",
-  },
-  {
-    number: "15",
-    label: "Specialized Experts",
-    sublabel: "Dedicated craftspeople",
-  },
+  { metric: "150+", label: "Projects Delivered" },
+  { metric: "98%", label: "Client Satisfaction" },
+  { metric: "5+ Yrs", label: "Industry Excellence" },
+  { metric: "15", label: "Specialized Experts" },
 ];
 
-const SKILLS_DATA = [
-  "Next.js & React",
-  "UX/UI Design",
-  "SaaS Platforms",
-  "Cinematic Video Editing",
-  "Brand Identity",
-  "MVP Development",
-  "Webflow",
-  "Landing Pages",
-  "E-Commerce",
-  "API Integrations",
+const MANIFESTO_DATA = [
+  { title: "No Noise", desc: "We focus on what actually moves the needle." },
+  { title: "Peak Tech", desc: "Next.js, React, and AI-driven workflows only." },
+  { title: "High Impact", desc: "Design that converts, code that scales." },
 ];
 
-const CARDS_DATA = [
+const REASONS_DATA = [
   {
     id: "01",
     title: "Enterprise-Grade Architecture",
@@ -58,242 +38,319 @@ const CARDS_DATA = [
     id: "03",
     title: "Transparent Partnership Model",
     description:
-      "You work directly with our core team—designers, developers, and strategists. Real-time collaboration, clear communication, and shared accountability ensure alignment every step of the way.",
+      "You work directly with our core team—designers, developers, and strategists. Real-time collaboration and shared accountability keep us aligned every step of the way.",
   },
   {
     id: "04",
-    title: "Proven Execution Track Record",
+    title: "Rapid Delivery Without Compromise",
     description:
-      "150+ successful deliverables across diverse industries and verticals. From early-stage startups to established enterprises, we consistently deliver products that exceed expectations.",
+      "Lean operations, focused expertise, and proven processes let us move faster than traditional agencies while maintaining premium quality standards.",
   },
   {
     id: "05",
-    title: "Rapid Delivery Without Compromise",
+    title: "Cutting-Edge Technology",
     description:
-      "Lean operations, focused expertise, and proven processes enable us to move faster than traditional agencies while maintaining premium quality standards.",
+      "We stay ahead of the curve with a modern, future-proof stack—ensuring your product is fast, scalable, and ready for whatever comes next.",
   },
   {
     id: "06",
     title: "Dedicated Post-Launch Excellence",
     description:
-      "Launch is just the beginning. We provide ongoing optimization, monitoring, and strategic recommendations to ensure sustained performance and continuous improvement.",
+      "Launch is just the beginning. We provide ongoing optimization, monitoring, and strategic recommendations to sustain performance and drive continuous improvement.",
   },
+];
+
+const PILLARS_DATA = [
+  {
+    title: "Precision Dev",
+    tag: "Performance",
+    desc: "High-speed, scalable applications built with Next.js and React core architectures.",
+  },
+  {
+    title: "Intuitive UI/UX",
+    tag: "Experience",
+    desc: "User journeys designed to remove friction and maximize conversion rates.",
+  },
+  {
+    title: "Cinematic Vision",
+    tag: "Branding",
+    desc: "Professional video editing and brand strategy that tells your story perfectly.",
+  },
+];
+
+const SKILLS_DATA = [
+  "Next.js & React",
+  "UX/UI Design",
+  "SaaS Platforms",
+  "Cinematic Video Editing",
+  "Brand Identity",
+  "MVP Development",
+  "Webflow",
+  "Landing Pages",
+  "E-Commerce",
+  "API Integrations",
 ];
 
 const STEPS_DATA = [
   {
-    id: "01",
-    title: "Strategic Alignment & Scope Definition",
-    description:
-      "We conduct thorough discovery to understand your business objectives, market positioning, technical requirements, and success metrics. This foundation ensures alignment and sets clear expectations.",
+    step: "01",
+    title: "Strategic Alignment & Scope",
+    desc: "We run thorough discovery to understand your objectives, market, technical requirements, and success metrics—setting clear expectations from day one.",
+    colorTxt: "text-red-700/40",
   },
   {
-    id: "02",
+    step: "02",
     title: "Design & UX Architecture",
-    description:
-      "We create data-driven designs optimized for user engagement and conversion. From information architecture to visual design, every element serves a strategic purpose backed by research and best practices.",
+    desc: "Data-driven designs optimized for engagement and conversion. Every element—from information architecture to visuals—serves a strategic purpose.",
+    colorTxt: "text-blue-700/40",
   },
   {
-    id: "03",
-    title: "Full-Stack Engineering & Development",
-    description:
-      "Our team builds scalable, high-performance solutions using modern technology stacks. With continuous integration practices and collaborative development methodology, we ensure code quality and project transparency.",
+    step: "03",
+    title: "Full-Stack Engineering",
+    desc: "We build scalable, high-performance solutions with modern stacks, continuous integration, and a collaborative, transparent methodology.",
+    colorTxt: "text-orange-700/40",
   },
   {
-    id: "04",
-    title: "Quality Assurance & Performance Validation",
-    description:
-      "Comprehensive testing across all devices, browsers, and user scenarios. We validate security standards, optimize load times, and eliminate critical issues before your product reaches users.",
+    step: "04",
+    title: "Quality Assurance",
+    desc: "Comprehensive testing across devices, browsers, and scenarios. We validate security, optimize load times, and eliminate critical issues pre-launch.",
+    colorTxt: "text-yellow-700/40",
   },
   {
-    id: "05",
-    title: "Infrastructure Deployment & Optimization",
-    description:
-      "We handle end-to-end deployment with comprehensive monitoring, security protocols, and performance optimization. Every implementation is validated against production standards.",
+    step: "05",
+    title: "Deployment & Optimization",
+    desc: "End-to-end deployment with monitoring, security protocols, and performance tuning—every implementation validated against production standards.",
+    colorTxt: "text-green-700/40",
   },
   {
-    id: "06",
-    title: "Continuous Monitoring & Strategic Scaling",
-    description:
-      "Post-launch, we provide real-time analytics, user behavior optimization, and strategic recommendations. We scale your platform alongside your growth while maintaining performance and reliability.",
-  },
-];
-
-const TRACK_RECORD_DATA = [
-  {
-    number: "150+",
-    title: "150+ Projects",
-    description:
-      "We've built everything from concept to execution—websites, applications, brand identities, and digital experiences. Each project reinforces our expertise and understanding of diverse market needs.",
-  },
-  {
-    number: "80+",
-    title: "80+ Clients",
-    description:
-      "Our diverse client base spans startups, SMEs, and enterprises across industries. This variety keeps us sharp, innovative, and equipped to handle any challenge you throw our way.",
-  },
-  {
-    number: "15",
-    title: "15 Experts",
-    description:
-      "A carefully curated team of designers, developers, strategists, and video editors. Small enough to move fast, big enough to handle complex projects with excellence.",
+    step: "06",
+    title: "Monitoring & Scaling",
+    desc: "Post-launch, we provide real-time analytics, behavior optimization, and strategic recommendations to scale alongside your growth.",
+    colorTxt: "text-purple-700/40",
   },
 ];
 
 const TESTIMONIALS_DATA = [
   {
-    quote:
-      "The platform they delivered increased our user engagement by 340% within the first quarter. Expert team, flawless execution, and genuinely invested in our success.",
-    attribution: "- VP Product, SaaS Scale-up",
+    name: "Sarah Mitchell",
+    role: "CEO, TechVenture Co.",
+    text: "Lazy Studio delivered our product in half the time we expected. The quality was exceptional, and they understood our vision perfectly.",
   },
   {
-    quote:
-      "We evaluated several agencies, but Lazy Studio demonstrated superior technical depth and strategic thinking. The website they built is now our strongest competitive asset.",
-    attribution: "- Founder & CEO, Design Studio",
+    name: "James Rodriguez",
+    role: "Founder, E-Commerce Plus",
+    text: "Their approach to optimization increased our conversion rate by 35%. They don't just build—they engineer for results.",
   },
   {
-    quote:
-      "Beyond the exceptional product quality, their post-launch support and optimization strategies generated measurable ROI. They're true strategic partners, not just vendors.",
-    attribution: "- Director of Digital Operations, E-Commerce Enterprise",
+    name: "Emma Chen",
+    role: "Product Director, FinApp",
+    text: "Working with Lazy Studio felt like having a strategic partner, not just a vendor. Highly recommended for any serious project.",
   },
 ];
 
-export default function WhyUsContents() {
-  // Memoize data to prevent unnecessary recalculations
-  const memoizedStats = useMemo(() => STATS_DATA, []);
-  const memoizedSkills = useMemo(() => SKILLS_DATA, []);
-  const memoizedCards = useMemo(() => CARDS_DATA, []);
-  const memoizedSteps = useMemo(() => STEPS_DATA, []);
-  const memoizedTrackRecord = useMemo(() => TRACK_RECORD_DATA, []);
-  const memoizedTestimonials = useMemo(() => TESTIMONIALS_DATA, []);
+// ---- Component -------------------------------------------------------------
+
+function WhyUsContents() {
+  const imageRef = useRef(null);
+  const reduceMotion = useReducedMotion();
+
+  const stats = useMemo(() => STATS_DATA, []);
+  const manifesto = useMemo(() => MANIFESTO_DATA, []);
+  const reasons = useMemo(() => REASONS_DATA, []);
+  const pillars = useMemo(() => PILLARS_DATA, []);
+  const skills = useMemo(() => SKILLS_DATA, []);
+  const steps = useMemo(() => STEPS_DATA, []);
+  const testimonials = useMemo(() => TESTIMONIALS_DATA, []);
 
   return (
-    <div className="w-full bg-white text-black font-sans pb-24">
-      {/* Container: 1600px centered */}
+    <main className="bg-white text-black">
       <Container>
-        {/* Hero Section */}
-        <section className="pt-40 pb-32 flex flex-col items-center text-center">
-          <h1
-            id="WhyUsTItle"
-            className="text-8xl tracking-tight leading-tight mb-6 px-2 font-Excon font-black  "
-          >
-            Strategic Digital <br />
-            <span
-              id="WhyUsTItle"
-              className="text-transparent bg-clip-text bg-linear-to-r from-black to-sec"
-            >
-              Transformation
-            </span>
-          </h1>
-          <p className="text-2xl text-sec max-w-4xl mt-4 px-4 leading-relaxed font-SatoshiBoldRegular">
-            Partner with a results-driven digital agency that combines strategic
-            thinking with world-class execution. We deliver comprehensive
-            solutions that drive measurable business impact and sustainable
-            growth.
-          </p>
-        </section>
-
-        {/* Stats Section */}
-        <section className="mb-32 grid grid-cols-4 gap-8">
-          {memoizedStats.map((stat) => (
-            <div
-              key={stat.number}
-              className="flex flex-col items-center text-center"
-            >
-              <h3 className="text-8xl text-black mb-4 font-ExconSec ">
-                {stat.number}
-              </h3>
-              <p className="text-xl font-semibold text-sec font-SatoshiBoldRegular">
-                {stat.label}
-              </p>
-              <p className="text-base text-sec mt-2 font-SatoshiBoldRegular">
-                {stat.sublabel}
+        {/* Hero */}
+        <section className="py-20 lg:py-40">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="max-w-4xl -mt-10">
+              <h1 className="font-excon text-[72px] lg:text-[128px] leading-[0.9] tracking-tighter image-text select-none mb-10">
+                Why <br /> Lazy <br /> Studio.
+              </h1>
+              <p className="font-satoshiBold text-2xl lg:text-3xl text-black/80 max-w-2xl leading-snug">
+                Partner with a results-driven studio that pairs strategic
+                thinking with world-class execution. We deliver solutions that
+                drive measurable impact and sustainable growth.
               </p>
             </div>
-          ))}
-        </section>
 
-        {/* The "Why Choose Us" Bento Grid (Dark Theme to match services) */}
-        <section className="bg-black rounded-3xl p-16 text-white mb-32 border border-gray-900">
-          <div className="mb-16 flex flex-row justify-between items-end gap-8">
-            <div>
-              <h2 className="text-6xl font-black max-w-2xl leading-tight mb-2 font-Excon">
-                Data-Driven Solutions.
-              </h2>
-              <h2 className="text-5xl font-black max-w-2xl leading-tight bg-gradient-to-r from-white via-sec to-black bg-clip-text text-transparent font-ExconSec">
-                Exceptional Results.
-              </h2>
-            </div>
-            <p className="text-white max-w-md my-auto text-lg leading-relaxed font-SatoshiBoldRegular">
-              We engineer digital products that solve real problems. Our
-              approach combines strategic expertise, technical excellence, and
-              design sophistication to deliver competitive advantage.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-3 gap-6">
-            {memoizedCards.map((card) => (
-              <div
-                key={card.id}
-                className=" select-none cursor-pointer bg-black border border-sec rounded-3xl p-8 hover:border-white/50 hover:shadow-xl hover:shadow-white/5 transition-all duration-500 group"
+            <div className="relative hidden lg:block cursor-none group">
+              <motion.div
+                ref={imageRef}
+                initial={
+                  reduceMotion
+                    ? { opacity: 1, scale: 1, rotate: 0 }
+                    : { opacity: 0, scale: 0.8, rotate: -5 }
+                }
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={reduceMotion ? {} : { duration: 1.2, ease: "easeOut" }}
+                className="relative"
               >
-                <div className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center font-bold text-xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {card.id}
-                </div>
-                <h3 className="text-2xl font-bold mb-4 font-Excon">
-                  {card.title}
+                <div className="absolute -inset-3 bg-black/10 blur-xl rounded-full" />
+
+                <motion.div
+                  style={{ willChange: "transform" }}
+                  animate={reduceMotion ? {} : { y: [0, -20, 0], rotate: [0, 2, 0] }}
+                  transition={
+                    reduceMotion
+                      ? {}
+                      : { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                  }
+                >
+                  <Image
+                    src="/images/about_hero.png"
+                    alt="LazyStudio Strategic Abstract"
+                    width={1200}
+                    height={800}
+                    priority
+                    className="relative w-full h-auto rounded-[3rem] shadow-xl z-10 pointer-events-none"
+                  />
+                </motion.div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats */}
+        <section className="pb-20">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats.map((stat) => (
+              <div
+                key={stat.label}
+                className="border border-black/10 rounded-3xl p-8 text-center hover:bg-sec transition-all duration-300 group"
+              >
+                <h3 className="font-excon text-5xl lg:text-6xl text-sec mb-4 group-hover:text-white duration-300 ease-in-out">
+                  {stat.metric}
                 </h3>
-                <p className="text-white/80 font-SatoshiBoldRegular">
-                  {card.description}
+                <p className="font-satoshiRegular text-lg text-black/70 group-hover:text-white duration-300 ease-in-out">
+                  {stat.label}
                 </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Our Process: Order to Delivery */}
-        <section className="mb-32">
-          <h2 className="text-6xl font-bold mb-6 text-center font-Excon">
-            Our Proven Development Framework
-          </h2>
-          <p className="text-center text-sec text-xl mb-16 max-w-4xl mx-auto px-4 leading-relaxed font-SatoshiBoldRegular">
-            A strategic, collaborative methodology delivering predictable
-            outcomes from discovery through post-launch optimization and
-            scaling.
-          </p>
+        {/* Philosophy — Why "Lazy"? */}
+        <section className="py-10 mb-32 bg-black text-white rounded-[40px] lg:rounded-[100px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center px-10 lg:px-20 py-10">
+            <div>
+              <h2 className="font-excon text-6xl lg:text-8xl mb-8 leading-none">
+                Why <span className="text-sec">Lazy</span>?
+              </h2>
+              <div className="space-y-6 font-satoshiRegular text-xl text-white/70 leading-relaxed">
+                <p>
+                  In a world obsessed with "busy work," we chose a different
+                  path. "Lazy" isn't our state of mind—it's our competitive
+                  advantage.
+                </p>
+                <p>
+                  We're lazy because we've already spent thousands of hours
+                  solving the hard problems. We built the frameworks, optimized
+                  the stacks, and mastered the workflows, so we can deliver 10x
+                  the impact with half the friction.
+                </p>
+                <p>
+                  Our goal? Digital products so well-engineered they practically
+                  run themselves.
+                </p>
+              </div>
+            </div>
+            <div className="bg-sec/10 border border-white/10 p-12 rounded-3xl backdrop-blur-sm">
+              <h3 className="font-excon text-3xl mb-6">The Lazy Manifesto</h3>
+              <ul className="space-y-8">
+                {manifesto.map((item, idx) => (
+                  <li key={item.title} className="flex gap-6">
+                    <span className="font-excon text-sec text-2xl">
+                      0{idx + 1}
+                    </span>
+                    <div>
+                      <h4 className="font-satoshiBold text-xl mb-1">
+                        {item.title}
+                      </h4>
+                      <p className="font-satoshiRegular text-white/50">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
 
-          <div className="grid grid-cols-2 gap-10">
-            {memoizedSteps.map((step) => (
-              <div key={step.id} className="flex gap-6">
-                <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 rounded-full bg-black text-white flex items-center justify-center font-bold text-2xl mb-4 flex-shrink-0 select-none ">
-                    {step.id}
-                  </div>
-                  <div className="w-1 h-24 bg-gradient-to-b from-gray-900 to-white"></div>
+        {/* Why Choose Us — reasons */}
+        <section className="mb-32">
+          <div className="mb-16 flex flex-col lg:flex-row justify-between lg:items-end gap-8">
+            <div>
+              <h2 className="font-excon text-5xl lg:text-6xl max-w-2xl leading-tight mb-2">
+                Data-Driven Solutions.
+              </h2>
+              <h2 className="font-excon text-4xl lg:text-5xl max-w-2xl leading-tight text-sec">
+                Exceptional Results.
+              </h2>
+            </div>
+            <p className="font-satoshiRegular text-black/60 max-w-md text-lg leading-relaxed">
+              We engineer digital products that solve real problems—combining
+              strategic expertise, technical excellence, and design
+              sophistication to deliver a lasting competitive advantage.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {reasons.map((reason) => (
+              <div
+                key={reason.id}
+                className="select-none cursor-none border border-black/10 rounded-3xl p-8 hover:bg-black hover:text-white transition-all duration-500 group"
+              >
+                <div className="w-12 h-12 bg-black text-white group-hover:bg-white group-hover:text-black rounded-full flex items-center justify-center font-satoshiBold text-xl mb-6 group-hover:scale-110 transition-all duration-300">
+                  {reason.id}
                 </div>
-                <div className="pb-8">
-                  <h3 className="text-2xl font-bold mb-3 font-Excon">
-                    {step.title}
-                  </h3>
-                  <p className="text-sec leading-relaxed font-SatoshiBoldRegular">
-                    {step.description}
-                  </p>
-                </div>
+                <h3 className="font-excon text-2xl mb-4">{reason.title}</h3>
+                <p className="font-satoshiRegular text-black/70 group-hover:text-white/80 duration-300">
+                  {reason.description}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Our Expertise Tags (Matching the "All Services" pill design) */}
+        {/* Our DNA — pillars + expertise */}
         <section className="mb-32">
-          <h2 className="text-6xl font-bold mb-12 text-center px-2 font-Excon">
-            Comprehensive Technology & Service Expertise
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto px-4  ">
-            {memoizedSkills.map((skill) => (
+          <div className="text-center mb-20">
+            <h2 className="font-excon text-5xl lg:text-7xl mb-6">Our DNA.</h2>
+            <p className="font-satoshiRegular text-xl text-black/60 max-w-xl mx-auto">
+              We've merged the world's most powerful technologies with top-tier
+              creative vision to build something truly future-proof.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
+            {pillars.map((pillar) => (
+              <div
+                key={pillar.title}
+                className="group p-10 border border-black/5 rounded-3xl hover:bg-black hover:text-white transition-all duration-500 cursor-none"
+              >
+                <div className="mb-8 uppercase tracking-widest text-xs font-satoshiBold text-sec">
+                  {pillar.tag}
+                </div>
+                <h3 className="font-excon text-3xl mb-6">{pillar.title}</h3>
+                <p className="font-satoshiRegular text-lg opacity-60 group-hover:opacity-100 transition-opacity">
+                  {pillar.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto px-4">
+            {skills.map((skill) => (
               <span
                 key={skill}
-                className=" select-none cursor-grab px-6 py-3 rounded-full border border-gray-300 text-base font-medium text-black hover:bg-black hover:text-white transition-all cursor-default whitespace-nowrap font-SatoshiBoldRegular"
+                className="select-none cursor-none px-6 py-3 rounded-full border border-black/15 text-base font-satoshiBold text-black hover:bg-black hover:text-white transition-all whitespace-nowrap"
               >
                 {skill}
               </span>
@@ -301,55 +358,84 @@ export default function WhyUsContents() {
           </div>
         </section>
 
-        {/* Why Numbers Matter (Additional Context) */}
-        <section className="bg-black rounded-3xl p-16 mb-32">
-          <h2 className="text-5xl font-bold mb-12 text-center text-white font-Excon">
-            Understanding Our Track Record
-          </h2>
-          <div className="grid grid-cols-3 gap-10">
-            {memoizedTrackRecord.map((item) => (
-              <div key={item.number}>
-                <h3 className="text-2xl font-bold mb-4 text-white font-Excon">
-                  {item.title}
-                </h3>
-                <p className="text-white/70 leading-relaxed font-SatoshiBoldRegular">
-                  {item.description}
-                </p>
-              </div>
-            ))}
+        {/* Our Process */}
+        <section className="py-20 lg:py-32 mb-32 bg-black text-white rounded-[40px] lg:rounded-[100px]">
+          <div className="px-10 lg:px-20 py-10">
+            <div className="text-center mb-20">
+              <h2 className="font-excon text-5xl lg:text-7xl mb-6">
+                Our <span className="text-sec">Process.</span>
+              </h2>
+              <p className="font-satoshiRegular text-xl text-white/60 max-w-2xl mx-auto">
+                A strategic, collaborative framework delivering predictable
+                outcomes from discovery through post-launch scaling. No
+                surprises—only results.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {steps.map((process) => (
+                <div
+                  key={process.step}
+                  className="border border-white/10 rounded-3xl p-8 hover:bg-white/5 duration-300 ease-in-out"
+                >
+                  <div className={`font-excon text-5xl mb-6 ${process.colorTxt}`}>
+                    {process.step}
+                  </div>
+                  <h3 className="font-satoshiBold text-xl mb-4">
+                    {process.title}
+                  </h3>
+                  <p className="font-satoshiRegular text-white/70 leading-relaxed">
+                    {process.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Client Testimonial Snippet */}
+        {/* Testimonials */}
         <section className="mb-32">
-          <h2 className="text-5xl font-bold mb-16 text-center font-Excon">
-            Why Enterprise Leaders Choose Us
-          </h2>
-          <div className="grid grid-cols-3 gap-8">
-            {memoizedTestimonials.map((testimonial, index) => (
+          <div className="text-center mb-20">
+            <h2 className="font-excon text-5xl lg:text-7xl mb-6">
+              What Our Clients Say.
+            </h2>
+            <p className="font-satoshiRegular text-xl text-black/60 max-w-xl mx-auto">
+              Don't just take our word for it. Hear directly from the brands
+              we've transformed.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial) => (
               <div
-                key={index}
-                className="bg-white border border-gray-200 rounded-2xl p-10"
+                key={testimonial.name}
+                className="border border-black/10 rounded-3xl p-10 hover:bg-sec duration-400 ease-in-out group"
               >
-                <p className="text-sec mb-6 text-lg italic leading-relaxed font-SatoshiBoldRegular">
-                  "{testimonial.quote}"
+                <p className="font-satoshiRegular text-lg text-black/70 group-hover:text-white duration-300 ease-in-out mb-8 leading-relaxed">
+                  "{testimonial.text}"
                 </p>
-                <p className="font-semibold font-Excon">
-                  {testimonial.attribution}
-                </p>
+                <div className="border-t border-black/10 pt-6">
+                  <h4 className="font-satoshiBold text-lg text-black/90 group-hover:text-white duration-300 ease-in-out">
+                    {testimonial.name}
+                  </h4>
+                  <p className="font-satoshiRegular text-sm text-sec group-hover:text-white/50 duration-300 ease-in-out">
+                    {testimonial.role}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* CTA */}
         <LetsTalkSection
-          title=" Let's Talk "
-          hookline=" Design done right and fast by people you can trust.
-
-"
+          title="Let's Talk"
+          hookline="Design done right and fast by people you can trust."
+          classNameBTN=" w-65! "
         />
       </Container>
-    </div>
+    </main>
   );
 }
+
+export default memo(WhyUsContents);

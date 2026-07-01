@@ -12,7 +12,6 @@ export default function NavBarContents() {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Why Us", href: "/whyUs" },
-    { name: "About", href: "/aboutUs" },
     // { name: "Blog", href: "/blog" },
   ];
 

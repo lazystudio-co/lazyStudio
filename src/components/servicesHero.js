@@ -76,7 +76,6 @@ export default function ServicesHero() {
             variants={itemVariants}
           >
             <div className="flex items-center justify-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-black" />
               <span className="text-sm md:text-base font-semibold text-black uppercase tracking-wider">
                 Our Expertise
               </span>
@@ -122,9 +121,7 @@ export default function ServicesHero() {
                     ></div>
                     <div className="relative z-10">
                       <div className="mb-6">
-                        <div
-                          className={`inline-flex p-3 rounded-xl bg-linear-to-br ${service.gradient} text-white mb-4`}
-                        >
+                        <div className="inline-flex p-3 rounded-xl bg-white text-black mb-4">
                           <IconComponent className="w-6 h-6" />
                         </div>
                       </div>
