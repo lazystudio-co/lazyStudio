@@ -30,7 +30,13 @@ jobs:
 
       - name: 📦 Package release
         run: |
-          git archive --format=tar.gz --output=release.tar.gz HEAD
+          # Ship the build output produced above so the server never rebuilds.
+          tar -czf release.tar.gz \
+            .next \
+            public \
+            package.json \
+            package-lock.json \
+            next.config.mjs
 
       - name: ⬆️ Upload release archive
         uses: appleboy/scp-action@v0.1.7
@@ -58,8 +64,9 @@ jobs:
             tar -xzf /tmp/release.tar.gz -C "$APP_DIR"
 
             cd "$APP_DIR"
-            npm ci
-            npm run build
+            # Build output is already shipped from CI — only install production
+            # deps here. Skipping dev deps + rebuild avoids the OOM (exit 137).
+            npm ci --omit=dev
 
             pm2 delete lazystudio >/dev/null 2>&1 || true
             NODE_ENV=production PORT="$APP_PORT" pm2 start npm --name "lazystudio" --cwd "$APP_DIR" --update-env -- start -- -p "$APP_PORT"
