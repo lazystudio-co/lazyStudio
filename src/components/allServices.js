@@ -210,7 +210,10 @@ export default function AllServices() {
                           {service.benefits.map((benefit, idx) => {
                             const BenefitIcon = benefit.icon;
                             return (
-                              <div key={idx} className="flex gap-3 items-center">
+                              <div
+                                key={idx}
+                                className="flex gap-3 items-center"
+                              >
                                 <BenefitIcon
                                   className="text-sec flex-shrink-0"
                                   size={20}
