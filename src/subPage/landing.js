@@ -21,7 +21,7 @@ export default function Landing() {
   return (
     <>
       <Hero />
-      <BannerContents />
+      {/* <BannerContents /> */}
       <LeftSlide />
       <ProjectsContent />
       <LandingHeroSection />
