@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export default function LetsTalkSection({ title, hookline, classNameBTN }) {
   return (
-    <section className="pb-20">
-      <div className="bg-white border-2 border-sec/20 shadow-none shadow-black/30 rounded-[40px] p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center overflow-hidden hover:border-black duration-300 ease-in">
+    <section className="pb-20 px-5 sm:px-8 lg:px-0">
+      <div className="bg-white border-2 border-sec/20 shadow-none shadow-black/30 rounded-[40px] p-6 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center overflow-hidden hover:border-black duration-300 ease-in">
         <div className="w-full lg:w-auto">
           <h2 className="font-excon text-4xl sm:text-5xl lg:text-7xl mb-8 leading-tighter select-none">
             {title}

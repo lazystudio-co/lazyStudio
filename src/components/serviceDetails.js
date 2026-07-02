@@ -16,8 +16,8 @@ export default function ServiceDetails({ services = DEFAULT_SERVICES }) {
   services.forEach((s, i) => cols[i % 3].push(s));
 
   return (
-    <section className=" mb-20 ">
-      <Container className="rounded-[40px] border-2 border-neutral-200 p-8 transition-colors duration-300 ease-in hover:border-black sm:p-12">
+    <section className=" mb-20 px-5 sm:px-8 lg:px-0 ">
+      <Container className="rounded-[40px] border-2 border-neutral-200 p-6 sm:p-8 transition-colors duration-300 ease-in hover:border-black md:p-12">
         {/* Header */}
         <div className="mb-10 flex flex-col gap-5 border-b border-neutral-200 pb-8 sm:flex-row sm:items-end sm:justify-between">
           <div>

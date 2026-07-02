@@ -136,12 +136,12 @@ const services = [
 export default function AllServices() {
   return (
     <section className="bg-white">
-      <Container className="py-20 ">
+      <Container className="py-20 px-5 sm:px-8 lg:px-12 ">
         {/* Heading */}
         <div className="text-center mb-10 ">
           <h2
             id="clipSec"
-            className="text-5xl lg:text-7xl font-excon font-bold mb-6"
+            className="text-4xl sm:text-5xl lg:text-7xl font-excon font-bold mb-6"
           >
             All Services
           </h2>
@@ -161,7 +161,7 @@ export default function AllServices() {
                 key={index}
                 className=" overflow-hidden group hover:shadow-xl transition-all duration-300 "
               >
-                <div className="p-10 lg:p-8 ">
+                <div className="p-6 sm:p-10 lg:p-8 ">
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 pb-12 border-b border-white/30">
                     {/* Left - Title & Description */}
                     <div className="lg:col-span-1">
@@ -193,7 +193,7 @@ export default function AllServices() {
                     </div>
 
                     {/* Middle - Why Us & Benefits */}
-                    <div className="lg:col-span-1 border-l border-white/10 pl-10">
+                    <div className="lg:col-span-1 lg:border-l border-white/10 lg:pl-10">
                       <div className="mb-10">
                         <p className="uppercase tracking-widest text-xs font-satoshiBold text-sec/80 mb-3">
                           Why LazyStudio
@@ -229,7 +229,7 @@ export default function AllServices() {
                     </div>
 
                     {/* Right - Services & Outcome */}
-                    <div className="lg:col-span-1 border-l border-white/10 pl-10">
+                    <div className="lg:col-span-1 lg:border-l border-white/10 lg:pl-10">
                       <p className="uppercase tracking-widest text-xs font-satoshiBold text-sec mb-4">
                         Services Included
                       </p>
@@ -263,7 +263,7 @@ export default function AllServices() {
         {/* Our Process Section */}
         <section className="mb-24 lg:mb-32">
           <div className="text-center mb-20">
-            <h2 className="text-5xl lg:text-7xl font-excon mb-6">
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-excon mb-6">
               How We <span className="text-sec">Work.</span>
             </h2>
             <p className="text-black/60 font-satoshiRegular text-lg max-w-2xl mx-auto">
@@ -434,8 +434,8 @@ export default function AllServices() {
         </section>
 
         {/* What to Expect Section */}
-        <section className=" lg:mb-32 rounded-3xl mb-10 p-12 lg:p-20 border-2 border-sec/20 hover:border-black duration-300 ease-in ">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <section className=" lg:mb-32 rounded-3xl mb-10 p-6 sm:p-10 lg:p-20 border-2 border-sec/20 hover:border-black duration-300 ease-in ">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
             <div>
               <div className="text-4xl mb-4">
                 <img src="/icons/quick.png" className="w-16 h-16" />

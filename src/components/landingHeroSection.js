@@ -259,7 +259,7 @@ export default function LandingHeroSection() {
           {/* Left headline */}
           <div className="max-w-xl">
             <h1
-              className="text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight text-gray-900"
+              className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight text-gray-900 wrap-break-word"
               style={{ letterSpacing: "-0.02em" }}
             >
               From{" "}
@@ -275,7 +275,7 @@ export default function LandingHeroSection() {
               </span>{" "}
               To
               <br />
-              Enterprise‑Scale UX
+              Enterprise-Scale UX
             </h1>
           </div>
 

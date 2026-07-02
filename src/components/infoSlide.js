@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -13,19 +13,33 @@ export default function InfoSlide() {
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
 
+  // Drive slidesToShow from live viewport width (react-slick's `responsive`
+  // relies on matchMedia/enquire which does not fire reliably here).
+  const [slidesToShow, setSlidesToShow] = useState(3.2);
+  useEffect(() => {
+    const pick = (w) => {
+      if (w >= 1280) return 3.2;
+      if (w >= 1024) return 2.2;
+      if (w >= 768) return 1.5;
+      return 1;
+    };
+    const update = () => setSlidesToShow(pick(window.innerWidth));
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   const settings = {
     dots: false,
     infinite: false,
     speed: 500,
-    slidesToShow: 3.2,
-    slidesToScroll: 2,
+    slidesToShow,
+    slidesToScroll: 1,
     arrows: false,
     draggable: false,
-    responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 2.2, slidesToScroll: 1 } },
-      { breakpoint: 1024, settings: { slidesToShow: 1.5, slidesToScroll: 1 } },
-      { breakpoint: 640, settings: { slidesToShow: 1.1, slidesToScroll: 1 } },
-    ],
+    // On mobile (single slide) let the slider height fit the current slide so
+    // short slides don't leave large vertical gaps. Desktop keeps the collage.
+    adaptiveHeight: slidesToShow <= 1,
   };
 
   useEffect(() => {
@@ -185,23 +199,35 @@ export default function InfoSlide() {
           .slick-no-pointer .slick-slide a {
             pointer-events: auto;
           }
+          /* On mobile the slider uses adaptiveHeight (one slide at a time).
+             The global ".slick-track { align-items: center }" would center a
+             tall slide inside a shorter list box and clip its top/bottom, so
+             top-align the track here and let each slide size naturally. */
+          @media (max-width: 1023px) {
+            .slick-no-pointer .slick-track {
+              align-items: flex-start;
+            }
+          }
         `}</style>
         <Slider ref={sliderRef} {...settings}>
           {/* first */}
-          <div className="py-15 ml-4 lg:ml-63 ">
+          <div className="py-10 lg:py-15 max-lg:flex max-lg:justify-center px-4 lg:px-0 lg:ml-63 ">
             <Link href="/services/uiux-design">
-              <img src="/images/uiux.png" className=" rounded-3xl w-64 sm:w-80 lg:w-100" />
+              <img
+                src="/images/uiux.png"
+                className=" rounded-3xl w-[78vw] sm:w-80 lg:w-100"
+              />
             </Link>
           </div>
           {/* first */}
 
           {/* second & third */}
-          <div className=" ml-4 lg:ml-25 py-15 ">
+          <div className=" py-10 lg:py-15 max-lg:flex max-lg:flex-col max-lg:items-center px-4 lg:px-0 lg:ml-25 ">
             <div>
               <Link href="/services/branding-identity">
                 <img
                   src="/images/brandingidentity.png"
-                  className=" rounded-3xl w-72 sm:w-96 lg:w-180 "
+                  className=" rounded-3xl w-[78vw] sm:w-96 lg:w-180 "
                 />
               </Link>
             </div>
@@ -209,7 +235,7 @@ export default function InfoSlide() {
               <Link href="/services/system-&-ui-kit">
                 <img
                   src="/images/systemui.png"
-                  className=" rounded-3xl w-72 sm:w-96 lg:w-180 mt-11 "
+                  className=" rounded-3xl w-[78vw] sm:w-96 lg:w-180 mt-6 lg:mt-11 "
                 />
               </Link>
             </div>
@@ -217,12 +243,12 @@ export default function InfoSlide() {
           {/* second & third */}
 
           {/* fifth & sixth */}
-          <div className=" ml-4 lg:ml-35 py-15 ">
+          <div className=" py-10 lg:py-15 max-lg:flex max-lg:flex-col max-lg:items-center px-4 lg:px-0 lg:ml-35 ">
             <div>
               <Link href="/services/custom-portfolio">
                 <img
                   src="/images/portfolio.png"
-                  className=" rounded-3xl w-64 sm:w-80 lg:w-150 "
+                  className=" rounded-3xl w-[78vw] sm:w-80 lg:w-150 "
                 />
               </Link>
             </div>
@@ -230,7 +256,7 @@ export default function InfoSlide() {
               <Link href="/services/professional-video-editing">
                 <img
                   src="/images/videoediting.gif"
-                  className=" rounded-3xl w-64 sm:w-80 lg:w-150 mt-11 "
+                  className=" rounded-3xl w-[78vw] sm:w-80 lg:w-150 mt-6 lg:mt-11 "
                 />
               </Link>
             </div>
@@ -238,26 +264,26 @@ export default function InfoSlide() {
           {/* fifth & sixth */}
 
           {/* fourth */}
-          <div className=" ml-4 lg:ml-45 py-15 ">
+          <div className=" py-10 lg:py-15 max-lg:flex max-lg:justify-center px-4 lg:px-0 lg:ml-45 ">
             <Link href="/services/landing-page-design">
               <img
                 src="/images/landingpagesec.png"
-                className=" rounded-3xl w-64 sm:w-80 lg:w-100 "
+                className=" rounded-3xl w-[78vw] sm:w-80 lg:w-100 "
               />
             </Link>
           </div>
           {/* fourth */}
 
           {/* seventh */}
-          <div className=" ml-4 lg:-ml-45 py-15 relative">
-            <Link href="/services">
+          <div className=" py-10 lg:py-15 max-lg:flex max-lg:justify-center px-4 lg:px-0 lg:-ml-45 relative">
+            <Link href="/services" className=" relative inline-block ">
               <img
                 src="/images/andmore.gif"
-                className=" rounded-3xl w-64 sm:w-80 lg:w-100 ml-0 lg:ml-50 "
+                className=" rounded-3xl w-[78vw] sm:w-80 lg:w-100 lg:ml-50 "
               />
               <button
-                className=" absolute left-[78%] top-[50%] translate-x-[-78%] translate-y-[-50%] shadow-lg shadow-white
-            font-satoshiBold font-black text-black text-[18px] px-4 py-2 w-55 bg-white rounded-full text-center border-2 border-transparent 
+                className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:left-[78%] lg:-translate-x-[78%] shadow-lg shadow-white
+            font-satoshiBold font-black text-black text-[16px] lg:text-[18px] px-4 py-2 w-48 lg:w-55 bg-white rounded-full text-center border-2 border-transparent
             hover:border-white hover:bg-transparent hover:text-white duration-300 ease-in-out delay-100 "
               >
                 View All Services

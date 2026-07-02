@@ -48,8 +48,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-gray-300 pt-30 pb-10 ">
-      <Container className=" grid grid-cols-4 gap-10">
+    <footer className="border-t border-gray-300 pt-20 lg:pt-30 pb-10 px-5 sm:px-8 lg:px-0 ">
+      <Container className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
           <img
             src="/images/logo.png"
@@ -58,7 +58,7 @@ export default function Footer() {
             alt="LazyStudio"
             className="-ml-8.5 select-none"
           />
-          <p className="w-70 mt-4 font-satoshiBold text-[16px] leading-[1.6]">
+          <p className="w-full max-w-70 mt-4 font-satoshiBold text-[16px] leading-[1.6]">
             We craft world-class digital products that help startups and Fortune
             500 companies not just succeed, but create meaningful, memorable
             experiences that people truly love and engage with.
@@ -92,7 +92,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-5 ml-15 ">
+        <div className="mt-5 lg:ml-15 ">
           <label className="font-satoshiBold text-[22px] text-black font-black cursor-none">
             Company
           </label>
@@ -120,11 +120,11 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="mt-5 col-span-2 ">
+        <div className="mt-5 sm:col-span-2 ">
           <label className="font-satoshiBold text-[22px] text-black font-black cursor-none">
             Services
           </label>
-          <div className=" grid grid-cols-3 ">
+          <div className=" grid grid-cols-2 lg:grid-cols-3 gap-x-6 ">
             <ul className="flex flex-col gap-5 mt-4 w-fit cursor-none">
               {webServices.map((service, idx) => (
                 <Link key={idx} href={`/services`} className="cursor-none">
@@ -162,19 +162,19 @@ export default function Footer() {
           </div>
         </div>
       </Container>
-      <Container className=" pt-20 flex flex-row justify-between items-center ">
-        <div className=" flex flex-row justify-start items-center gap-14 ">
-          <p className=" font-satoshiRegular font-regular text-[18px] text-black ">
+      <Container className=" pt-16 lg:pt-20 flex flex-col gap-8 md:flex-row md:justify-between md:items-center ">
+        <div className=" flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 lg:gap-14 ">
+          <p className=" font-satoshiRegular font-regular text-[16px] lg:text-[18px] text-black ">
             © 2026 Lazy Studio. All Rights Reserved.
           </p>
-          <p className=" font-satoshiRegular font-regular text-[18px] text-black ">
+          <p className=" font-satoshiRegular font-regular text-[16px] lg:text-[18px] text-black ">
             Privacy Policy
           </p>
-          <p className=" font-satoshiRegular font-regular text-[18px] text-black ">
+          <p className=" font-satoshiRegular font-regular text-[16px] lg:text-[18px] text-black ">
             Terms
           </p>
         </div>
-        <div className=" flex flex-row justify-center items-center gap-14 ">
+        <div className=" flex flex-row justify-start md:justify-center items-center gap-10 lg:gap-14 ">
           <FaInstagram className=" text-[24px]  " />
           <FaSquareXTwitter className=" text-[24px]  " />
           <FaFacebookSquare className=" text-[24px]  " />

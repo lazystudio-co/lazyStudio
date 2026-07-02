@@ -61,7 +61,7 @@ export default function ServicesHero() {
   };
 
   return (
-    <div className="relative w-full overflow-hidden  py-16 md:py-24">
+    <div className="relative w-full overflow-hidden py-16 md:py-24 px-5 sm:px-8 lg:px-12">
       <Container>
         <motion.div
           className="relative z-10"
@@ -81,7 +81,7 @@ export default function ServicesHero() {
               </span>
             </div>
 
-            <h1 className="text-7xl font-excon font-bold mb-6 bg-black bg-clip-text text-transparent leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-excon font-bold mb-6 bg-black bg-clip-text text-transparent leading-tight">
               Comprehensive Solutions
               <br />
               for Every Need
