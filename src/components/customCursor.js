@@ -114,20 +114,7 @@ export default function CustomCursor() {
   return (
     <div
       ref={cursorRef}
-      className="
-        pointer-events-none 
-        fixed top-0 left-0 
-        z-9999 
-        w-8 h-8
-        bg-white 
-        border-
-        border-black
-        mix-blend-difference 
-        opacity-0 
-        hidden sm:block 
-        will-change-transform 
-        rounded-full
-      "
+      className="pointer-events-none fixed top-0 left-0 z-9999 w-8 h-8 bg-white border- borderblack mix-blend-difference opacity-0 hidden sm:block will-change-transform rounded-full"
     />
   );
 }

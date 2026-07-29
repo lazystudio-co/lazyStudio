@@ -157,8 +157,7 @@ export default function ServicesHero() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 md:px-12 py-4 bg-linear-to-r from-black to-sec hover:from-sec hover:to-black text-white 
-              font-bold rounded-full duration-300 ease-in-out shadow-lg hover:shadow-black/50"
+                className="px-8 md:px-12 py-4 bg-linear-to-r from-black to-sec hover:from-sec hover:to-black text-white font-bold rounded-full duration-300 ease-in-out shadow-lg hover:shadow-black/50"
               >
                 Start Your Project
               </motion.button>

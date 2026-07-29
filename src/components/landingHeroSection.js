@@ -319,8 +319,7 @@ export default function LandingHeroSection() {
                 Multi-Tenant B2B, Workflow-Heavy, Data-Dense Products
               </h2>
               <button
-                className="group flex items-center gap-3 bg-black  hover:bg-sec/50 hover:text-white transition-all duration-300
-                 text-white text-xs font-bold tracking-wider uppercase px-5 py-3 rounded-full"
+                className="group flex items-center gap-3 bg-black hover:bg-sec/50 hover:text-white transition-all duration-300 text-white text-xs font-bold tracking-wider uppercase px-5 py-3 rounded-full"
                 style={{ letterSpacing: "0.1em" }}
               >
                 Contact Us

@@ -48,11 +48,7 @@ export default function NavBarContents() {
       <List className=" hidden lg:flex ">
         {navLinks.map((link) => (
           <Link
-            className={` border-b-4 cursor-none ${
-              patchname === link.href
-                ? " border-sec hover:border-transparent duration-300 ease-out cursor-none "
-                : " border-transparent "
-            } `}
+            className={` border-b-4 cursor-none ${patchname === link.href ? " border-sec hover:border-transparent duration-300 ease-out cursor-none " : " border-transparent "} `}
             key={link.href}
             href={link.href}
           >
@@ -68,23 +64,19 @@ export default function NavBarContents() {
         className=" hidden lg:inline-block px-18 py-7 bg-sec rounded-full text-black overflow-hidden cursor-none z-10 drop-shadow-none group relative "
       >
         <span
-          className=" font-satoshiBold text-[20px] font-semibold text-white z-50 cursor-none absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]
-        group-hover:top-100 duration-300 ease-in-out "
+          className="font-satoshiBold text-[20px] font-semibold text-white z-50 cursor-none absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:top-100 duration-300 ease-in-out"
         >
           Contact
         </span>
         <span
-          className=" font-satoshiBold text-[20px] font-semibold text-white z-50 cursor-none absolute -top-100 left-[50%] translate-x-[-50%]
-        group-hover:top-[50%] group-hover:translate-y-[-50%] duration-300 ease-in-out "
+          className="font-satoshiBold text-[20px] font-semibold text-white z-50 cursor-none absolute -top-100 left-[50%] translate-x-[-50%] group-hover:top-[50%] group-hover:translate-y-[-50%] duration-300 ease-in-out"
         >
           Hi
         </span>
 
         <div
           id="fadeOut"
-          className=" h-15 w-full bg-black absolute left-[50%] top-[50%]
-                        translate-x-[-50%] translate-y-[-50%] rounded-full -z-20 cursor-none
-                        group-hover:-left-5 group-hover:scale-150 transition-all duration-500 "
+          className="h-15 w-full bg-black absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] rounded-full -z-20 cursor-none group-hover:-left-5 group-hover:scale-150 transition-all duration-500"
         ></div>
       </Link>
 
@@ -105,11 +97,7 @@ export default function NavBarContents() {
 
       {/* Mobile menu overlay */}
       <div
-        className={` lg:hidden fixed inset-0 top-0 left-0 h-screen w-full bg-white z-40 flex flex-col px-6 pt-28 pb-10 transition-all duration-300 ease-in-out ${
-          menuOpen
-            ? " opacity-100 pointer-events-auto "
-            : " opacity-0 pointer-events-none "
-        } `}
+        className={`lg:hidden fixed inset-0 top-0 left-0 h-screen w-full bg-white z-40 flex flex-col px-6 pt-28 pb-10 transition-all duration-300 ease-in-out ${menuOpen ? " opacity-100 pointer-events-auto " : " opacity-0 pointer-events-none "}`}
       >
         <ul className=" flex flex-col gap-2 ">
           {navLinks.map((link) => (
@@ -120,9 +108,7 @@ export default function NavBarContents() {
               className=" cursor-none "
             >
               <li
-                className={` font-excon text-4xl sm:text-5xl py-3 border-b border-neutral-200 select-none ${
-                  patchname === link.href ? " text-sec " : " text-black "
-                } `}
+                className={`font-excon text-4xl sm:text-5xl py-3 border-b border-neutral-200 select-none ${patchname === link.href ? " text-sec " : " text-black "}`}
               >
                 {link.name}
               </li>

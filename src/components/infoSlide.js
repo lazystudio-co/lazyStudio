@@ -158,14 +158,12 @@ export default function InfoSlide() {
               className=" bg-transparent border-2 border-sec rounded-full px-3 py-3 pr-15 flex flex-row justify-between items-center gap-4 cursor-none group relative"
             >
               <p
-                className=" uppercase font-satoshiBold font-bold text-[16px] pl-5 scale-y-100 
-              group-hover:scale-y-0 duration-300 delay-200 ease-in-out pointer-events-none select-none "
+                className="uppercase font-satoshiBold font-bold text-[16px] pl-5 scale-y-100 group-hover:scale-y-0 duration-300 delay-200 ease-in-out pointer-events-none select-none"
               >
                 view all services
               </p>
               <div
-                className=" pr-2 py-2 bg-sec w-fit rounded-full absolute top-[50%] translate-y-[-50%] right-2 pl-2 
-              group-hover:pl-53 group-hover:duration-300 group-hover:ease-in-out pointer-events-none "
+                className="pr-2 py-2 bg-sec w-fit rounded-full absolute top-[50%] translate-y-[-50%] right-2 pl-2 group-hover:pl-53 group-hover:duration-300 group-hover:ease-in-out pointer-events-none"
                 id="viewServiceButton"
               >
                 <MdArrowOutward className=" text-white text-[18px] " />
@@ -282,9 +280,7 @@ export default function InfoSlide() {
                 className=" rounded-3xl w-[78vw] sm:w-80 lg:w-100 lg:ml-50 "
               />
               <button
-                className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:left-[78%] lg:-translate-x-[78%] shadow-lg shadow-white
-            font-satoshiBold font-black text-black text-[16px] lg:text-[18px] px-4 py-2 w-48 lg:w-55 bg-white rounded-full text-center border-2 border-transparent
-            hover:border-white hover:bg-transparent hover:text-white duration-300 ease-in-out delay-100 "
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 lg:left-[78%] lg:-translate-x-[78%] shadow-lg shadow-white font-satoshiBold font-black text-black text-[16px] lg:text-[18px] px-4 py-2 w-48 lg:w-55 bg-white rounded-full text-center border2 bordertransparent hover:borderwhite hover:bg-transparent hover:text-white duration-300 ease-in-out delay-100"
               >
                 View All Services
               </button>

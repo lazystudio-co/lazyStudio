@@ -237,8 +237,7 @@ export default function AllServices() {
                         {service.services.map((item, i) => (
                           <span
                             key={i}
-                            className="font-satoshiRegular text-xs text-white px-3 py-1.5 bg-white/5 border border-white/10 rounded-full
-                             hover:bg-sec/20 hover:border-sec/50 transition-all duration-300"
+                            className="font-satoshiRegular text-xs text-white px-3 py-1.5 bg-white/5 border borderwhite/10 rounded-full hover:bg-sec/20 hover:bordersec/50 transition-all duration-300"
                           >
                             {item}
                           </span>

@@ -32,10 +32,11 @@ export default function LeftSlide() {
             <div key={index} className="mx-2 cursor-none ">
               <Image
                 src={path}
-                width={200}
-                height={200}
+                width={100}
+                height={100}
                 alt={`slide-${index}`}
                 className="rounded-2xl duration-300 ease-out grayscale hover:grayscale-0"
+                style={{ width: "auto", height: "auto" }}
               />
             </div>
           ))}
