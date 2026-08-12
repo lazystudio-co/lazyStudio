@@ -4,6 +4,7 @@ import Marquee from "react-fast-marquee";
 import Image from "next/image";
 import Container from "./container";
 
+
 export default function LeftSlide() {
   const imgPath = [
     "/images/l1.png",
@@ -19,13 +20,14 @@ export default function LeftSlide() {
   ];
 
   return (
-    <Container >
+    <Container className=" -mt-20 "  >
       <div id="fade-sides" className="select-none">
         <Marquee
           gradient={false}
           speed={50}
           pauseOnHover={false}
-          loop={0} // infinite loop
+          loop={0}
+          direction="right"
           className="select-none"
         >
           {imgPath.map((path, index) => (
@@ -35,7 +37,7 @@ export default function LeftSlide() {
                 width={100}
                 height={100}
                 alt={`slide-${index}`}
-                className="rounded-2xl duration-300 ease-out grayscale hover:grayscale-0"
+                className="rounded-2xl duration-300 ease-out76"
                 style={{ width: "auto", height: "auto" }}
               />
             </div>

@@ -1,5 +1,4 @@
 "use client";
-import BannerContents from "@/components/bannerContents";
 import Container from "@/components/container";
 import Hero from "@/components/hero";
 import InfoSlide from "@/components/infoSlide";
@@ -22,9 +21,9 @@ export default function Landing() {
     <>
       <Hero />
       {/* <BannerContents /> */}
-      <LeftSlide />
       <ProjectsContent />
       <InfoSlide />
+      <LeftSlide />
       <LandingHeroSection />
       <ServiceDetails />
 

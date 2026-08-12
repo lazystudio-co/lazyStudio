@@ -1,13 +1,19 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
+import GlassSurface from "@/component/GlassSurface";
 
 export default function CustomCursor() {
+  const [mounted, setMounted] = useState(false);
   const cursorRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted || typeof window === "undefined") return;
 
     // Disable on touch devices
     if (window.matchMedia("(pointer: coarse)").matches) return;
@@ -59,17 +65,18 @@ export default function CustomCursor() {
       gsap.to(cursor, { opacity: 1, duration: 0.3 });
     };
 
+    const hoverSelector =
+      "a, button, .hoverable, input, textarea, label, [role='button'], .cursor-pointer, select";
+
     const onMouseOver = (e) => {
       const target = e.target;
-      if (!target.closest) return;
+      if (!target || !target.closest) return;
 
-      const isHoverable = target.closest(
-        "a, button, .hoverable, input, textarea",
-      );
+      const isHoverable = target.closest(hoverSelector);
 
       if (isHoverable) {
         gsap.to(cursor, {
-          scale: 2, // Increased scale to make the "area" larger
+          scale: 1.8,
           duration: 0.3,
           ease: "power2.out",
         });
@@ -77,12 +84,12 @@ export default function CustomCursor() {
     };
 
     const onMouseOut = (e) => {
-      if (!e.target.closest) return;
+      if (!e.target || !e.target.closest) return;
 
       const stillHovering =
         e.relatedTarget &&
         e.relatedTarget.closest &&
-        e.relatedTarget.closest("a, button, .hoverable, input, textarea");
+        e.relatedTarget.closest(hoverSelector);
 
       if (!stillHovering) {
         gsap.to(cursor, {
@@ -102,19 +109,41 @@ export default function CustomCursor() {
     return () => {
       // Cleanup: Restore the system cursor
       document.body.style.cursor = "auto";
-      document.head.removeChild(style);
+      if (document.head.contains(style)) {
+        document.head.removeChild(style);
+      }
       window.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseleave", onMouseLeave);
       document.removeEventListener("mouseenter", onMouseEnter);
       document.removeEventListener("mouseover", onMouseOver);
       document.removeEventListener("mouseout", onMouseOut);
     };
-  }, []);
+  }, [mounted]);
+
+  if (!mounted) return null;
 
   return (
     <div
       ref={cursorRef}
-      className="pointer-events-none fixed top-0 left-0 z-9999 w-8 h-8 bg-white border- borderblack mix-blend-difference opacity-0 hidden sm:block will-change-transform rounded-full"
-    />
+      className="pointer-events-none fixed top-0 left-0 z-9999 opacity-0 hidden sm:block will-change-transform rounded-full bg-black/10 "
+    >
+      <GlassSurface
+        width={50}
+        height={50}
+        borderRadius={50}
+        borderWidth={0.06}
+        brightness={50}
+        opacity={0.8}
+        blur={1}
+        displace={0}
+        distortionScale={-24}
+        redOffset={-3}
+        greenOffset={0}
+        blueOffset={3}
+        backgroundOpacity={0.03}
+        mixBlendMode="screen"
+        className="rounded-full"
+      />
+    </div>
   );
 }

@@ -2,6 +2,7 @@ import NavBar from "@/components/navBar";
 import "./globals.css";
 import Footer from "@/components/footer";
 import CustomCursor from "@/components/customCursor";
+import TransitionProvider from "@/components/transitionProvider";
 
 export const metadata = {
   title: "LazyStudio — UI/UX Design, Web Development & Branding Agency",
@@ -21,9 +22,11 @@ export default function RootLayout({ children }) {
       >
         <CustomCursor />
 
-        <NavBar />
-        {children}
-        <Footer />
+        <TransitionProvider>
+          <NavBar />
+          {children}
+          <Footer />
+        </TransitionProvider>
       </body>
     </html>
   );

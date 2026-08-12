@@ -78,11 +78,10 @@ function MockDashboard() {
           ].map((item) => (
             <div
               key={item}
-              className={`text-[11px] py-1 px-2 rounded-md flex items-center gap-2 cursor-pointer transition-colors ${
-                item === "Billing"
-                  ? "bg-blue-500/20 text-blue-300 font-semibold"
-                  : "text-white/40 hover:text-white/70"
-              }`}
+              className={`text-[11px] py-1 px-2 rounded-md flex items-center gap-2 cursor-pointer transition-colors ${item === "Billing"
+                ? "bg-lime/80 text-black font-semibold"
+                : "text-white/40 hover:text-white/70"
+                }`}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-current opacity-60" />
               {item}
@@ -96,7 +95,7 @@ function MockDashboard() {
             <span className="text-white/80 text-sm font-semibold">
               Invoices
             </span>
-            <button className="text-[10px] bg-blue-800 text-white px-3 py-1 rounded-full font-semibold hover:bg-blue-500 transition-colors">
+            <button className="text-[10px] bg-lime/80 text-black px-3 py-1 rounded-full font-semibold hover:bg-lime transition-colors">
               + Add Invoice
             </button>
           </div>
@@ -119,9 +118,8 @@ function MockDashboard() {
                 {MOCK_DASHBOARD_ROWS.map((row, i) => (
                   <tr
                     key={row.id}
-                    className={`border-t border-white/5 transition-colors hover:bg-white/5 ${
-                      i === 0 ? "bg-sec" : ""
-                    }`}
+                    className={`border-t border-white/5 transition-colors hover:bg-white/5 ${i === 0 ? "bg-sec" : ""
+                      }`}
                   >
                     <td className="px-3 py-2 text-white/60 font-mono">
                       {row.id}
@@ -182,13 +180,12 @@ function WireframePanel() {
                     <div
                       key={ci}
                       style={{ flex: span }}
-                      className={`h-3 rounded-sm ${
-                        isPink
-                          ? "bg-pink-400/70"
-                          : isPurple
-                            ? "bg-purple-400/40"
-                            : "bg-white/15"
-                      }`}
+                      className={`h-3 rounded-sm ${isPink
+                        ? "bg-pink-400/70"
+                        : isPurple
+                          ? "bg-purple-400/40"
+                          : "bg-white/15"
+                        }`}
                     />
                   );
                 })}
@@ -204,9 +201,8 @@ function WireframePanel() {
                   <div
                     key={ci}
                     style={{ flex: span }}
-                    className={`h-2.5 rounded-sm ${
-                      (ri + ci) % 6 === 0 ? "bg-pink-400/60" : "bg-white/10"
-                    }`}
+                    className={`h-2.5 rounded-sm ${(ri + ci) % 6 === 0 ? "bg-pink-400/60" : "bg-white/10"
+                      }`}
                   />
                 ))}
               </div>
@@ -259,7 +255,7 @@ export default function LandingHeroSection() {
           {/* Left headline */}
           <div className="max-w-xl">
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.05] tracking-tight text-gray-900 wrap-break-word"
+              className="text-4xl sm:text-5xl md:text-6xl font-CabinetGrotesk leading-[1.05] tracking-tight text-gray-900 wrap-break-word"
               style={{ letterSpacing: "-0.02em" }}
             >
               From{" "}
@@ -269,11 +265,10 @@ export default function LandingHeroSection() {
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
                 }}
-                className=" bg-linear-to-r from-black via-sec to-sec/50 "
+                className=" bg-black "
               >
-                Simple Apps
-              </span>{" "}
-              To
+                Simple Apps To
+              </span>
               <br />
               Enterprise-Scale UX
             </h1>
@@ -281,7 +276,7 @@ export default function LandingHeroSection() {
 
           {/* Right tagline */}
           <div className="max-w-xs md:pt-3">
-            <p className="text-gray-500 text-lg leading-relaxed">
+            <p className="text-gray-500 text-lg leading-relaxed font-satoshiRegular ">
               We don&apos;t just create screens — we design experiences
               optimized for conversion and retention.
             </p>
@@ -307,19 +302,19 @@ export default function LandingHeroSection() {
 
             {/* Badge */}
             <div className="absolute top-6 left-6 flex items-center gap-2 z-10">
-              <div className="w-1 h-5 rounded-full bg-sec" />
-              <span className="text-white/60 text-xs font-bold tracking-widest uppercase">
+              <div className="w-1 h-5 rounded-full bg-lime" />
+              <span className="text-lime text-xs font-bold tracking-widest uppercase">
                 Deep UX
               </span>
             </div>
 
             {/* Headline + CTA */}
             <div className="absolute bottom-8 left-8 z-10">
-              <h2 className="text-white text-2xl font-bold leading-snug mb-5 max-w-[220px]">
+              <h2 className="text-white text-2xl font-CabinetLight leading-snug mb-5 max-w-[220px]">
                 Multi-Tenant B2B, Workflow-Heavy, Data-Dense Products
               </h2>
               <button
-                className="group flex items-center gap-3 bg-black hover:bg-sec/50 hover:text-white transition-all duration-300 text-white text-xs font-bold tracking-wider uppercase px-5 py-3 rounded-full"
+                className="group flex items-center gap-3 bg-black hover:bg-sec/50 hover:text-white transition-all duration-300 text-white text-xs font-satoshiRegular tracking-wider uppercase px-5 py-3 rounded-full"
                 style={{ letterSpacing: "0.1em" }}
               >
                 Contact Us

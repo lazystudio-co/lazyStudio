@@ -1,9 +1,10 @@
 "use client";
-
 import { motion } from "framer-motion";
 import Container from "./container";
 import { Code, LayoutDashboard, Palette, Video, Sparkles } from "lucide-react";
 import Link from "next/link";
+import LetsTalkButton from "./letsTalkButton";
+
 
 const featuredServices = [
   {
@@ -11,28 +12,28 @@ const featuredServices = [
     description: "Lightning-fast websites and scalable applications",
     icon: Code,
     gradient: "from-blue-600 to-blue-400",
-    link: "/services/uiux",
+    link: "/services/uiux-design",
   },
   {
     title: "Design & Branding",
     description: "Strategic brand identity that commands attention",
     icon: Palette,
     gradient: "from-purple-600 to-purple-400",
-    link: "/services/uiux",
+    link: "/services/branding-identity",
   },
   {
     title: "Development Services",
     description: "Scalable, AI-ready backend systems",
     icon: LayoutDashboard,
     gradient: "from-indigo-600 to-indigo-400",
-    link: "/services/uiux",
+    link: "/services/system-&-ui-kit",
   },
   {
     title: "Video Editing",
     description: "Cinematic production that drives engagement",
     icon: Video,
     gradient: "from-pink-600 to-pink-400",
-    link: "/services/uiux",
+    link: "/services/professional-video-editing",
   },
 ];
 
@@ -61,7 +62,7 @@ export default function ServicesHero() {
   };
 
   return (
-    <div className="relative w-full overflow-hidden py-16 md:py-24 px-5 sm:px-8 lg:px-12">
+    <div className="relative w-full overflow-hidden py-10 md:py-10 px-5 sm:px-8 lg:px-12">
       <Container>
         <motion.div
           className="relative z-10"
@@ -75,19 +76,13 @@ export default function ServicesHero() {
             className="text-center mb-12 md:mb-16"
             variants={itemVariants}
           >
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="text-sm md:text-base font-semibold text-black uppercase tracking-wider">
-                Our Expertise
-              </span>
-            </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-excon font-bold mb-6 bg-black bg-clip-text text-transparent leading-tight">
+            <h1 className="text-[34px] sm:text-[56px] md:text-[70px] lg:text-[80px] xl:text-[92px] font-CabinetGrotesk font-bold mb-2 md:mb-4 bg-black bg-clip-text text-transparent leading-[1] max-w-max md:max-w-[70%] mx-auto ">
               Comprehensive Solutions
-              <br />
-              for Every Need
+              for Every Need<span className=" text-lime " >.</span>
             </h1>
 
-            <p className="max-w-2xl mx-auto text-lg md:text-xl text-black leading-relaxed">
+            <p className="max-w-2xl mx-auto text-lg md:text-xl text-black leading-relaxed font-satoshiRegular">
               From cutting-edge web development to strategic branding, we
               deliver excellence across every discipline. Your success is our
               mission.
@@ -148,21 +143,29 @@ export default function ServicesHero() {
           </motion.div>
 
           {/* CTA Section */}
-          <motion.div
-            className="mt-16 md:mt-20 text-center"
-            variants={itemVariants}
+          <Link
+            id="servicebtn"
+            href="/contact"
+            className={` mx-auto w-80 h-15 mt-10 px-3 rounded-full uppercase bg-lime cursor-none flex items-center justify-between select-none  overflow-hidden group relative`}
           >
-            <p className="text-sec mb-6">Ready to bring your vision to life?</p>
-            <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 md:px-12 py-4 bg-linear-to-r from-black to-sec hover:from-sec hover:to-black text-white font-bold rounded-full duration-300 ease-in-out shadow-lg hover:shadow-black/50"
+            <div className=" w-fit  " >
+              <h3
+                className="font-satoshiBold text-[18px] font-semibold text-lime px-14 absolute top-[50%] left-0 translate-y-[-50%] group-hover:top-100 group-hover:text-transparent duration-300 ease-in-out cursor-none w-fit "
               >
                 Start Your Project
-              </motion.button>
-            </Link>
-          </motion.div>
+              </h3>
+              <h4
+                className="font-satoshiBold text-[18px] font-semibold text-transparent px-12 absolute -top-100 left-0 group-hover:top-[50%] group-hover:translate-y-[-50%] group-hover:text-white duration-300 ease-in-out cursor-none"
+              >
+                We are one call away
+              </h4>
+            </div>
+
+            <div
+              id="fadeOut"
+              className="h-15 w-full bg-black absolute scale-180 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] rounded-full -z-50 cursor-none group-hover:-left-5 group-hover:scale-150 transition-all duration-500"
+            ></div>
+          </Link>
         </motion.div>
       </Container>
     </div>

@@ -166,20 +166,20 @@ function WhyUsContents() {
     <main className="bg-white text-black">
       <Container className="px-5 sm:px-8 lg:px-12">
         {/* Hero */}
-        <section className="py-20 lg:py-40">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="max-w-4xl -mt-10">
-              <h1 className="font-excon text-[56px] sm:text-[72px] lg:text-[128px] leading-[0.9] tracking-tighter image-text select-none mb-10">
-                Why <br /> Lazy <br /> Studio.
+        <section className="py-20 lg:py-20">
+          <div className="  ">
+            <div className=" -mt-10">
+              <h1 className="font-CabinetGrotesk text-[36px] sm:text-[56px] md:text-[76px] lg:text-[80px] xl:text-[92px] leading-[0.9] tracking-tighter select-none mb-6 text-center ">
+                Why Lazy Studio<span className=" text-lime " > .</span>
               </h1>
-              <p className="font-satoshiBold text-xl sm:text-2xl lg:text-3xl text-black/80 max-w-2xl leading-snug">
+              <p className="font-satoshiBold text-xl sm:text-2xl lg:text-3xl text-black/80 leading-snug text-center ">
                 Partner with a results-driven studio that pairs strategic
                 thinking with world-class execution. We deliver solutions that
                 drive measurable impact and sustainable growth.
               </p>
             </div>
 
-            <div className="relative hidden lg:block cursor-none group">
+            <div className="relative hidden lg:block cursor-none group mt-10">
               <motion.div
                 ref={imageRef}
                 initial={
@@ -224,7 +224,7 @@ function WhyUsContents() {
                 key={stat.label}
                 className="border border-black/10 rounded-3xl p-6 sm:p-8 text-center hover:bg-sec transition-all duration-300 group"
               >
-                <h3 className="font-excon text-4xl sm:text-5xl lg:text-6xl text-sec mb-4 group-hover:text-white duration-300 ease-in-out">
+                <h3 className="font-CabinetGrotesk text-4xl sm:text-5xl lg:text-6xl text-sec mb-4 group-hover:text-white duration-300 ease-in-out">
                   {stat.metric}
                 </h3>
                 <p className="font-satoshiRegular text-lg text-black/70 group-hover:text-white duration-300 ease-in-out">
@@ -239,7 +239,7 @@ function WhyUsContents() {
         <section className="py-10 mb-20 lg:mb-32 bg-black text-white rounded-[40px] lg:rounded-[100px]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center px-6 sm:px-10 lg:px-20 py-8 lg:py-10">
             <div>
-              <h2 className="font-excon text-5xl sm:text-6xl lg:text-8xl mb-8 leading-none">
+              <h2 className="font-CabinetGrotesk text-5xl sm:text-6xl lg:text-8xl mb-8 leading-none">
                 Why <span className="text-sec">Lazy</span>?
               </h2>
               <div className="space-y-6 font-satoshiRegular text-lg sm:text-xl text-white/70 leading-relaxed">
@@ -261,11 +261,11 @@ function WhyUsContents() {
               </div>
             </div>
             <div className="bg-sec/10 border border-white/10 p-6 sm:p-10 lg:p-12 rounded-3xl backdrop-blur-sm">
-              <h3 className="font-excon text-2xl sm:text-3xl mb-6">The Lazy Manifesto</h3>
+              <h3 className="font-CabinetGrotesk text-2xl sm:text-3xl mb-6">The Lazy Manifesto</h3>
               <ul className="space-y-8">
                 {manifesto.map((item, idx) => (
                   <li key={item.title} className="flex gap-4 sm:gap-6">
-                    <span className="font-excon text-sec text-2xl">
+                    <span className="font-CabinetGrotesk text-sec text-2xl">
                       0{idx + 1}
                     </span>
                     <div>
@@ -287,10 +287,10 @@ function WhyUsContents() {
         <section className="mb-20 lg:mb-32">
           <div className="mb-16 flex flex-col lg:flex-row justify-between lg:items-end gap-8">
             <div>
-              <h2 className="font-excon text-4xl sm:text-5xl lg:text-6xl max-w-2xl leading-tight mb-2">
+              <h2 className="font-CabinetGrotesk text-4xl sm:text-5xl lg:text-6xl max-w-2xl leading-tight mb-2">
                 Data-Driven Solutions.
               </h2>
-              <h2 className="font-excon text-3xl sm:text-4xl lg:text-5xl max-w-2xl leading-tight text-sec">
+              <h2 className="font-CabinetGrotesk text-3xl sm:text-4xl lg:text-5xl max-w-2xl leading-tight text-sec">
                 Exceptional Results.
               </h2>
             </div>
@@ -310,7 +310,7 @@ function WhyUsContents() {
                 <div className="w-12 h-12 bg-black text-white group-hover:bg-white group-hover:text-black rounded-full flex items-center justify-center font-satoshiBold text-xl mb-6 group-hover:scale-110 transition-all duration-300">
                   {reason.id}
                 </div>
-                <h3 className="font-excon text-2xl mb-4">{reason.title}</h3>
+                <h3 className="font-CabinetGrotesk text-2xl mb-4">{reason.title}</h3>
                 <p className="font-satoshiRegular text-black/70 group-hover:text-white/80 duration-300">
                   {reason.description}
                 </p>
@@ -322,7 +322,7 @@ function WhyUsContents() {
         {/* Our DNA — pillars + expertise */}
         <section className="mb-20 lg:mb-32">
           <div className="text-center mb-16 lg:mb-20">
-            <h2 className="font-excon text-4xl sm:text-5xl lg:text-7xl mb-6">Our DNA.</h2>
+            <h2 className="font-CabinetGrotesk text-4xl sm:text-5xl lg:text-7xl mb-6">Our DNA.</h2>
             <p className="font-satoshiRegular text-xl text-black/60 max-w-xl mx-auto">
               We've merged the world's most powerful technologies with top-tier
               creative vision to build something truly future-proof.
@@ -338,7 +338,7 @@ function WhyUsContents() {
                 <div className="mb-8 uppercase tracking-widest text-xs font-satoshiBold text-sec">
                   {pillar.tag}
                 </div>
-                <h3 className="font-excon text-3xl mb-6">{pillar.title}</h3>
+                <h3 className="font-CabinetGrotesk text-3xl mb-6">{pillar.title}</h3>
                 <p className="font-satoshiRegular text-lg opacity-60 group-hover:opacity-100 transition-opacity">
                   {pillar.desc}
                 </p>
@@ -362,7 +362,7 @@ function WhyUsContents() {
         <section className="py-16 lg:py-32 mb-20 lg:mb-32 bg-black text-white rounded-[40px] lg:rounded-[100px]">
           <div className="px-6 sm:px-10 lg:px-20 py-6 lg:py-10">
             <div className="text-center mb-16 lg:mb-20">
-              <h2 className="font-excon text-4xl sm:text-5xl lg:text-7xl mb-6">
+              <h2 className="font-CabinetGrotesk text-4xl sm:text-5xl lg:text-7xl mb-6">
                 Our <span className="text-sec">Process.</span>
               </h2>
               <p className="font-satoshiRegular text-xl text-white/60 max-w-2xl mx-auto">
@@ -378,7 +378,7 @@ function WhyUsContents() {
                   key={process.step}
                   className="border border-white/10 rounded-3xl p-8 hover:bg-white/5 duration-300 ease-in-out"
                 >
-                  <div className={`font-excon text-5xl mb-6 ${process.colorTxt}`}>
+                  <div className={`font-CabinetGrotesk text-5xl mb-6 ${process.colorTxt}`}>
                     {process.step}
                   </div>
                   <h3 className="font-satoshiBold text-xl mb-4">
@@ -396,7 +396,7 @@ function WhyUsContents() {
         {/* Testimonials */}
         <section className="mb-20 lg:mb-32">
           <div className="text-center mb-16 lg:mb-20">
-            <h2 className="font-excon text-4xl sm:text-5xl lg:text-7xl mb-6">
+            <h2 className="font-CabinetGrotesk text-4xl sm:text-5xl lg:text-7xl mb-6">
               What Our Clients Say.
             </h2>
             <p className="font-satoshiRegular text-xl text-black/60 max-w-xl mx-auto">

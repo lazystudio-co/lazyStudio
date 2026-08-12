@@ -128,7 +128,7 @@ export default function Blog() {
 
         {/* Hero */}
         <section className="pt-24 pb-8">
-          <h1 className="text-5xl md:text-6xl font-Excon font-black leading-tight mb-4">Insights, Research & Case Studies</h1>
+          <h1 className="text-5xl md:text-6xl font-CabinetGrotesk font-black leading-tight mb-4">Insights, Research & Case Studies</h1>
           <p className="text-xl text-sec max-w-3xl leading-relaxed font-SatoshiBoldRegular">
             Long-form technical posts, product playbooks, and data-backed case studies from our studio — practical guidance for designers,
             engineers, and product teams building at scale.
@@ -142,11 +142,11 @@ export default function Blog() {
               <article className="group bg-gray-50 rounded-3xl overflow-hidden border border-gray-200">
                 <div className="p-10">
                   <div className="text-sm text-sec font-medium mb-2">{featured[0].category} • {featured[0].date} • {featured[0].readTime}</div>
-                  <h2 className="text-3xl md:text-4xl font-Excon font-black mb-4">{featured[0].title}</h2>
+                  <h2 className="text-3xl md:text-4xl font-CabinetGrotesk font-black mb-4">{featured[0].title}</h2>
                   <p className="text-sec leading-relaxed mb-6 font-SatoshiBoldRegular">{featured[0].excerpt}</p>
                   <div className="flex items-center gap-4">
                     <div>
-                      <div className="text-sm font-semibold font-Excon">{featured[0].author}</div>
+                      <div className="text-sm font-semibold font-CabinetGrotesk">{featured[0].author}</div>
                       <div className="text-sm text-gray-500">Author</div>
                     </div>
                     <button className="ml-auto bg-black text-white px-6 py-3 rounded-full text-sm font-semibold font-SatoshiBoldRegular">Read the report</button>
@@ -159,7 +159,7 @@ export default function Blog() {
               {recent.slice(0, 4).map((post) => (
                 <article key={post.id} className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md transition-shadow">
                   <div className="text-xs text-sec font-medium mb-2">{post.category} • {post.date}</div>
-                  <h3 className="text-xl font-Excon mb-2">{post.title}</h3>
+                  <h3 className="text-xl font-CabinetGrotesk mb-2">{post.title}</h3>
                   <p className="text-sec mb-4 font-SatoshiBoldRegular">{post.excerpt}</p>
                   <div className="flex justify-between items-center text-sm text-gray-600">
                     <span>{post.author}</span>
@@ -192,7 +192,7 @@ export default function Blog() {
               <ul className="space-y-3">
                 {AUTHORS.map((a) => (
                   <li key={a.name} className="text-sm">
-                    <div className="font-semibold font-Excon">{a.name}</div>
+                    <div className="font-semibold font-CabinetGrotesk">{a.name}</div>
                     <div className="text-sm text-gray-600">{a.role}</div>
                   </li>
                 ))}
@@ -212,12 +212,12 @@ export default function Blog() {
 
         {/* Research */}
         <section className="mb-16">
-          <h3 className="text-2xl font-Excon font-bold mb-6">In-depth Research & Playbooks</h3>
+          <h3 className="text-2xl font-CabinetGrotesk font-bold mb-6">In-depth Research & Playbooks</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {posts.filter((p) => p.category === "Research" || p.category === "Engineering").slice(0, 3).map((p) => (
               <article key={p.id} className="bg-white border border-gray-100 rounded-2xl p-6">
                 <div className="text-xs text-sec mb-2">{p.category} • {p.date}</div>
-                <h4 className="font-Excon font-semibold mb-2">{p.title}</h4>
+                <h4 className="font-CabinetGrotesk font-semibold mb-2">{p.title}</h4>
                 <p className="text-sec text-sm mb-4 font-SatoshiBoldRegular">{p.excerpt}</p>
                 <div className="text-sm text-gray-600">{p.readTime} • {p.author}</div>
               </article>
@@ -227,12 +227,12 @@ export default function Blog() {
 
         {/* Case Studies */}
         <section className="mb-24">
-          <h3 className="text-2xl font-Excon font-bold mb-6">Case Studies</h3>
+          <h3 className="text-2xl font-CabinetGrotesk font-bold mb-6">Case Studies</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {posts.filter((p) => p.category === "Case Study").map((p) => (
               <article key={p.id} className="bg-white border border-gray-100 rounded-2xl p-6">
                 <div className="text-xs text-sec mb-2">{p.date}</div>
-                <h4 className="font-Excon font-semibold mb-2">{p.title}</h4>
+                <h4 className="font-CabinetGrotesk font-semibold mb-2">{p.title}</h4>
                 <p className="text-sec text-sm mb-4 font-SatoshiBoldRegular">{p.excerpt}</p>
                 <div className="text-sm text-gray-600">{p.readTime} • {p.author}</div>
               </article>
@@ -242,7 +242,7 @@ export default function Blog() {
 
         {/* CTA */}
         <section className="bg-gray-50 rounded-3xl p-12 text-center">
-          <h3 className="text-3xl font-Excon font-bold mb-4">Research you can act on</h3>
+          <h3 className="text-3xl font-CabinetGrotesk font-bold mb-4">Research you can act on</h3>
           <p className="text-sec mb-6 max-w-2xl mx-auto font-SatoshiBoldRegular">
             Each piece is grounded in measurable outcomes — experiments, A/B tests, performance benchmarks, and customer interviews. Subscribe for monthly briefs and downloadable playbooks.
           </p>

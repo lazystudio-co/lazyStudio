@@ -119,10 +119,7 @@ const services = [
       "Short Form Video Editing (TikTok, Reels)",
       "YouTube Video Editing & Optimization",
       "Social Media Video Campaigns",
-      "Promotional & Product Videos",
       "Color Grading & Finishing",
-      "Motion Graphics & Animations",
-      "Video Strategy & Story Development",
     ],
     benefits: [
       { icon: Clapperboard, text: "Hollywood-quality editing" },
@@ -141,7 +138,7 @@ export default function AllServices() {
         <div className="text-center mb-10 ">
           <h2
             id="clipSec"
-            className="text-4xl sm:text-5xl lg:text-7xl font-excon font-bold mb-6"
+            className="text-4xl sm:text-5xl lg:text-7xl font-CabinetGrotesk font-bold mb-6"
           >
             All Services
           </h2>
@@ -170,7 +167,7 @@ export default function AllServices() {
                           <Icon className="text-sec" size={28} />
                         </div>
                       </div>
-                      <h3 className="text-4xl lg:text-5xl font-excon text-white mb-6">
+                      <h3 className="text-4xl lg:text-5xl font-CabinetGrotesk text-white mb-6">
                         <span className="text-sec">
                           {service.title.split(" ")[0]} <br />
                         </span>
@@ -180,7 +177,7 @@ export default function AllServices() {
                         {service.description}
                       </p>
                       <div className="bg-sec/10 border border-sec/30 rounded-2xl p-5">
-                        <div className="text-2xl font-excon text-sec mb-2">
+                        <div className="text-2xl font-CabinetGrotesk text-sec mb-2">
                           {index === 0 && "40%+"}
                           {index === 1 && "60%"}
                           {index === 2 && "10x"}
@@ -262,7 +259,7 @@ export default function AllServices() {
         {/* Our Process Section */}
         <section className="mb-24 lg:mb-32">
           <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-excon mb-6">
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-CabinetGrotesk mb-6">
               How We <span className="text-sec">Work.</span>
             </h2>
             <p className="text-black/60 font-satoshiRegular text-lg max-w-2xl mx-auto">
@@ -281,10 +278,10 @@ export default function AllServices() {
               {/* Step 1 */}
               <div className="relative">
                 <div className="mb-10">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-excon text-2xl mb-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-CabinetGrotesk text-2xl mb-6">
                     01
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-excon mb-4">
+                  <h3 className="text-3xl lg:text-4xl font-CabinetGrotesk mb-4">
                     Discovery & <span className="text-sec">Strategy</span>
                   </h3>
                   <p className="text-black/70 font-satoshiRegular text-lg leading-relaxed mb-6">
@@ -294,19 +291,19 @@ export default function AllServices() {
                   </p>
                   <div className="space-y-3">
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         In-depth stakeholder interviews and market analysis
                       </p>
                     </div>
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         Competitive landscape mapping and positioning
                       </p>
                     </div>
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         Strategy document with clear KPIs and objectives
                       </p>
@@ -318,10 +315,10 @@ export default function AllServices() {
               {/* Step 2 */}
               <div className="relative ">
                 <div className="mb-10">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-excon text-2xl mb-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-CabinetGrotesk text-2xl mb-6">
                     02
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-excon mb-4">
+                  <h3 className="text-3xl lg:text-4xl font-CabinetGrotesk mb-4">
                     Design & <span className="text-sec">Planning</span>
                   </h3>
                   <p className="text-black/70 font-satoshiRegular text-lg leading-relaxed mb-6">
@@ -332,19 +329,19 @@ export default function AllServices() {
                   </p>
                   <div className="space-y-3">
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         High-fidelity mockups and interactive prototypes
                       </p>
                     </div>
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         User flow diagrams and experience mapping
                       </p>
                     </div>
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         Technical architecture planning and resource allocation
                       </p>
@@ -356,10 +353,10 @@ export default function AllServices() {
               {/* Step 3 */}
               <div className=" relative ">
                 <div className="mb-10">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-excon text-2xl mb-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-CabinetGrotesk text-2xl mb-6">
                     03
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-excon mb-4">
+                  <h3 className="text-3xl lg:text-4xl font-CabinetGrotesk mb-4">
                     Build & <span className="text-sec">Optimize</span>
                   </h3>
                   <p className="text-black/70 font-satoshiRegular text-lg leading-relaxed mb-6">
@@ -370,20 +367,20 @@ export default function AllServices() {
                   </p>
                   <div className="space-y-3">
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         Clean, maintainable code with full documentation
                       </p>
                     </div>
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         Continuous testing, security audits, and performance
                         optimization
                       </p>
                     </div>
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         Weekly progress updates and transparent communication
                       </p>
@@ -395,10 +392,10 @@ export default function AllServices() {
               {/* Step 4 */}
               <div className=" relative ">
                 <div className="mb-10">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-excon text-2xl mb-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-CabinetGrotesk text-2xl mb-6">
                     04
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-excon mb-4">
+                  <h3 className="text-3xl lg:text-4xl font-CabinetGrotesk mb-4">
                     Launch & <span className="text-sec">Support</span>
                   </h3>
                   <p className="text-black/70 font-satoshiRegular text-lg leading-relaxed mb-6">
@@ -408,19 +405,19 @@ export default function AllServices() {
                   </p>
                   <div className="space-y-3">
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         Zero-downtime deployment with rollback protocols
                       </p>
                     </div>
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         Post-launch monitoring, analytics, and optimization
                       </p>
                     </div>
                     <div className="flex gap-3 items-start">
-                      <span className="text-sec font-excon text-xl">✓</span>
+                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
                       <p className="font-satoshiRegular text-black/70">
                         Dedicated support team available for ongoing maintenance
                       </p>
@@ -439,7 +436,7 @@ export default function AllServices() {
               <div className="text-4xl mb-4">
                 <img src="/icons/quick.png" className="w-16 h-16" />
               </div>
-              <h3 className="text-2xl font-excon text-black mb-4">
+              <h3 className="text-2xl font-CabinetGrotesk text-black mb-4">
                 Realistic Timelines
               </h3>
               <p className="text-black/70 font-satoshiRegular leading-relaxed">
@@ -452,7 +449,7 @@ export default function AllServices() {
               <div className="text-4xl mb-4">
                 <img src="/icons/interaction.png" className="w-16 h-16" />
               </div>
-              <h3 className="text-2xl font-excon text-black mb-4">
+              <h3 className="text-2xl font-CabinetGrotesk text-black mb-4">
                 Constant Communication
               </h3>
               <p className="text-black/70 font-satoshiRegular leading-relaxed">
@@ -465,7 +462,7 @@ export default function AllServices() {
               <div className="text-4xl mb-4">
                 <img src="/icons/result.png" className="w-16 h-16" />
               </div>
-              <h3 className="text-2xl font-excon text-black mb-4">
+              <h3 className="text-2xl font-CabinetGrotesk text-black mb-4">
                 Results-Driven Approach
               </h3>
               <p className="text-black/70 font-satoshiRegular leading-relaxed">

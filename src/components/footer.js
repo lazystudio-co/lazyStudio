@@ -48,15 +48,13 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-gray-300 pt-20 lg:pt-30 pb-10 px-5 sm:px-8 lg:px-0 ">
+    <footer className="border-t border-gray-300 pt-20 lg:pt-30 pb-10  ">
       <Container className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         <div>
           <img
             src="/images/logo.png"
-            width={240}
-            height={60}
             alt="LazyStudio"
-            className="-ml-8.5 select-none"
+            className="-ml-2 select-none w-40 "
           />
           <p className="w-full max-w-70 mt-4 font-satoshiBold text-[16px] leading-[1.6]">
             We craft world-class digital products that help startups and Fortune
@@ -67,10 +65,10 @@ export default function Footer() {
             <Link
               href="/contact"
               id="footerButton"
-              className=" inline-block px-18 py-7 bg-sec rounded-full text-black overflow-hidden cursor-none drop-shadow-none group relative "
+              className=" inline-block px-18 py-7 bg-lime rounded-full text-black overflow-hidden cursor-none drop-shadow-none group relative "
             >
               <span
-                className="font-satoshiBold text-[20px] font-semibold text-white z-50 cursor-none absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:top-100 duration-300 ease-in-out pointer-events-none"
+                className="font-satoshiBold text-[20px] font-semibold text-lime z-50 cursor-none absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] group-hover:top-100 duration-300 ease-in-out pointer-events-none"
               >
                 Contact
               </span>
@@ -82,7 +80,7 @@ export default function Footer() {
 
               <div
                 id="fadeOut"
-                className="h-15 w-full bg-black absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] rounded-full -z-20 cursor-none group-hover:-left-5 group-hover:scale-150 transition-all duration-500"
+                className="h-15 w-full scale-180 bg-black absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] rounded-full -z-20 cursor-none group-hover:-left-5 group-hover:scale-150 transition-all duration-500"
               ></div>
             </Link>
           </div>
@@ -171,9 +169,9 @@ export default function Footer() {
           </p>
         </div>
         <div className=" flex flex-row justify-start md:justify-center items-center gap-10 lg:gap-14 ">
-          <FaInstagram className=" text-[24px]  " />
-          <FaSquareXTwitter className=" text-[24px]  " />
-          <FaFacebookSquare className=" text-[24px]  " />
+          <FaInstagram className=" text-[24px] text-black hover:text-lime duration-200 ease-out  " />
+          <FaSquareXTwitter className=" text-[24px] text-black hover:text-lime duration-200 ease-out  " />
+          <FaFacebookSquare className=" text-[24px] text-black hover:text-lime duration-200 ease-out  " />
         </div>
       </Container>
     </footer>
