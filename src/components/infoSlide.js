@@ -56,9 +56,12 @@ export default function InfoSlide() {
 
         {/* category */}
         <div className="grid grid-cols-3 auto-rows-[minmax(300px,auto)] gap-6 pt-10 pb-16 relative">
-          <Link href="/services/web-development" className="row-span-2 h-full">
+          <Link
+            href="/services/web-development"
+            className=" h-full grayscale-100 hover:grayscale-0 duration-300 ease-in-out "
+          >
             <TiltedCard
-              imageSrc="/images/webdev.png"
+              imageSrc="/images/webdevsec.png"
               altText="Web development card"
               rotateAmplitude={6}
               scaleOnHover={1.01}
@@ -76,9 +79,12 @@ export default function InfoSlide() {
             />
           </Link>
 
-          <Link href="/services/system-&-ui-kit" className="col-span-2 h-full">
+          <Link
+            href="/services/system-&-ui-kit"
+            className="h-full grayscale-100 hover:grayscale-0 duration-300 ease-in-out "
+          >
             <TiltedCard
-              imageSrc="/images/system.png"
+              imageSrc="/images/systemsec.png"
               altText="System and UI kit design"
               rotateAmplitude={6}
               scaleOnHover={1.01}
@@ -95,7 +101,10 @@ export default function InfoSlide() {
               }
             />
           </Link>
-          <Link href="/services/web-design" className="h-full">
+          <Link
+            href="/services/web-design"
+            className="h-full grayscale-100 hover:grayscale-0 duration-300 ease-in-out "
+          >
             <TiltedCard
               imageSrc="/images/webdesign.png"
               altText="Web design card"
@@ -114,7 +123,10 @@ export default function InfoSlide() {
               }
             />
           </Link>
-          <Link href="/services/ai-&-agents" className="h-full">
+          <Link
+            href="/services/ai-&-agents"
+            className="h-full grayscale-100 hover:grayscale-0 duration-300 ease-in-out "
+          >
             <TiltedCard
               imageSrc="/gif/ai.gif"
               altText="AI integration and agents"
@@ -135,10 +147,10 @@ export default function InfoSlide() {
           </Link>
           <Link
             href="/services/branding-identity"
-            className="col-span-2 h-full"
+            className=" h-full grayscale-100 hover:grayscale-0 duration-300 ease-in-out "
           >
             <TiltedCard
-              imageSrc="/images/branding.png"
+              imageSrc="/images/brandingsec.png"
               altText="Branding and identity"
               rotateAmplitude={6}
               scaleOnHover={1.01}
@@ -155,7 +167,10 @@ export default function InfoSlide() {
               }
             />
           </Link>
-          <Link href="/services/custom-portfolio" className="h-full">
+          <Link
+            href="/services"
+            className="h-full grayscale-100 hover:grayscale-0 duration-300 ease-in-out "
+          >
             <TiltedCard
               imageSrc="/gif/allservice.gif"
               altText="Custom portfolio card"

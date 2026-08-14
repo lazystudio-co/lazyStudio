@@ -64,7 +64,7 @@ jobs:
             set -e
             APP_DIR="${{ secrets.SERVER_APP_DIR }}"
             APP_PORT="${{ secrets.SERVER_APP_PORT }}"
-            APP_PORT="${APP_PORT:-3002}"
+            APP_PORT="${APP_PORT:-3005}"
             mkdir -p "$APP_DIR"
             rm -rf "$APP_DIR/.next" "$APP_DIR/node_modules"
             tar -xzf /tmp/release.tar.gz -C "$APP_DIR"
