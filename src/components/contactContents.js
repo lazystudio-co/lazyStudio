@@ -371,41 +371,41 @@ export default function ContactContents() {
           </div>
 
           {/* ---------- BODY: INFO PANEL + FORM ---------- */}
-          <Container className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
+          <Container className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
             {/* INFO PANEL */}
-            <div className="relative flex flex-col overflow-hidden rounded-[40px] bg-black p-10 text-white">
-              {/* subtle monochrome glows */}
-              <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-[90px]" />
-              <div className="pointer-events-none absolute -bottom-24 -left-12 h-56 w-56 rounded-full bg-white/5 blur-[100px]" />
+            <div className="relative flex flex-col justify-between overflow-hidden rounded-[36px] bg-neutral-950 border border-neutral-800/80 p-8 sm:p-12 text-white shadow-2xl">
+              {/* subtle monochrome & lime glows */}
+              <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-lime/10 blur-[90px]" />
+              <div className="pointer-events-none absolute -bottom-24 -left-12 h-64 w-64 rounded-full bg-white/5 blur-[100px]" />
 
               <div className="relative z-10">
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 font-satoshiBold text-[11px] uppercase tracking-[0.16em] text-white/70">
-                  <span className="h-1.5 w-1.5 rounded-full bg-white" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-lime/30 bg-lime/10 px-4 py-1.5 font-satoshiBold text-[11px] uppercase tracking-[0.16em] text-lime">
+                  <span className="h-2 w-2 rounded-full bg-lime animate-pulse" />
                   Get in touch
                 </span>
 
-                <h2 className="mt-6 font-CabinetGrotesk text-[40px] leading-[0.95] tracking-[-0.03em]">
+                <h2 className="mt-8 font-CabinetGrotesk text-[42px] sm:text-[52px] leading-[0.95] tracking-[-0.03em] font-bold text-white">
                   Let&apos;s build
                   <br />
-                  something great.
+                  <span className="text-lime">something great.</span>
                 </h2>
-                <p className="mt-5 max-w-sm font-satoshiRegular text-[16px] leading-[1.6] text-white/60">
+                <p className="mt-5 max-w-sm font-satoshiRegular text-[16px] sm:text-[17px] leading-[1.6] text-neutral-400">
                   Tell us where you&apos;re headed and we&apos;ll map the fastest
                   route there. No fluff, just momentum.
                 </p>
 
-                <div className="mt-10 flex flex-col gap-4">
+                <div className="mt-12 flex flex-col gap-6">
                   {infoRows.map(({ icon: Icon, label, value, href }) => {
                     const inner = (
                       <>
-                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 transition-colors duration-300 group-hover:bg-white group-hover:text-black">
+                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-neutral-800 bg-neutral-900 text-lime transition-all duration-300 group-hover:bg-lime group-hover:text-black group-hover:border-lime shadow-inner">
                           <Icon className="h-5 w-5" />
                         </span>
                         <span>
-                          <span className="block font-satoshiBold text-[11px] uppercase tracking-[0.12em] text-white/40">
+                          <span className="block font-satoshiBold text-[11px] uppercase tracking-[0.14em] text-neutral-500">
                             {label}
                           </span>
-                          <span className="font-satoshiBold text-[16px]">
+                          <span className="font-satoshiBold text-[16px] text-white group-hover:text-lime transition-colors duration-300">
                             {value}
                           </span>
                         </span>
@@ -429,17 +429,17 @@ export default function ContactContents() {
               </div>
 
               {/* panel footer */}
-              <div className="relative z-10 mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-8">
+              <div className="relative z-10 mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-neutral-800/80 pt-8">
                 <div className="flex items-center">
                   {avatars.map((avatar, index) => (
                     <div
                       key={`panel-${avatar.name}`}
-                      className={`flex h-11 w-11 items-center justify-center rounded-full border-[3px] border-black bg-linear-to-br ${avatar.bg} font-satoshiBold text-[12px] text-white ${index === 0 ? "" : "-ml-2"}`}
+                      className={`flex h-11 w-11 items-center justify-center rounded-full border-[3px] border-neutral-950 bg-linear-to-br ${avatar.bg} font-satoshiBold text-[12px] text-white ${index === 0 ? "" : "-ml-2"}`}
                     >
                       {avatar.name}
                     </div>
                   ))}
-                  <span className="ml-4 flex items-center gap-1 font-satoshiRegular text-[14px] italic text-white/60">
+                  <span className="ml-4 flex items-center gap-1.5 font-satoshiRegular text-[14px] italic text-neutral-400">
                     Booked fast
                     <Image
                       src="/images/fire.png"
@@ -451,28 +451,31 @@ export default function ContactContents() {
                   </span>
                 </div>
 
-                <div className="flex items-center gap-4 text-[22px] text-white/80">
-                  <FaInstagram className="cursor-none transition-all duration-300 hover:-translate-y-1 hover:text-white" />
-                  <FaSquareXTwitter className="cursor-none transition-all duration-300 hover:-translate-y-1 hover:text-white" />
-                  <FaFacebookSquare className="cursor-none transition-all duration-300 hover:-translate-y-1 hover:text-white" />
+                <div className="flex items-center gap-5 text-[22px] text-neutral-400">
+                  <FaInstagram className="cursor-none transition-all duration-300 hover:-translate-y-1 hover:text-lime" />
+                  <FaSquareXTwitter className="cursor-none transition-all duration-300 hover:-translate-y-1 hover:text-lime" />
+                  <FaFacebookSquare className="cursor-none transition-all duration-300 hover:-translate-y-1 hover:text-lime" />
                 </div>
               </div>
             </div>
 
             {/* FORM CARD */}
-            <div className="rounded-[40px] border-2 border-neutral-200 bg-white p-8 transition-colors duration-300 ease-in hover:border-black sm:p-12">
-              <form onSubmit={handleSubmit}>
+            <div className="rounded-[36px] border border-neutral-800/80 bg-neutral-950 p-8 sm:p-12 shadow-2xl transition-all duration-300 hover:border-lime/40 relative overflow-hidden">
+              <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-lime/5 blur-[90px]" />
+
+              <form onSubmit={handleSubmit} className="relative z-10">
                 {/* NAME */}
                 <FieldLabel>Name &amp; Company</FieldLabel>
-                <SoftInput
+                <input
                   name="name"
                   onChange={handleChange}
                   value={formData.name}
                   type="text"
                   placeholder="Don from Earth, Inc."
+                  className="h-16 w-full rounded-2xl border border-neutral-800 bg-neutral-900/90 px-6 text-[15px] text-white outline-none transition-all duration-300 placeholder:text-neutral-500 focus:border-lime/80 focus:ring-1 focus:ring-lime/50"
                 />
                 {errors.name && (
-                  <span className="text-red-500 text-[12px] mt-1.5 block ml-4 font-satoshiRegular">
+                  <span className="text-red-400 text-[12px] mt-1.5 block ml-4 font-satoshiRegular">
                     {errors.name}
                   </span>
                 )}
@@ -481,15 +484,16 @@ export default function ContactContents() {
                 <div className="mt-7 grid gap-6 md:grid-cols-2">
                   <div>
                     <FieldLabel>Email</FieldLabel>
-                    <SoftInput
+                    <input
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       type="email"
                       placeholder="don@norman.me"
+                      className="h-16 w-full rounded-2xl border border-neutral-800 bg-neutral-900/90 px-6 text-[15px] text-white outline-none transition-all duration-300 placeholder:text-neutral-500 focus:border-lime/80 focus:ring-1 focus:ring-lime/50"
                     />
                     {errors.email && (
-                      <span className="text-red-500 text-[12px] mt-1.5 block ml-4 font-satoshiRegular">
+                      <span className="text-red-400 text-[12px] mt-1.5 block ml-4 font-satoshiRegular">
                         {errors.email}
                       </span>
                     )}
@@ -497,15 +501,16 @@ export default function ContactContents() {
 
                   <div>
                     <FieldLabel>Phone</FieldLabel>
-                    <SoftInput
+                    <input
                       name="phone"
                       onChange={handleChange}
                       value={formData.phone}
                       type="tel"
                       placeholder="(555) 555-555"
+                      className="h-16 w-full rounded-2xl border border-neutral-800 bg-neutral-900/90 px-6 text-[15px] text-white outline-none transition-all duration-300 placeholder:text-neutral-500 focus:border-lime/80 focus:ring-1 focus:ring-lime/50"
                     />
                     {errors.phone && (
-                      <span className="text-red-500 text-[12px] mt-1.5 block ml-4 font-satoshiRegular">
+                      <span className="text-red-400 text-[12px] mt-1.5 block ml-4 font-satoshiRegular">
                         {errors.phone}
                       </span>
                     )}
@@ -520,48 +525,48 @@ export default function ContactContents() {
                   <button
                     type="button"
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className={`flex h-16 w-full cursor-none items-center justify-between rounded-[20px] border-2 px-6 text-[15px] font-satoshiBold outline-none transition-all duration-300 ${isDropdownOpen
-                      ? "border-neutral-200 bg-neutral-50/50"
-                      : "border-neutral-200 bg-white hover:border-black"
+                    className={`flex h-16 w-full cursor-none items-center justify-between rounded-2xl border px-6 text-[15px] font-satoshiBold outline-none transition-all duration-300 ${isDropdownOpen
+                      ? "border-lime/80 bg-neutral-900"
+                      : "border-neutral-800 bg-neutral-900/90 hover:border-lime/50 text-white"
                       }`}
                   >
-                    <span className={`block truncate ${formData.services.length === 0 ? "text-neutral-400 font-satoshiRegular" : "text-black"}`}>
+                    <span className={`block truncate ${formData.services.length === 0 ? "text-neutral-500 font-satoshiRegular" : "text-white"}`}>
                       {formData.services.length > 0
                         ? formData.services.join(", ")
                         : "Select services"}
                     </span>
                     <ChevronDown
-                      className={`h-5 w-5 text-black transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""
+                      className={`h-5 w-5 text-lime transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""
                         }`}
                     />
                   </button>
 
                   {isDropdownOpen && (
-                    <div className="absolute left-0 right-0 z-50 mt-2 max-h-[240px] overflow-y-auto rounded-[20px] border-2 border-neutral-100 bg-white py-2 shadow-[0_10px_30px_rgba(0,0,0,0.08)] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-neutral-300 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-neutral-400">
+                    <div className="absolute left-0 right-0 z-50 mt-2 max-h-[240px] overflow-y-auto rounded-2xl border border-neutral-800 bg-neutral-900 py-2 shadow-2xl [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-neutral-700 [&::-webkit-scrollbar-thumb]:rounded-full">
                       {serviceOptions.map((service) => {
                         const isChecked = formData.services.includes(service);
                         return (
                           <div
                             key={service}
                             onClick={() => handleServiceToggle(service)}
-                            className="flex cursor-none items-center gap-3 px-6 py-4 transition-colors duration-200 hover:bg-neutral-50"
+                            className="flex cursor-none items-center gap-3 px-6 py-3.5 transition-colors duration-200 hover:bg-neutral-800/80"
                           >
                             <div
-                              className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-[6px] border-2 transition-all duration-200 ${isChecked
-                                ? "border-black bg-black text-white"
-                                : "border-neutral-300 bg-white"
+                              className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all duration-200 ${isChecked
+                                ? "border-lime bg-lime text-black"
+                                : "border-neutral-700 bg-neutral-800"
                                 }`}
                             >
                               {isChecked && (
                                 <svg
-                                  className="h-3 w-3 fill-none stroke-current stroke-[3px]"
+                                  className="h-3.5 w-3.5 fill-none stroke-current stroke-[3px]"
                                   viewBox="0 0 24 24"
                                 >
                                   <polyline points="20 6 9 17 4 12" />
                                 </svg>
                               )}
                             </div>
-                            <span className="font-satoshiBold text-[15px] text-neutral-800">
+                            <span className="font-satoshiBold text-[15px] text-neutral-200">
                               {service}
                             </span>
                           </div>
@@ -571,7 +576,7 @@ export default function ContactContents() {
                   )}
 
                   {errors.services && (
-                    <span className="text-red-500 text-[12px] mt-1.5 block ml-4 font-satoshiRegular">
+                    <span className="text-red-400 text-[12px] mt-1.5 block ml-4 font-satoshiRegular">
                       {errors.services}
                     </span>
                   )}
@@ -585,11 +590,11 @@ export default function ContactContents() {
                     rows={5}
                     onChange={handleChange}
                     value={formData.message}
-                    className="w-full rounded-[28px] border-2 border-neutral-200 px-6 py-5 text-[15px] text-black outline-none transition-colors duration-300 placeholder:text-neutral-400 focus:border-black"
-                    placeholder="Tell us about your project..."
+                    className="w-full rounded-2xl border border-neutral-800 bg-neutral-900/90 px-6 py-5 text-[15px] text-white outline-none transition-all duration-300 placeholder:text-neutral-500 focus:border-lime/80 focus:ring-1 focus:ring-lime/50"
+                    placeholder="Tell us about your project vision..."
                   />
                   {errors.message && (
-                    <span className="text-red-500 text-[12px] mt-1.5 block ml-4 font-satoshiRegular">
+                    <span className="text-red-400 text-[12px] mt-1.5 block ml-4 font-satoshiRegular">
                       {errors.message}
                     </span>
                   )}
@@ -604,9 +609,9 @@ export default function ContactContents() {
                         key={option}
                         onClick={() => handleBudgetSelect(index)}
                         type="button"
-                        className={`cursor-none rounded-full border-2 py-4 text-[13px] font-satoshiBold transition-all duration-300 ${selectedBudgetIndex === index
-                          ? "border-transparent bg-black text-white"
-                          : "border-neutral-200 text-neutral-600 hover:border-black"
+                        className={`cursor-none rounded-xl border py-4 text-[13px] font-satoshiBold transition-all duration-300 ${selectedBudgetIndex === index
+                          ? "border-lime bg-lime text-black shadow-md shadow-lime/20"
+                          : "border-neutral-800 bg-neutral-900 text-neutral-400 hover:border-lime/40 hover:text-white"
                           }`}
                       >
                         {option}
@@ -619,7 +624,7 @@ export default function ContactContents() {
                 <div className="mt-10">
                   <button
                     type="submit"
-                    className="group flex w-full items-center justify-center gap-3 rounded-full bg-black px-8 py-5 font-satoshiBold text-[17px] text-white shadow-[10px_10px_30px_rgba(0,0,0,0.25)] transition-all duration-300 hover:shadow-[10px_10px_40px_rgba(0,0,0,0.55)] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:px-12"
+                    className="group flex w-full items-center justify-center gap-3 rounded-full bg-lime px-8 py-5 font-satoshiBold text-[17px] text-black shadow-[0_10px_30px_rgba(174,255,0,0.25)] transition-all duration-300 hover:shadow-[0_10px_40px_rgba(174,255,0,0.45)] hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto sm:px-12"
                   >
                     {isSubmitting}
                     <ArrowUpRight className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
