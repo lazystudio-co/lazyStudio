@@ -17,7 +17,7 @@ const STATS_DATA = [
 
 const MANIFESTO_DATA = [
   { title: "No Noise", desc: "We focus on what actually moves the needle." },
-  { title: "Peak Tech", desc: "Next.js, React, and AI-driven workflows only." },
+  { title: "Peak Tech", desc: "Next.js,NodeJS/Express, React, Python, GoLang and AI-driven workflows only." },
   { title: "High Impact", desc: "Design that converts, code that scales." },
 ];
 
