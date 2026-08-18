@@ -63,7 +63,7 @@ export default function ProjectsContent() {
         </div>
         <div className="mx-2 cursor-none w-130 ">
           <img
-            src="/images/h.png"
+            src="/images/webdev.png"
             // alt={`slide-${index}`}
             className=" rounded-2xl duration-300 ease-out grayscale hover:grayscale-0"
             style={{ width: "auto", height: "auto" }}
