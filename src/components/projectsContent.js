@@ -61,6 +61,14 @@ export default function ProjectsContent() {
             style={{ width: "auto", height: "auto" }}
           />
         </div>
+        <div className="mx-2 cursor-none w-130 ">
+          <img
+            src="/images/h.png"
+            // alt={`slide-${index}`}
+            className=" rounded-2xl duration-300 ease-out grayscale hover:grayscale-0"
+            style={{ width: "auto", height: "auto" }}
+          />
+        </div>
       </Marquee>
     </section>
   );
