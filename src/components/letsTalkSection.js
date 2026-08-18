@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function LetsTalkSection({ title, hookline, classNameBTN }) {
   return (
     <section className="pb-20">
-      <div className="relative group overflow-hidden rounded-[36px] bg-neutral-950 border border-neutral-800/80 p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center justify-between shadow-2xl transition-all duration-500 hover:border-lime/40">
+      <div className="relative overflow-hidden rounded-[36px] bg-neutral-950 border border-neutral-800/80 p-8 sm:p-12 lg:p-16 flex flex-col lg:flex-row items-center justify-between shadow-2xl transition-all duration-500 hover:border-lime/40">
         {/* Ambient lighting glow */}
         <div className="absolute -top-32 -left-32 w-80 h-80 bg-lime/10 rounded-full blur-3xl group-hover:bg-lime/20 transition-all duration-500 pointer-events-none" />
         <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-white/5 rounded-full blur-3xl group-hover:bg-lime/10 transition-all duration-500 pointer-events-none" />

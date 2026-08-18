@@ -172,7 +172,7 @@ export default function InfoSlide() {
             className="h-full grayscale-100 hover:grayscale-0 duration-300 ease-in-out "
           >
             <TiltedCard
-              imageSrc="/gif/allservice.gif"
+              imageSrc="/images/allservice.gif"
               altText="Custom portfolio card"
               rotateAmplitude={6}
               scaleOnHover={1.01}
