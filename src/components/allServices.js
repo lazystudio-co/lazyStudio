@@ -149,73 +149,83 @@ export default function AllServices() {
         </div>
 
         {/* Services Grid */}
-        <div className="flex flex-col mb-24 bg-black rounded-3xl">
+        <div className="flex flex-col gap-10 mb-24">
           {services.map((service, index) => {
             const Icon = service.icon;
 
             return (
               <div
                 key={index}
-                className=" overflow-hidden group hover:shadow-xl transition-all duration-300 "
+                className="group relative overflow-hidden rounded-3xl bg-neutral-950 border border-neutral-800/80 hover:border-lime/40 transition-all duration-500 shadow-2xl p-8 sm:p-10 lg:p-12"
               >
-                <div className="p-6 sm:p-10 lg:p-8 ">
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16 pb-12 border-b border-white/30">
-                    {/* Left - Title & Description */}
-                    <div className="lg:col-span-1">
-                      <div className="flex items-center gap-4 mb-8">
-                        <div className="p-3 bg-sec/10 rounded-2xl">
-                          <Icon className="text-sec" size={28} />
+                {/* Background ambient lighting */}
+                <div className="absolute -top-32 -right-32 w-80 h-80 bg-lime/5 rounded-full blur-3xl group-hover:bg-lime/10 transition-all duration-700 pointer-events-none" />
+                <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-white/5 rounded-full blur-3xl group-hover:bg-lime/5 transition-all duration-700 pointer-events-none" />
+
+                <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+                  {/* Left Column: Title & Key Stat (4 Cols) */}
+                  <div className="lg:col-span-4 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="p-4 rounded-2xl bg-neutral-900 border border-neutral-800 text-lime group-hover:bg-lime group-hover:text-black transition-all duration-300 shadow-inner">
+                          <Icon size={28} />
                         </div>
-                      </div>
-                      <h3 className="text-4xl lg:text-5xl font-CabinetGrotesk text-white mb-6">
-                        <span className="text-sec">
-                          {service.title.split(" ")[0]} <br />
+                        <span className="font-mono text-sm font-bold text-neutral-500 group-hover:text-lime tracking-widest transition-colors duration-300">
+                          SERVICE 0{index + 1}
                         </span>
-                        {service.title.split(" ").slice(1).join(" ")}
+                      </div>
+
+                      <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-CabinetGrotesk text-white mb-4 tracking-tight group-hover:text-lime transition-colors duration-300">
+                        {service.title}
                       </h3>
-                      <p className="text-white/70 font-satoshiRegular mb-6 leading-relaxed">
+
+                      <p className="text-neutral-400 font-satoshiRegular text-base sm:text-lg leading-relaxed mb-6">
                         {service.description}
                       </p>
-                      <div className="bg-sec/10 border border-sec/30 rounded-2xl p-5">
-                        <div className="text-2xl font-CabinetGrotesk text-sec mb-2">
-                          {index === 0 && "40%+"}
-                          {index === 1 && "60%"}
-                          {index === 2 && "10x"}
-                          {index === 3 && "10x"}
-                        </div>
-                        <p className="text-white/60 font-satoshiRegular text-sm">
-                          {service.impact}
-                        </p>
-                      </div>
                     </div>
 
-                    {/* Middle - Why Us & Benefits */}
-                    <div className="lg:col-span-1 lg:border-l border-white/10 lg:pl-10">
-                      <div className="mb-10">
-                        <p className="uppercase tracking-widest text-xs font-satoshiBold text-sec/80 mb-3">
-                          Why LazyStudio
+                    {/* Impact Card */}
+                    <div className="bg-neutral-900/80 border border-neutral-800 rounded-2xl p-5 group-hover:border-lime/30 transition-all duration-300">
+                      <div className="text-2xl sm:text-3xl font-bold font-CabinetGrotesk text-lime mb-1">
+                        {index === 0 && "40%+"}
+                        {index === 1 && "2x Speed"}
+                        {index === 2 && "60% Memory"}
+                        {index === 3 && "10x Reach"}
+                      </div>
+                      <p className="text-neutral-400 font-satoshiRegular text-sm leading-snug">
+                        {service.impact}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Middle Column: Why Us & Key Benefits (4 Cols) */}
+                  <div className="lg:col-span-4 lg:border-l lg:border-neutral-800/80 lg:pl-10 flex flex-col justify-between">
+                    <div>
+                      <div className="mb-8">
+                        <p className="uppercase tracking-widest text-xs font-bold font-satoshiBold text-lime mb-3">
+                          Why Lazy Studio
                         </p>
-                        <p className="font-satoshiRegular text-white/80 leading-relaxed mb-8">
+                        <p className="font-satoshiRegular text-neutral-300 text-sm sm:text-base leading-relaxed">
                           {service.why_us}
                         </p>
                       </div>
+
                       <div>
-                        <p className="uppercase tracking-widest text-xs font-satoshiBold text-sec/80 mb-4">
+                        <p className="uppercase tracking-widest text-xs font-bold font-satoshiBold text-lime mb-4">
                           Key Benefits
                         </p>
-                        <div className="space-y-4">
+                        <div className="space-y-3.5">
                           {service.benefits.map((benefit, idx) => {
                             const BenefitIcon = benefit.icon;
                             return (
                               <div
                                 key={idx}
-                                className="flex gap-3 items-center"
+                                className="flex items-center gap-3"
                               >
-                                <BenefitIcon
-                                  className="text-sec flex-shrink-0"
-                                  size={20}
-                                />
-                                <p className="font-satoshiRegular text-white/70 text-sm">
+                                <div className="p-1.5 rounded-lg bg-neutral-900 text-lime flex-shrink-0">
+                                  <BenefitIcon size={16} />
+                                </div>
+                                <p className="font-satoshiRegular text-neutral-300 text-sm">
                                   {benefit.text}
                                 </p>
                               </div>
@@ -224,30 +234,33 @@ export default function AllServices() {
                         </div>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Right - Services & Outcome */}
-                    <div className="lg:col-span-1 lg:border-l border-white/10 lg:pl-10">
-                      <p className="uppercase tracking-widest text-xs font-satoshiBold text-sec mb-4">
-                        Services Included
+                  {/* Right Column: Capabilities & Outcome (4 Cols) */}
+                  <div className="lg:col-span-4 lg:border-l lg:border-neutral-800/80 lg:pl-10 flex flex-col justify-between">
+                    <div>
+                      <p className="uppercase tracking-widest text-xs font-bold font-satoshiBold text-lime mb-4">
+                        Capabilities Included
                       </p>
-                      <div className="flex flex-wrap gap-2 mb-10">
+                      <div className="flex flex-wrap gap-2 mb-8">
                         {service.services.map((item, i) => (
                           <span
                             key={i}
-                            className="font-satoshiRegular text-xs text-white px-3 py-1.5 bg-white/5 border borderwhite/10 rounded-full hover:bg-sec/20 hover:bordersec/50 transition-all duration-300"
+                            className="font-satoshiRegular text-xs text-neutral-300 px-3 py-1.5 bg-neutral-900 border border-neutral-800 rounded-xl hover:border-lime/50 hover:text-white transition-all duration-300"
                           >
                             {item}
                           </span>
                         ))}
                       </div>
-                      <div className="border-t border-white/10 pt-6">
-                        <p className="uppercase tracking-widest text-xs font-satoshiBold text-sec/80 mb-3">
-                          Outcome
-                        </p>
-                        <p className="font-satoshiRegular text-white/80 italic">
-                          "{service.outcome}"
-                        </p>
-                      </div>
+                    </div>
+
+                    <div className="border-t border-neutral-800/80 pt-6">
+                      <p className="uppercase tracking-widest text-xs font-bold font-satoshiBold text-lime mb-2">
+                        Guaranteed Outcome
+                      </p>
+                      <p className="font-satoshiRegular text-neutral-300 text-sm sm:text-base italic leading-relaxed">
+                        "{service.outcome}"
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -258,9 +271,9 @@ export default function AllServices() {
 
         {/* Our Process Section */}
         <section className="mb-24 lg:mb-32">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-CabinetGrotesk mb-6">
-              How We <span className="text-sec">Work.</span>
+          <div className="text-center mb-16 sm:mb-20">
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-CabinetGrotesk font-bold mb-6">
+              How We <span className="text-lime">Work.</span>
             </h2>
             <p className="text-black/60 font-satoshiRegular text-lg max-w-2xl mx-auto">
               A transparent, structured process that keeps you informed at every
@@ -269,160 +282,216 @@ export default function AllServices() {
             </p>
           </div>
 
-          {/* Timeline Process */}
-          <div className="relative">
-            {/* Vertical line - visible on desktop */}
-            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-linear-to-b from-black via-sec to-transparent transform -translate-x-1/2"></div>
+          {/* Timeline / Process Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Step 1 */}
+            <div className="group relative overflow-hidden rounded-3xl bg-neutral-950 border border-neutral-800/80 hover:border-lime/50 p-8 sm:p-10 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-lime/10 flex flex-col justify-between">
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-lime/10 rounded-full blur-3xl group-hover:bg-lime/20 transition-all duration-500 pointer-events-none" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
-              {/* Step 1 */}
-              <div className="relative">
-                <div className="mb-10">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-CabinetGrotesk text-2xl mb-6">
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center font-mono font-bold text-xl text-lime group-hover:bg-lime group-hover:text-black transition-all duration-300 shadow-inner">
                     01
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-CabinetGrotesk mb-4">
-                    Discovery & <span className="text-sec">Strategy</span>
-                  </h3>
-                  <p className="text-black/70 font-satoshiRegular text-lg leading-relaxed mb-6">
-                    We dive deep into your vision, market dynamics, and business
-                    goals. Our team conducts comprehensive research to craft a
-                    winning strategy tailored to your unique challenges.
-                  </p>
-                  <div className="space-y-3">
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        In-depth stakeholder interviews and market analysis
-                      </p>
-                    </div>
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        Competitive landscape mapping and positioning
-                      </p>
-                    </div>
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        Strategy document with clear KPIs and objectives
-                      </p>
-                    </div>
-                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-neutral-500 group-hover:text-lime transition-colors duration-300">
+                    Phase One
+                  </span>
                 </div>
+
+                <h3 className="text-2xl sm:text-3xl font-bold font-CabinetGrotesk text-white mb-4 tracking-tight group-hover:text-lime transition-colors duration-300">
+                  Discovery & Strategy
+                </h3>
+
+                <p className="text-neutral-400 font-satoshiRegular text-base leading-relaxed mb-8">
+                  We dive deep into your vision, market dynamics, and business
+                  goals. Our team conducts comprehensive research to craft a
+                  winning strategy tailored to your unique challenges.
+                </p>
               </div>
 
-              {/* Step 2 */}
-              <div className="relative ">
-                <div className="mb-10">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-CabinetGrotesk text-2xl mb-6">
+              <div className="space-y-3 pt-6 border-t border-neutral-800/60">
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    Stakeholder interviews & deep market research
+                  </p>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    Competitive positioning & audience mapping
+                  </p>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    Strategy roadmap with clear KPIs & objectives
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2 */}
+            <div className="group relative overflow-hidden rounded-3xl bg-neutral-950 border border-neutral-800/80 hover:border-lime/50 p-8 sm:p-10 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-lime/10 flex flex-col justify-between">
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-lime/10 rounded-full blur-3xl group-hover:bg-lime/20 transition-all duration-500 pointer-events-none" />
+
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center font-mono font-bold text-xl text-lime group-hover:bg-lime group-hover:text-black transition-all duration-300 shadow-inner">
                     02
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-CabinetGrotesk mb-4">
-                    Design & <span className="text-sec">Planning</span>
-                  </h3>
-                  <p className="text-black/70 font-satoshiRegular text-lg leading-relaxed mb-6">
-                    Beautiful design meets meticulous planning. We create
-                    detailed wireframes, prototypes, and technical
-                    specifications that serve as the blueprint for flawless
-                    execution.
-                  </p>
-                  <div className="space-y-3">
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        High-fidelity mockups and interactive prototypes
-                      </p>
-                    </div>
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        User flow diagrams and experience mapping
-                      </p>
-                    </div>
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        Technical architecture planning and resource allocation
-                      </p>
-                    </div>
-                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-neutral-500 group-hover:text-lime transition-colors duration-300">
+                    Phase Two
+                  </span>
                 </div>
+
+                <h3 className="text-2xl sm:text-3xl font-bold font-CabinetGrotesk text-white mb-4 tracking-tight group-hover:text-lime transition-colors duration-300">
+                  Design & Planning
+                </h3>
+
+                <p className="text-neutral-400 font-satoshiRegular text-base leading-relaxed mb-8">
+                  Beautiful design meets meticulous planning. We create
+                  detailed wireframes, interactive prototypes, and technical
+                  specifications that serve as the blueprint for execution.
+                </p>
               </div>
 
-              {/* Step 3 */}
-              <div className=" relative ">
-                <div className="mb-10">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-CabinetGrotesk text-2xl mb-6">
+              <div className="space-y-3 pt-6 border-t border-neutral-800/60">
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    High-fidelity Figma UI/UX prototypes
+                  </p>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    User flow mapping & design design system
+                  </p>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    Technical architecture & stack specification
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3 */}
+            <div className="group relative overflow-hidden rounded-3xl bg-neutral-950 border border-neutral-800/80 hover:border-lime/50 p-8 sm:p-10 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-lime/10 flex flex-col justify-between">
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-lime/10 rounded-full blur-3xl group-hover:bg-lime/20 transition-all duration-500 pointer-events-none" />
+
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center font-mono font-bold text-xl text-lime group-hover:bg-lime group-hover:text-black transition-all duration-300 shadow-inner">
                     03
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-CabinetGrotesk mb-4">
-                    Build & <span className="text-sec">Optimize</span>
-                  </h3>
-                  <p className="text-black/70 font-satoshiRegular text-lg leading-relaxed mb-6">
-                    Our engineering team builds with precision. We use
-                    industry-leading technologies, follow best practices, and
-                    continuously optimize for performance, security, and
-                    scalability.
-                  </p>
-                  <div className="space-y-3">
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        Clean, maintainable code with full documentation
-                      </p>
-                    </div>
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        Continuous testing, security audits, and performance
-                        optimization
-                      </p>
-                    </div>
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        Weekly progress updates and transparent communication
-                      </p>
-                    </div>
-                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-neutral-500 group-hover:text-lime transition-colors duration-300">
+                    Phase Three
+                  </span>
                 </div>
+
+                <h3 className="text-2xl sm:text-3xl font-bold font-CabinetGrotesk text-white mb-4 tracking-tight group-hover:text-lime transition-colors duration-300">
+                  Build & Optimize
+                </h3>
+
+                <p className="text-neutral-400 font-satoshiRegular text-base leading-relaxed mb-8">
+                  Our engineering team builds with precision. We use
+                  modern tech, write clean code, and continuously optimize for
+                  speed, security, and scalability.
+                </p>
               </div>
 
-              {/* Step 4 */}
-              <div className=" relative ">
-                <div className="mb-10">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-sec text-white rounded-full font-CabinetGrotesk text-2xl mb-6">
+              <div className="space-y-3 pt-6 border-t border-neutral-800/60">
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    Clean, performant codebase with full docs
+                  </p>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    Performance audits & security testing
+                  </p>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    Sprint progress updates & open comms
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 4 */}
+            <div className="group relative overflow-hidden rounded-3xl bg-neutral-950 border border-neutral-800/80 hover:border-lime/50 p-8 sm:p-10 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-lime/10 flex flex-col justify-between">
+              <div className="absolute -top-24 -right-24 w-48 h-48 bg-lime/10 rounded-full blur-3xl group-hover:bg-lime/20 transition-all duration-500 pointer-events-none" />
+
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center font-mono font-bold text-xl text-lime group-hover:bg-lime group-hover:text-black transition-all duration-300 shadow-inner">
                     04
                   </div>
-                  <h3 className="text-3xl lg:text-4xl font-CabinetGrotesk mb-4">
-                    Launch & <span className="text-sec">Support</span>
-                  </h3>
-                  <p className="text-black/70 font-satoshiRegular text-lg leading-relaxed mb-6">
-                    A flawless go-live every time. We manage the entire launch
-                    process with zero-downtime deployment, comprehensive
-                    testing, and ongoing support to ensure sustained success.
-                  </p>
-                  <div className="space-y-3">
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        Zero-downtime deployment with rollback protocols
-                      </p>
-                    </div>
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        Post-launch monitoring, analytics, and optimization
-                      </p>
-                    </div>
-                    <div className="flex gap-3 items-start">
-                      <span className="text-sec font-CabinetGrotesk text-xl">✓</span>
-                      <p className="font-satoshiRegular text-black/70">
-                        Dedicated support team available for ongoing maintenance
-                      </p>
-                    </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-neutral-500 group-hover:text-lime transition-colors duration-300">
+                    Phase Four
+                  </span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-bold font-CabinetGrotesk text-white mb-4 tracking-tight group-hover:text-lime transition-colors duration-300">
+                  Launch & Support
+                </h3>
+
+                <p className="text-neutral-400 font-satoshiRegular text-base leading-relaxed mb-8">
+                  A flawless go-live every time. We manage the entire launch
+                  process with zero-downtime deployment, analytics tracking, and
+                  ongoing optimization.
+                </p>
+              </div>
+
+              <div className="space-y-3 pt-6 border-t border-neutral-800/60">
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
                   </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    Zero-downtime production deployment
+                  </p>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    Post-launch analytics & performance tracking
+                  </p>
+                </div>
+                <div className="flex gap-3 items-center">
+                  <div className="w-5 h-5 rounded-full bg-lime/10 border border-lime/30 flex items-center justify-center text-lime text-xs flex-shrink-0">
+                    ✓
+                  </div>
+                  <p className="font-satoshiRegular text-neutral-300 text-sm">
+                    Ongoing technical maintenance & support
+                  </p>
                 </div>
               </div>
             </div>
@@ -430,46 +499,108 @@ export default function AllServices() {
         </section>
 
         {/* What to Expect Section */}
-        <section className=" lg:mb-32 rounded-3xl mb-10 p-6 sm:p-10 lg:p-20 border-2 border-sec/20 hover:border-black duration-300 ease-in ">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
-            <div>
-              <div className="text-4xl mb-4">
-                <img src="/icons/quick.png" className="w-16 h-16" />
+        <section className="mb-24 lg:mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Realistic Timelines */}
+            <div className="group relative overflow-hidden rounded-3xl bg-neutral-950 border border-neutral-800/80 hover:border-lime/50 p-8 sm:p-10 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-lime/10 flex flex-col justify-between">
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-lime/10 rounded-full blur-3xl group-hover:bg-lime/20 transition-all duration-500 pointer-events-none" />
+
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center mb-6 group-hover:bg-lime group-hover:border-lime transition-all duration-300 shadow-inner">
+                  <img
+                    src="/icons/quick.png"
+                    alt="Realistic Timelines"
+                    className="w-7 h-7 object-contain brightness-0 invert group-hover:invert-0 transition-all duration-300"
+                  />
+                </div>
+
+                <h3 className="text-2xl font-bold font-CabinetGrotesk text-white mb-4 tracking-tight group-hover:text-lime transition-colors duration-300">
+                  Realistic Timelines
+                </h3>
+
+                <p className="text-neutral-400 font-satoshiRegular text-base leading-relaxed">
+                  We give you honest timelines based on scope and complexity. No
+                  surprises, no delays. Most projects launch within 8-16 weeks
+                  depending on requirements.
+                </p>
               </div>
-              <h3 className="text-2xl font-CabinetGrotesk text-black mb-4">
-                Realistic Timelines
-              </h3>
-              <p className="text-black/70 font-satoshiRegular leading-relaxed">
-                We give you honest timelines based on scope and complexity. No
-                surprises, no delays. Most projects launch within 8-16 weeks
-                depending on requirements.
-              </p>
+
+              <div className="mt-8 pt-4 border-t border-neutral-800/60 flex items-center justify-between">
+                <span className="text-xs font-mono font-semibold text-neutral-500 group-hover:text-lime transition-colors duration-300">
+                  8-16 WEEKS
+                </span>
+                <span className="text-lime text-xs font-bold uppercase tracking-wider">
+                  Guaranteed
+                </span>
+              </div>
             </div>
-            <div>
-              <div className="text-4xl mb-4">
-                <img src="/icons/interaction.png" className="w-16 h-16" />
+
+            {/* Constant Communication */}
+            <div className="group relative overflow-hidden rounded-3xl bg-neutral-950 border border-neutral-800/80 hover:border-lime/50 p-8 sm:p-10 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-lime/10 flex flex-col justify-between">
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-lime/10 rounded-full blur-3xl group-hover:bg-lime/20 transition-all duration-500 pointer-events-none" />
+
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center mb-6 group-hover:bg-lime group-hover:border-lime transition-all duration-300 shadow-inner">
+                  <img
+                    src="/icons/interaction.png"
+                    alt="Constant Communication"
+                    className="w-7 h-7 object-contain brightness-0 invert group-hover:invert-0 transition-all duration-300"
+                  />
+                </div>
+
+                <h3 className="text-2xl font-bold font-CabinetGrotesk text-white mb-4 tracking-tight group-hover:text-lime transition-colors duration-300">
+                  Constant Communication
+                </h3>
+
+                <p className="text-neutral-400 font-satoshiRegular text-base leading-relaxed">
+                  Weekly check-ins, bi-weekly demos, and complete transparency.
+                  You'll always know where your project stands and have direct
+                  access to our team.
+                </p>
               </div>
-              <h3 className="text-2xl font-CabinetGrotesk text-black mb-4">
-                Constant Communication
-              </h3>
-              <p className="text-black/70 font-satoshiRegular leading-relaxed">
-                Weekly check-ins, bi-weekly demos, and complete transparency.
-                You'll always know where your project stands and have direct
-                access to our team.
-              </p>
+
+              <div className="mt-8 pt-4 border-t border-neutral-800/60 flex items-center justify-between">
+                <span className="text-xs font-mono font-semibold text-neutral-500 group-hover:text-lime transition-colors duration-300">
+                  100% TRANSPARENT
+                </span>
+                <span className="text-lime text-xs font-bold uppercase tracking-wider">
+                  Weekly Demos
+                </span>
+              </div>
             </div>
-            <div>
-              <div className="text-4xl mb-4">
-                <img src="/icons/result.png" className="w-16 h-16" />
+
+            {/* Results-Driven Approach */}
+            <div className="group relative overflow-hidden rounded-3xl bg-neutral-950 border border-neutral-800/80 hover:border-lime/50 p-8 sm:p-10 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-lime/10 flex flex-col justify-between">
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-lime/10 rounded-full blur-3xl group-hover:bg-lime/20 transition-all duration-500 pointer-events-none" />
+
+              <div>
+                <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center mb-6 group-hover:bg-lime group-hover:border-lime transition-all duration-300 shadow-inner">
+                  <img
+                    src="/icons/result.png"
+                    alt="Results-Driven Approach"
+                    className="w-7 h-7 object-contain brightness-0 invert group-hover:invert-0 transition-all duration-300"
+                  />
+                </div>
+
+                <h3 className="text-2xl font-bold font-CabinetGrotesk text-white mb-4 tracking-tight group-hover:text-lime transition-colors duration-300">
+                  Results-Driven Approach
+                </h3>
+
+                <p className="text-neutral-400 font-satoshiRegular text-base leading-relaxed">
+                  We measure success by your KPIs, not just delivery. Our team is
+                  invested in ensuring your project delivers measurable business
+                  impact.
+                </p>
               </div>
-              <h3 className="text-2xl font-CabinetGrotesk text-black mb-4">
-                Results-Driven Approach
-              </h3>
-              <p className="text-black/70 font-satoshiRegular leading-relaxed">
-                We measure success by your KPIs, not just delivery. Our team is
-                invested in ensuring your project delivers measurable business
-                impact.
-              </p>
+
+              <div className="mt-8 pt-4 border-t border-neutral-800/60 flex items-center justify-between">
+                <span className="text-xs font-mono font-semibold text-neutral-500 group-hover:text-lime transition-colors duration-300">
+                  KPI FOCUSED
+                </span>
+                <span className="text-lime text-xs font-bold uppercase tracking-wider">
+                  Real Impact
+                </span>
+              </div>
             </div>
           </div>
         </section>

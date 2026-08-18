@@ -91,7 +91,7 @@ export default function ServicesHero() {
 
           {/* Featured Services Grid */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12"
             variants={containerVariants}
           >
             {featuredServices.map((service, index) => {
@@ -101,41 +101,47 @@ export default function ServicesHero() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                  viewport={{ once: true }}
-                  className="group relative overflow-hidden rounded-2xl bg-linear-to-br from-black to-sec border border-sec hover:border-sec transition-all duration-300 p-8 md:p-10"
+                  whileHover={{ y: -6, scale: 1.01 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="group relative overflow-hidden rounded-3xl bg-neutral-950/90 border border-neutral-800/80 hover:border-lime/50 p-8 sm:p-10 flex flex-col justify-between transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-lime/10"
                 >
-                  <Link href={service.link}>
-                    {/* Gradient overlay on hover */}
-                    <div
-                      className={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                    ></div>
-                    {/* Icon background */}
-                    <div
-                      className={`absolute -top-8 -right-8 w-32 h-32 ${service.accent} rounded-full blur-2xl group-hover:blur-3xl transition-all duration-300`}
-                    ></div>
-                    <div className="relative z-10">
-                      <div className="mb-6">
-                        <div className="inline-flex p-3 rounded-xl bg-white text-black mb-4">
-                          <IconComponent className="w-6 h-6" />
+                  <Link href={service.link} className="flex flex-col h-full justify-between">
+                    {/* Top ambient glow */}
+                    <div className="absolute -top-24 -right-24 w-56 h-56 bg-lime/10 rounded-full blur-3xl group-hover:bg-lime/20 transition-all duration-500 pointer-events-none" />
+                    <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-white/5 rounded-full blur-2xl group-hover:bg-lime/10 transition-all duration-500 pointer-events-none" />
+
+                    <div>
+                      {/* Top Bar: Icon + Number Badge */}
+                      <div className="flex items-center justify-between mb-8 relative z-10">
+                        <div className="p-3.5 rounded-2xl bg-neutral-900 border border-neutral-800 group-hover:border-lime/40 group-hover:bg-lime group-hover:text-black text-lime transition-all duration-300 shadow-inner">
+                          <IconComponent className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
                         </div>
+                        <span className="font-mono text-xs font-semibold text-neutral-500 group-hover:text-lime tracking-widest transition-colors duration-300">
+                          0{index + 1}
+                        </span>
                       </div>
 
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
-                        {service.title}
-                      </h3>
+                      {/* Content */}
+                      <div className="relative z-10">
+                        <h3 className="text-2xl sm:text-3xl font-bold font-CabinetGrotesk text-white mb-3 tracking-tight group-hover:text-lime transition-colors duration-300">
+                          {service.title.trim()}
+                        </h3>
 
-                      <p className="text-white/50 leading-relaxed mb-6">
-                        {service.description}
-                      </p>
+                        <p className="text-neutral-400 font-satoshiRegular text-base sm:text-lg leading-relaxed mb-8">
+                          {service.description}
+                        </p>
+                      </div>
+                    </div>
 
-                      <button className="inline-flex items-center gap-2 text-white font-semibold transition-colors">
-                        <span className=" underline ">Learn More</span>
-                        <span className="group-hover:translate-x-1  transition-transform">
-                          →
-                        </span>
-                      </button>
-                    </div>{" "}
+                    {/* Bottom Action Footer */}
+                    <div className="relative z-10 pt-4 border-t border-neutral-800/60 flex items-center justify-between group-hover:border-lime/30 transition-colors duration-300">
+                      <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 group-hover:text-white transition-colors duration-300">
+                        Explore Service
+                      </span>
+                      <div className="w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-white group-hover:bg-lime group-hover:text-black group-hover:border-lime transition-all duration-300 group-hover:translate-x-1">
+                        <span className="text-lg">→</span>
+                      </div>
+                    </div>
                   </Link>
                 </motion.div>
               );
