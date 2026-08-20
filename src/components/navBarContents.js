@@ -12,6 +12,7 @@ export default function NavBarContents() {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Why Us", href: "/whyUs" },
+    { name: "Projects", href: "/projects" },
   ];
 
   const patchname = usePathname();
