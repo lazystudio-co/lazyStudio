@@ -111,6 +111,11 @@ export default function Footer() {
                 Why Us
               </li>
             </Link>
+            <Link href="/projects" className=" cursor-none ">
+              <li className="font-satoshiBold text-[16px] w-fit cursor-none!">
+                Projects
+              </li>
+            </Link>
           </ul>
         </div>
 
