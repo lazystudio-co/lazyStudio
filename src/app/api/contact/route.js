@@ -20,7 +20,7 @@ export async function POST(req) {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
       to: process.env.CONTACT_TO_EMAIL || "your@email.com",
-      subject: `New Contact Message from ${name}`,
+      subject: `New Order from ${name}`,
       html: `
         <h3>New Message</h3>
         <p><b>Name:</b> ${name}</p>
