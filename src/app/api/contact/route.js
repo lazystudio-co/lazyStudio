@@ -5,8 +5,11 @@ export async function POST(req) {
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       return Response.json(
-        { success: false, error: "Missing RESEND_API_KEY environment variable" },
-        { status: 500 }
+        {
+          success: false,
+          error: "Missing RESEND_API_KEY environment variable",
+        },
+        { status: 500 },
       );
     }
 
@@ -21,7 +24,7 @@ export async function POST(req) {
       if (db && typeof db.query === "function") {
         await db.query(
           "INSERT INTO contacts (name, email, phone, message, budget) VALUES (?, ?, ?, ?, ?)",
-          [name, email, phone, message, budget]
+          [name, email, phone, message, budget],
         );
       }
     } catch (dbError) {
@@ -34,13 +37,14 @@ export async function POST(req) {
         : "None selected";
 
     const { data, error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "LazyStudio <contact@lazystudio.co>",
+      from:
+        process.env.RESEND_FROM_EMAIL || `"LazyStudio <contact@lazystudio.co>`,
       to: process.env.CONTACT_TO_EMAIL || "lazystudio.org@gmail.com",
       replyTo: email,
-      subject: `New Contact Inquiry from ${name}`,
+      subject: `New Inquiry ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #e5e5e5; border-radius: 12px;">
-          <h2 style="color: #111; margin-top: 0;">New Project Inquiry</h2>
+          <h2 style="color: #111; margin-top: 0;">New Project</h2>
           <hr style="border: none; border-top: 1px solid #eee; margin: 16px 0;" />
           <p><strong>Name / Company:</strong> ${name || "N/A"}</p>
           <p><strong>Email:</strong> <a href="mailto:${email}">${email || "N/A"}</a></p>
@@ -57,7 +61,10 @@ export async function POST(req) {
 
     if (error) {
       console.error("Resend API error:", error);
-      return Response.json({ success: false, error: error.message }, { status: 400 });
+      return Response.json(
+        { success: false, error: error.message },
+        { status: 400 },
+      );
     }
 
     return Response.json({ success: true, id: data?.id });
@@ -68,7 +75,7 @@ export async function POST(req) {
         success: false,
         error: error?.message || "Unexpected server error",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
