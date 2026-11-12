@@ -38,13 +38,14 @@ export async function POST(req) {
 
     const { data, error } = await resend.emails.send({
       from:
-        process.env.RESEND_FROM_EMAIL || `"LazyStudio <contact@lazystudio.co>`,
+        process.env.RESEND_FROM_EMAIL || "LazyStudio <contact@lazystudio.co>",
       to: process.env.CONTACT_TO_EMAIL || "lazystudio.org@gmail.com",
       replyTo: email,
-      subject: `New Inquiry ${name}`,
+      subject: `New Project Inquiry from ${name || "Client"}`,
+      text: `New Project Inquiry\n\nName / Company: ${name || "N/A"}\nEmail: ${email || "N/A"}\nPhone: ${phone || "N/A"}\nServices: ${servicesList}\nBudget: ${budget || "N/A"}\n\nMessage:\n${message || "No message provided."}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #e5e5e5; border-radius: 12px;">
-          <h2 style="color: #111; margin-top: 0;">New Project</h2>
+          <h2 style="color: #111; margin-top: 0;">New Project Inquiry</h2>
           <hr style="border: none; border-top: 1px solid #eee; margin: 16px 0;" />
           <p><strong>Name / Company:</strong> ${name || "N/A"}</p>
           <p><strong>Email:</strong> <a href="mailto:${email}">${email || "N/A"}</a></p>
