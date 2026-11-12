@@ -213,14 +213,42 @@ export default function ContactContents() {
 
     try {
       setSubmittedName(name);
-      await push(ref(db, "clients"), {
-        name,
-        email,
-        phone,
-        services,
-        message,
-        budget,
+
+      // Save to Firebase Realtime Database
+      try {
+        await push(ref(db, "clients"), {
+          name,
+          email,
+          phone,
+          services,
+          message,
+          budget,
+        });
+      } catch (firebaseErr) {
+        console.warn("Firebase save error:", firebaseErr);
+      }
+
+      // Send email via Resend
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          services,
+          message,
+          budget,
+        }),
       });
+
+      const result = await response.json();
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Failed to send message via Resend");
+      }
+
       setSubmitted(true);
       setFormData({
         name: "",
@@ -234,9 +262,9 @@ export default function ContactContents() {
       setSelectedBudgetIndex(0);
     } catch (error) {
       console.error(error);
-      alert("Failed to send message");
+      alert(error.message || "Failed to send message");
     } finally {
-
+      setIsSubmitting("Submit");
     }
   };
 
